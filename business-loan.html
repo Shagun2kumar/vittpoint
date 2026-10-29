@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0B2340">
+<meta name="description" content="VittPoint Business Loan Planner: review business cash flow, turnover, funding needs, documents and repayment estimates.">
+<title>Business Loan & Finance Planner | VittPoint</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+:root{
+ --navy:#0B2340;--navy-dark:#07182D;--navy-mid:#173D67;
+ --gold:#F5A900;--gold-light:#FFF5D9;--bg:#F5F7FA;
+ --white:#fff;--text:#25364A;--muted:#718096;
+ --border:#E0E6EE;--green:#15803D;--red:#B42318;
+ --shadow:0 12px 35px rgba(11,35,64,.07);--radius:15px
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:95px}
+body{font-family:Inter,sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
+a{text-decoration:none;color:inherit}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.container{width:min(1180px,92%);margin:auto}
+
+.brand{display:flex;align-items:center;gap:10px;flex-shrink:0;text-decoration:none}
+.brand-mark{width:55px;height:55px;flex-shrink:0}
+.brand-mark svg{display:block;width:100%;height:100%}
+.brand-text{display:flex;flex-direction:column;justify-content:center}
+.brand-name{display:flex;align-items:flex-start;font-size:29px;font-weight:800;line-height:1;letter-spacing:-1px;white-space:nowrap}
+.brand-name .vitt{color:var(--navy)}
+.brand-name .point{color:var(--gold)}
+.brand-name sup{color:var(--navy);font-size:9px;font-weight:600;margin-left:3px;margin-top:1px;letter-spacing:0}
+.brand-text small{color:var(--navy);font-size:8px;font-weight:700;letter-spacing:1.1px;margin-top:5px;white-space:nowrap}
+
+.header{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px)}
+.navbar{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.nav-links{display:flex;align-items:center;gap:22px}
+.nav-links a{font-size:12px;font-weight:650;color:#536176;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--navy)}
+.nav-links a.active{position:relative}
+.nav-links a.active:after{content:"";height:3px;background:var(--gold);position:absolute;bottom:-12px;left:0;right:0;border-radius:10px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:12px 18px;border:1px solid transparent;border-radius:8px;background:var(--gold);color:var(--navy-dark);font-size:12px;font-weight:800;transition:.2s}
+.btn:hover{background:#FFC12B;transform:translateY(-2px)}
+.btn-dark{background:var(--navy);color:white}
+.btn-dark:hover{background:var(--navy-mid)}
+.btn-light{background:white;color:var(--navy);border-color:var(--border)}
+.btn-light:hover{background:#F1F5F9}
+.menu-toggle{display:none;width:42px;height:42px;border:1px solid var(--border);border-radius:8px;background:white;color:var(--navy);font-size:18px}
+
+.hero{
+ position:relative;isolation:isolate;padding:70px 0;color:white;overflow:hidden;
+ background:linear-gradient(90deg,rgba(7,24,45,.97) 0%,rgba(11,35,64,.91) 48%,rgba(11,35,64,.52) 100%),url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2000&q=85") center/cover no-repeat
+}
+.hero-grid{display:grid;grid-template-columns:1fr .88fr;gap:44px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;color:#B98100;font-size:10px;font-weight:800;letter-spacing:1.7px;text-transform:uppercase}
+.hero .eyebrow{color:var(--gold)}
+.hero h1{margin:17px 0;max-width:650px;font-size:clamp(35px,4.4vw,56px);font-weight:800;line-height:1.12;letter-spacing:-1.8px}
+.hero h1 span{color:var(--gold)}
+.hero-description{max-width:560px;color:#E1E8F0;font-size:13px;line-height:1.95}
+.hero-buttons{display:flex;flex-wrap:wrap;gap:12px;margin-top:25px}
+.hero-points{display:flex;flex-wrap:wrap;gap:17px;margin-top:24px}
+.hero-points span{display:flex;align-items:center;gap:7px;color:#D1DCE9;font-size:10px;font-weight:600}
+.hero-points i{color:var(--gold)}
+
+.dashboard{padding:22px;border:1px solid rgba(255,255,255,.2);border-radius:17px;background:rgba(7,24,45,.82);backdrop-filter:blur(14px);box-shadow:0 25px 70px rgba(0,0,0,.3)}
+.dashboard-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:19px}
+.dashboard-header h3{font-size:15px}
+.demo-label{padding:5px 9px;border-radius:20px;background:rgba(245,169,0,.15);color:var(--gold);font-size:9px;font-weight:800}
+.dashboard-metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.metric-card{padding:15px;border:1px solid rgba(255,255,255,.1);border-radius:11px;background:rgba(255,255,255,.07)}
+.metric-card span{display:block;color:#BDCAD9;font-size:10px}
+.metric-card strong{display:block;margin:5px 0;font-size:20px}
+.metric-card small{color:var(--gold);font-size:9px}
+.chart-card{margin-top:14px;padding:17px;border:1px solid rgba(255,255,255,.1);border-radius:11px;background:rgba(255,255,255,.06)}
+.chart-title{display:flex;justify-content:space-between;gap:12px;font-size:11px;font-weight:700}
+.chart-title span:last-child{color:#B9C6D5;font-size:9px;font-weight:500}
+.chart-bars{height:100px;display:flex;align-items:flex-end;justify-content:space-around;gap:12px;padding-top:13px}
+.chart-bar-wrap{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px}
+.chart-bar{width:100%;max-width:34px;min-height:8px;border-radius:5px 5px 0 0;background:linear-gradient(180deg,#FFC12B,#C58B00)}
+.chart-bar.secondary{background:linear-gradient(180deg,#6C93BC,#31577D)}
+.chart-bar-wrap small{color:#B9C6D5;font-size:9px}
+.dashboard-footnote{margin-top:12px;color:#AFC0D2;font-size:9px;line-height:1.6}
+
+.section{padding:72px 0}
+.section-white{background:white}
+.section-title{margin-bottom:30px}
+.section-title h2{margin-top:9px;color:var(--navy);font-size:clamp(25px,3vw,34px);line-height:1.25;letter-spacing:-.9px}
+.section-title p{max-width:700px;margin-top:9px;color:var(--muted);font-size:12px}
+.section-title.center{text-align:center}
+.section-title.center .eyebrow{justify-content:center}
+.section-title.center p{margin-left:auto;margin-right:auto}
+
+.finance-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.finance-card{padding:0;overflow:hidden;border:1px solid var(--border);border-radius:15px;background:white;transition:transform .25s,box-shadow .25s}
+.finance-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(11,35,64,.13)}
+.finance-card-image{position:relative;height:165px;overflow:hidden;background:#E8EDF3}
+.finance-card-image img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .4s}
+.finance-card:hover .finance-card-image img{transform:scale(1.06)}
+.finance-card-image:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(7,24,45,.35));pointer-events:none}
+.finance-card-content{padding:20px}
+.finance-icon{width:45px;height:45px;display:grid;place-items:center;border-radius:11px;background:var(--gold-light);color:var(--navy);font-size:18px}
+.finance-card .finance-icon{width:43px;height:43px;margin-top:-41px;position:relative;z-index:1;border:3px solid white;border-radius:11px;background:var(--gold);color:var(--navy);font-size:16px}
+.finance-card h3{margin:15px 0 7px;color:var(--navy);font-size:14px}
+.finance-card p{color:var(--muted);font-size:11px;line-height:1.8}
+.finance-card a{display:inline-block;margin-top:14px;color:#9B7000;font-size:10px;font-weight:800}
+
+.planner-grid{display:grid;grid-template-columns:1fr .85fr;gap:24px;align-items:stretch}
+.panel{padding:27px;border:1px solid var(--border);border-radius:var(--radius);background:white;box-shadow:var(--shadow)}
+.panel-heading{margin-bottom:5px;color:var(--navy);font-size:19px;font-weight:800}
+.panel-description{margin-bottom:24px;color:var(--muted);font-size:11px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.field{margin-bottom:17px}
+.field label{display:block;margin-bottom:7px;color:#40516A;font-size:11px;font-weight:700}
+.field input,.field select,.field textarea{width:100%;min-height:43px;padding:10px 12px;border:1px solid #D8E0EA;border-radius:8px;outline:none;background:white;color:var(--text);font-size:12px}
+.field textarea{min-height:90px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:#C18A00;box-shadow:0 0 0 3px rgba(245,169,0,.12)}
+.field-help{display:block;margin-top:5px;color:var(--muted);font-size:9px}
+.planner-result{display:flex;flex-direction:column;background:var(--navy);color:white}
+.planner-result .panel-heading{color:white}
+.planner-result .panel-description{color:#C0CDDC}
+.gap-highlight{padding:22px;border:1px solid rgba(245,169,0,.25);border-radius:12px;background:rgba(255,255,255,.05)}
+.gap-highlight span{display:block;color:#CFD9E5;font-size:10px}
+.gap-highlight strong{display:block;margin:6px 0;color:var(--gold);font-size:clamp(26px,3vw,35px);line-height:1.3;overflow-wrap:anywhere}
+.gap-highlight small{color:#C0CDDC;font-size:10px}
+.result-row{display:flex;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.13);font-size:11px}
+.result-row span{color:#C0CDDC}
+.result-row strong{text-align:right;overflow-wrap:anywhere}
+.result-message{margin:17px 0;padding:13px;border-radius:8px;background:rgba(255,255,255,.07);color:#D9E2EC;font-size:11px;line-height:1.8}
+.result-message.positive{border-left:3px solid #45C477}
+.result-message.negative{border-left:3px solid var(--gold)}
+.result-note{margin-top:14px;color:#AFC0D2;font-size:9px;line-height:1.8}
+
+.turnover-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:25px}
+.turnover-intro{padding:30px;border-radius:var(--radius);background:var(--navy);color:white}
+.turnover-intro>i{color:var(--gold);font-size:28px}
+.turnover-intro h3{margin:17px 0 10px;font-size:22px;line-height:1.4}
+.turnover-intro p{color:#CFD9E5;font-size:11px;line-height:1.9}
+.turnover-inputs{padding:27px;border:1px solid var(--border);border-radius:var(--radius);background:white}
+.turnover-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}
+.summary-card{padding:15px 12px;border:1px solid var(--border);border-radius:10px;background:#F8FAFC}
+.summary-card.highlight{border-color:#E9C96E;background:var(--gold-light)}
+.summary-card span{display:block;color:var(--muted);font-size:9px}
+.summary-card strong{display:block;margin-top:7px;color:var(--navy);font-size:clamp(15px,2vw,21px);overflow-wrap:anywhere}
+.turnover-bar{height:9px;overflow:hidden;border-radius:20px;background:#E9EDF2}
+.turnover-bar div{width:0;height:100%;border-radius:20px;background:var(--gold);transition:width .2s}
+.turnover-legend{display:flex;justify-content:space-between;gap:10px;margin-top:9px;color:var(--muted);font-size:10px}
+.turnover-legend strong{color:var(--navy)}
+
+.purpose-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.purpose-card{position:relative;padding:22px;border:1px solid var(--border);border-radius:12px;background:white;cursor:pointer;transition:.2s}
+.purpose-card:hover{border-color:#D9B44E;transform:translateY(-3px)}
+.purpose-card.selected{border-color:var(--gold);box-shadow:0 0 0 2px rgba(245,169,0,.13)}
+.purpose-card input{position:absolute;top:17px;right:17px;accent-color:var(--navy)}
+.purpose-icon{width:43px;height:43px;display:grid;place-items:center;border-radius:10px;background:var(--gold-light);color:var(--navy);font-size:17px}
+.purpose-card h3{margin:15px 0 7px;color:var(--navy);font-size:13px}
+.purpose-card p{color:var(--muted);font-size:10px;line-height:1.8}
+.selected-purpose{margin-top:18px;padding:17px;border:1px solid #E9D9AC;border-radius:10px;background:#FFFBED;color:#526174;font-size:11px;line-height:1.8}
+.selected-purpose strong{color:var(--navy)}
+
+.readiness-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:24px}
+.readiness-score{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;border-radius:var(--radius);background:var(--navy);color:white;text-align:center}
+.readiness-score h3{font-size:20px}
+.readiness-score>p{margin-top:7px;color:#CFD9E5;font-size:11px}
+.score-circle{width:175px;height:175px;display:grid;place-items:center;margin:25px 0;border-radius:50%;background:conic-gradient(var(--gold) 0deg,#294361 0deg);position:relative}
+.score-circle:before{content:"";position:absolute;inset:12px;border-radius:50%;background:var(--navy)}
+.score-circle>div{position:relative;display:flex;flex-direction:column}
+.score-circle strong{color:var(--gold);font-size:34px;line-height:1.2}
+.score-circle span{margin-top:5px;color:#CFD9E5;font-size:10px}
+.score-status{text-align:center;color:#D4DFEA;font-size:11px}
+.checklist-panel{padding:26px;border:1px solid var(--border);border-radius:var(--radius);background:white}
+.checklist-panel h3{color:var(--navy);font-size:18px}
+.checklist-panel>p{margin:6px 0 20px;color:var(--muted);font-size:11px}
+.check-item{display:flex;align-items:flex-start;gap:12px;padding:13px 0;border-bottom:1px solid #EDF0F4;cursor:pointer}
+.check-item:last-of-type{border-bottom:0}
+.check-item input{width:17px;height:17px;margin-top:2px;flex-shrink:0;accent-color:var(--navy)}
+.check-item strong{display:block;color:var(--navy);font-size:11px}
+.check-item small{display:block;margin-top:3px;color:var(--muted);font-size:10px;line-height:1.7}
+.check-progress{height:7px;margin-top:20px;overflow:hidden;border-radius:20px;background:#E9EDF2}
+.check-progress div{width:0;height:100%;background:var(--gold);transition:width .2s}
+.checklist-status{margin-top:9px;color:var(--muted);font-size:10px}
+
+.comparison-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.comparison-form,.comparison-result{padding:27px;border:1px solid var(--border);border-radius:var(--radius);background:white;box-shadow:var(--shadow)}
+.comparison-result{background:var(--navy);color:white}
+.comparison-result h3{font-size:18px}
+.comparison-result>p{margin-top:5px;color:#C6D2E0;font-size:10px}
+.compare-table{width:100%;margin-top:20px;border-collapse:collapse}
+.compare-table th,.compare-table td{padding:13px 7px;border-bottom:1px solid rgba(255,255,255,.13);text-align:left;font-size:10px}
+.compare-table th{color:#C6D2E0;font-weight:600}
+.compare-table td{color:white}
+.compare-table td strong{color:var(--gold)}
+.compare-summary{margin-top:18px;padding:15px;border-radius:9px;background:rgba(255,255,255,.07);color:#D9E2EC;font-size:11px;line-height:1.8}
+
+.document-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.document-card{display:flex;gap:13px;padding:19px;border:1px solid var(--border);border-radius:12px;background:white;transition:transform .2s,box-shadow .2s}
+.document-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.document-card i{margin-top:2px;color:#B98100;font-size:21px}
+.document-card h3{color:var(--navy);font-size:12px}
+.document-card p{margin-top:5px;color:var(--muted);font-size:10px;line-height:1.8}
+.disclaimer{margin-top:20px;color:var(--muted);font-size:10px;line-height:1.8}
+
+.enquiry-banner{position:relative;overflow:hidden;padding:45px;display:flex;justify-content:space-between;align-items:center;gap:25px;border:1px solid #F0DCA5;border-radius:17px;background:linear-gradient(100deg,rgba(255,247,224,.98),rgba(255,247,224,.91) 55%,rgba(255,247,224,.62)),url("https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat}
+.enquiry-banner h2{max-width:600px;color:var(--navy);font-size:clamp(24px,3vw,34px);line-height:1.3}
+.enquiry-banner p{margin-top:8px;color:#647184;font-size:12px;max-width:540px}
+.enquiry-form{max-width:780px;margin:35px auto 0;padding:28px;border:1px solid var(--border);border-radius:var(--radius);background:white;box-shadow:var(--shadow)}
+.enquiry-form h3{margin-bottom:6px;color:var(--navy);font-size:20px}
+.enquiry-form>p{margin-bottom:22px;color:var(--muted);font-size:11px}
+.consent-row{display:flex;align-items:flex-start;gap:9px;margin:10px 0 18px;color:#5F6C7C;font-size:10px}
+.consent-row input{margin-top:3px;accent-color:var(--navy)}
+.feedback{display:none;margin-top:15px;padding:14px;border:1px solid #B7DCC2;border-radius:9px;background:#F0FAF3;color:#166534;font-size:11px;line-height:1.8;overflow-wrap:anywhere}
+.feedback.show{display:block}
+
+.faq-wrap{max-width:850px;margin:auto}
+.faq-item{margin-bottom:10px;border:1px solid var(--border);border-radius:10px;background:white;overflow:hidden}
+.faq-question{display:flex;align-items:center;justify-content:space-between;gap:15px;width:100%;padding:18px;border:0;background:white;color:var(--navy);text-align:left;font-size:12px;font-weight:750}
+.faq-question i{color:#B98100;transition:transform .2s}
+.faq-question[aria-expanded=true] i{transform:rotate(180deg)}
+.faq-answer{display:none;padding:0 18px 18px;color:var(--muted);font-size:11px;line-height:1.9}
+.faq-question[aria-expanded=true]+.faq-answer{display:block}
+
+.footer{padding:48px 0 20px;background:var(--navy-dark);color:white}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:35px}
+.footer .brand-name .vitt,.footer .brand-name sup{color:white}
+.footer .brand-text small{color:#D0DAE6}
+.footer-about{max-width:350px;margin-top:18px;color:#BDCAD9;font-size:11px;line-height:1.9}
+.footer-heading{margin-bottom:14px;color:var(--gold);font-size:12px}
+.footer-links{display:grid;gap:10px}
+.footer-links a{width:fit-content;color:#C3CFDE;font-size:10px}
+.footer-links a:hover{color:var(--gold)}
+.footer-bottom{display:flex;justify-content:space-between;gap:20px;padding-top:19px;border-top:1px solid rgba(255,255,255,.13);color:#AAB9CA;font-size:10px}
+.footer-disclaimer{margin-top:17px;color:#AAB9CA;font-size:9px;line-height:1.8}
+
+@media(max-width:1050px){
+ .nav-links{gap:13px}
+ .nav-links a{font-size:10px}
+ .finance-grid{grid-template-columns:repeat(2,1fr)}
+ .hero-grid{gap:25px}
+}
+@media(max-width:760px){
+ .navbar{min-height:74px}
+ .menu-toggle{display:grid;place-items:center}
+ .nav-cta{display:none}
+ .nav-links{display:none;position:absolute;top:73px;left:0;right:0;padding:16px 4%;background:white;border-bottom:1px solid var(--border);box-shadow:var(--shadow)}
+ .nav-links.open{display:flex;flex-direction:column;align-items:stretch;gap:0}
+ .nav-links a{padding:11px 5px;font-size:12px}
+ .nav-links a.active:after{display:none}
+ .hero{padding:48px 0;background-position:58% center}
+ .hero-grid,.planner-grid,.turnover-grid,.readiness-grid,.comparison-grid{grid-template-columns:1fr}
+ .hero h1{font-size:37px}
+ .dashboard{margin-top:10px}
+ .section{padding:55px 0}
+ .purpose-grid{grid-template-columns:repeat(2,1fr)}
+ .document-grid{grid-template-columns:repeat(2,1fr)}
+ .enquiry-banner{align-items:flex-start;flex-direction:column;padding:30px}
+ .footer-grid{grid-template-columns:1fr 1fr;gap:25px}
+ .footer-brand-column{grid-column:1/-1}
+}
+@media(max-width:480px){
+ .brand{gap:6px}
+ .brand-mark{width:42px;height:42px}
+ .brand-name{font-size:23px}
+ .brand-text small{font-size:6px;letter-spacing:.7px}
+ .hero h1{font-size:33px;letter-spacing:-1px}
+ .hero-description{font-size:12px}
+ .hero-buttons .btn{width:100%}
+ .hero-points{flex-direction:column;gap:10px}
+ .dashboard{padding:14px}
+ .metric-card strong{font-size:17px}
+ .finance-grid,.purpose-grid,.document-grid,.form-row{grid-template-columns:1fr}
+ .panel,.turnover-inputs,.checklist-panel,.comparison-form,.comparison-result,.enquiry-form{padding:20px}
+ .turnover-summary{grid-template-columns:1fr}
+ .footer-grid{grid-template-columns:1fr}
+ .footer-brand-column{grid-column:auto}
+ .footer-bottom{flex-direction:column}
+ .compare-table th,.compare-table td{padding:10px 4px;font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{scroll-behavior:auto!important;transition:none!important}
+}
+
+/* Compact EMI calculator: keeps the calculator inside the original dashboard size. */
+.business-calculator{padding:20px;max-width:100%;min-width:0}
+.business-calculator .dashboard-header{margin-bottom:8px}
+.business-calculator .dashboard-header h3{font-size:15px;line-height:1.4}
+.calc-intro{margin:0 0 15px;color:#C5D1DF;font-size:10px;line-height:1.6}
+.business-calc-form{display:grid;grid-template-columns:1fr 1fr;gap:11px 12px}
+.calc-field{min-width:0}
+.calc-field-wide{grid-column:1/-1}
+.calc-field label{display:block;margin-bottom:5px;color:#D6E0EB;font-size:10px;font-weight:700}
+.calc-field input,.calc-field select{width:100%;height:39px;min-width:0;padding:8px 10px;border:1px solid rgba(255,255,255,.2);border-radius:7px;outline:none;background:rgba(255,255,255,.09);color:#fff;font-size:12px}
+.calc-field select option{color:#172B43;background:#fff}
+.calc-field input:focus,.calc-field select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(245,169,0,.12)}
+.calc-button{width:100%;margin-top:13px;min-height:39px;padding:10px 14px}
+.calc-results{margin-top:14px;padding:13px;border:1px solid rgba(255,255,255,.13);border-radius:10px;background:rgba(255,255,255,.065)}
+.calc-emi{padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.13)}
+.calc-emi span{display:block;color:#C5D1DF;font-size:10px}
+.calc-emi strong{display:block;margin-top:2px;color:var(--gold);font-size:25px;line-height:1.35;overflow-wrap:anywhere}
+.calc-result-row{display:flex;justify-content:space-between;gap:10px;padding-top:9px;color:#C5D1DF;font-size:10px}
+.calc-result-row strong{color:#fff;text-align:right;overflow-wrap:anywhere}
+.business-calculator .dashboard-footnote{margin-top:10px;font-size:9px}
+@media(max-width:480px){
+ .business-calculator{padding:14px}
+ .calc-emi strong{font-size:23px}
+}
+</style>
+</head>
+<body>
+<header class="header">
+ <div class="container navbar">
+  <a href="index.html" class="brand" aria-label="VittPoint Home">
+   <div class="brand-mark">
+    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+     <path d="M3 12 L21 12 L34 39 L47 17 L56 17 L34 53 L26 53 Z" fill="#0B2340"/>
+     <path d="M29 17 C35 6 49 5 56 13 C63 21 56 34 45 39 L38 43 L34 37 L42 32 C48 28 50 21 46 17 C42 13 35 15 32 21 Z" fill="#0B2340"/>
+     <circle cx="39" cy="23" r="5" fill="#F5A900"/>
+     <path d="M39 30 L26 51 L34 51 L45 32 Z" fill="#F5A900"/>
+    </svg>
+   </div>
+   <div class="brand-text">
+    <div class="brand-name"><span class="vitt">Vitt</span><span class="point">Point</span><sup>™</sup></div>
+    <small>YOUR FINANCIAL STARTING POINT</small>
+   </div>
+  </a>
+  <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+   <a href="index.html">Home</a>
+   <a href="home-loan.html">Home Loan</a>
+   <a href="personal-loan.html">Personal Loan</a>
+   <a href="business-loan.html" class="active">Business Loan</a>
+   <a href="vehicle-insurance.html">Vehicle Insurance</a>
+  </nav>
+  <a href="#business-enquiry" class="btn nav-cta">Business Enquiry <i class="fa-solid fa-arrow-right"></i></a>
+  <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+ </div>
+</header>
+<main>
+
+<!-- HERO SECTION -->
+<section class="hero">
+ <div class="container hero-grid">
+  <div>
+   
+   <h1>Make Your Business Finances Work <span>Smarter.</span></h1>
+   <p class="hero-description">Understand your cash flow, measure your funding gap, review business turnover and prepare your financial documents before exploring business loan options.</p>
+   <div class="hero-buttons">
+    <a href="#working-capital" class="btn">Plan Working Capital <i class="fa-solid fa-arrow-right"></i></a>
+    <a href="#business-readiness" class="btn btn-light">Check Business Readiness</a>
+   </div>
+   <div class="hero-points">
+    <span><i class="fa-solid fa-check-circle"></i> Cash-flow planning</span>
+    <span><i class="fa-solid fa-check-circle"></i> Turnover analysis</span>
+    <span><i class="fa-solid fa-check-circle"></i> Document checklist</span>
+   </div>
+  </div>
+
+  <!-- BUSINESS LOAN EMI CALCULATOR -->
+  <div class="dashboard business-calculator">
+   <div class="dashboard-header">
+    <h3>Business Loan EMI Calculator</h3>
+    <span class="demo-label">QUICK ESTIMATE</span>
+   </div>
+
+   <p class="calc-intro">Estimate your monthly repayment before planning business finance.</p>
+
+   <div class="business-calc-form">
+    <div class="calc-field calc-field-wide">
+     <label for="snapshotLoan">Loan Amount (₹)</label>
+     <input type="number" id="snapshotLoan" value="1000000"
+      min="10000" max="1000000000" step="10000" inputmode="numeric">
+    </div>
+
+    <div class="calc-field">
+     <label for="snapshotRate">Annual Interest (%)</label>
+     <input type="number" id="snapshotRate" value="12"
+      min="0" max="100" step="0.25" inputmode="decimal">
+    </div>
+
+    <div class="calc-field">
+     <label for="snapshotTenure">Loan Tenure</label>
+     <select id="snapshotTenure">
+      <option value="12">1 year</option>
+      <option value="24">2 years</option>
+      <option value="36" selected>3 years</option>
+      <option value="48">4 years</option>
+      <option value="60">5 years</option>
+      <option value="84">7 years</option>
+      <option value="120">10 years</option>
+     </select>
+    </div>
+   </div>
+
+   <button type="button" class="btn calc-button" id="snapshotCalculate">
+    <i class="fa-solid fa-calculator"></i> Calculate EMI
+   </button>
+
+   <div class="calc-results" aria-live="polite">
+    <div class="calc-emi">
+     <span>Estimated Monthly EMI</span>
+     <strong id="snapshotEMI">₹33,214</strong>
+    </div>
+    <div class="calc-result-row">
+     <span>Total Interest</span>
+     <strong id="snapshotInterest">₹1,95,704</strong>
+    </div>
+    <div class="calc-result-row">
+     <span>Total Repayment</span>
+     <strong id="snapshotTotal">₹11,95,704</strong>
+    </div>
+   </div>
+
+   <p class="dashboard-footnote" id="snapshotMessage">
+    Illustrative estimate only. Actual rates, fees and lender terms may differ.
+   </p>
+  </div>
+ </div>
+</section>
+
+<!-- FINANCIAL TOOLS -->
+<section class="section section-white">
+ <div class="container">
+  <div class="section-title">
+   <span class="eyebrow">Business Financial Tools</span>
+   <h2>Plan Your Business Finances in One Place</h2>
+   <p>Tools designed around business requirements rather than personal borrowing needs.</p>
+  </div>
+
+  <div class="finance-grid">
+   <article class="finance-card">
+    <div class="finance-card-image">
+     <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80"
+      alt="Business professionals reviewing financial reports" loading="lazy">
+    </div>
+    <div class="finance-card-content">
+     <div class="finance-icon"><i class="fa-solid fa-money-bill-transfer"></i></div>
+     <h3>Cash Flow Planner</h3>
+     <p>Review business income, operating costs and monthly cash requirements.</p>
+     <a href="#working-capital">Open planner <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+   </article>
+
+   <article class="finance-card">
+    <div class="finance-card-image">
+     <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
+      alt="Business revenue and financial analytics dashboard" loading="lazy">
+    </div>
+    <div class="finance-card-content">
+     <div class="finance-icon"><i class="fa-solid fa-chart-column"></i></div>
+     <h3>Turnover Profile</h3>
+     <p>Understand annualised revenue, operating costs and estimated surplus.</p>
+     <a href="#turnover-profile">Review turnover <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+   </article>
+
+   <article class="finance-card">
+    <div class="finance-card-image">
+     <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80"
+      alt="Modern commercial workspace" loading="lazy">
+    </div>
+    <div class="finance-card-content">
+     <div class="finance-icon"><i class="fa-solid fa-bullseye"></i></div>
+     <h3>Funding Purpose</h3>
+     <p>Organise funding needs for expansion, stock, machinery or working capital.</p>
+     <a href="#funding-purpose">Select purpose <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+   </article>
+
+   <article class="finance-card">
+    <div class="finance-card-image">
+     <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"
+      alt="Professional working with equipment" loading="lazy">
+    </div>
+    <div class="finance-card-content">
+     <div class="finance-icon"><i class="fa-solid fa-folder-open"></i></div>
+     <h3>Business Readiness</h3>
+     <p>Prepare business records and financial documents before approaching a lender.</p>
+     <a href="#business-readiness">Check readiness <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+   </article>
+  </div>
+ </div>
+</section>
+
+<!-- WORKING CAPITAL CALCULATOR -->
+<section class="section" id="working-capital">
+ <div class="container">
+  <div class="section-title">
+   <span class="eyebrow">Cash Flow Management</span>
+   <h2>Working Capital & Funding Gap Planner</h2>
+   <p>Enter monthly inflows, expenses and commitments to estimate a possible shortfall.</p>
+  </div>
+
+  <div class="planner-grid">
+   <div class="panel">
+    <h3 class="panel-heading">Your Monthly Business Numbers</h3>
+    <p class="panel-description">Enter amounts in Indian rupees (₹).</p>
+
+    <div class="form-row">
+     <div class="field">
+      <label for="monthlyRevenue">Monthly Sales / Revenue (₹)</label>
+      <input type="number" id="monthlyRevenue" min="0" max="100000000000" step="1000" value="800000">
+     </div>
+     <div class="field">
+      <label for="cashCollections">Cash Collected This Month (₹)</label>
+      <input type="number" id="cashCollections" min="0" max="100000000000" step="1000" value="700000">
+     </div>
+    </div>
+
+    <div class="form-row">
+     <div class="field">
+      <label for="operatingExpenses">Operating Expenses (₹)</label>
+      <input type="number" id="operatingExpenses" min="0" max="100000000000" step="1000" value="300000">
+     </div>
+     <div class="field">
+      <label for="inventoryCosts">Inventory / Supplier Costs (₹)</label>
+      <input type="number" id="inventoryCosts" min="0" max="100000000000" step="1000" value="200000">
+     </div>
+    </div>
+
+    <div class="form-row">
+     <div class="field">
+      <label for="existingEMI">Existing Loan Payments (₹)</label>
+      <input type="number" id="existingEMI" min="0" max="100000000000" step="1000" value="30000">
+     </div>
+     <div class="field">
+      <label for="upcomingPayments">Upcoming Payments (₹)</label>
+      <input type="number" id="upcomingPayments" min="0" max="100000000000" step="1000" value="100000">
+     </div>
+    </div>
+
+    <div class="field">
+     <label for="availableCash">Cash Available for Business Use (₹)</label>
+     <input type="number" id="availableCash" min="0" max="100000000000" step="1000" value="100000">
+     <small class="field-help">Enter cash you can actually use after considering restricted funds and reserves.</small>
+    </div>
+
+    <button class="btn btn-dark" id="calculateCashFlow" type="button">
+     Calculate Business Cash Flow <i class="fa-solid fa-calculator"></i>
+    </button>
+   </div>
+
+   <div class="panel planner-result">
+    <h3 class="panel-heading">Your Cash Flow Summary</h3>
+    <p class="panel-description">Updates when you calculate your figures.</p>
+
+    <div class="gap-highlight">
+     <span>Estimated Funding Gap</span>
+     <strong id="fundingGap">₹1,30,000</strong>
+     <small id="gapCaption">Illustrative monthly requirement</small>
+    </div>
+
+    <div class="result-row"><span>Cash Collected</span><strong id="resultCollections">₹7,00,000</strong></div>
+    <div class="result-row"><span>Total Listed Payments</span><strong id="resultPayments">₹6,30,000</strong></div>
+    <div class="result-row"><span>Cash Before Upcoming Payments</span><strong id="resultOperating">₹70,000</strong></div>
+    <div class="result-row"><span>Estimated Cash Position</span><strong id="resultPosition">-₹30,000</strong></div>
+
+    <div class="result-message negative" id="cashFlowMessage" aria-live="polite">
+     Calculate to review your estimated cash position.
+    </div>
+
+    <p class="result-note">
+     Simplified planning estimate only, not an accounting statement or loan eligibility decision.
+     Taxes, timing differences and other commitments may change the actual position.
+    </p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- TURNOVER PROFILE -->
+<section class="section section-white" id="turnover-profile">
+ <div class="container">
+  <div class="section-title">
+   <span class="eyebrow">Revenue & Business Performance</span>
+   <h2>Understand Your Business Turnover</h2>
+   <p>Review annualised revenue and estimated operating surplus using your monthly figures.</p>
+  </div>
+
+  <div class="turnover-grid">
+   <div class="turnover-intro">
+    <i class="fa-solid fa-chart-line"></i>
+    <h3>Know Your Numbers Before You Borrow</h3>
+    <p>Revenue is not the same as profit or available cash. Review sales alongside expenses, existing obligations and collection timing when planning a loan.</p>
+   </div>
+
+   <div class="turnover-inputs">
+    <div class="form-row">
+     <div class="field">
+      <label for="turnoverMonthly">Average Monthly Revenue (₹)</label>
+      <input type="number" id="turnoverMonthly" min="0" max="100000000000" step="1000" value="800000">
+     </div>
+     <div class="field">
+      <label for="turnoverExpenses">Monthly Operating Costs (₹)</label>
+      <input type="number" id="turnoverExpenses" min="0" max="100000000000" step="1000" value="550000">
+     </div>
+    </div>
+
+    <div class="field">
+     <label for="turnoverMonths">Months Represented by These Averages</label>
+     <select id="turnoverMonths">
+      <option value="3">Last 3 months</option>
+      <option value="6">Last 6 months</option>
+      <option value="12" selected>Last 12 months</option>
+     </select>
+    </div>
+
+    <div class="turnover-summary">
+     <div class="summary-card highlight"><span>Annualised Revenue</span><strong id="annualRevenue">₹96 L</strong></div>
+     <div class="summary-card"><span>Annualised Costs</span><strong id="annualCosts">₹66 L</strong></div>
+     <div class="summary-card"><span>Operating Surplus*</span><strong id="annualSurplus">₹30 L</strong></div>
+    </div>
+
+    <div class="turnover-bar"><div id="expenseBar"></div></div>
+    <div class="turnover-legend">
+     <span>Operating costs as share of revenue</span>
+     <strong id="expenseRatio">68.8%</strong>
+    </div>
+    <p class="field-help">*Simplified surplus is revenue minus entered costs. It is not net profit, taxable income or verified turnover.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- FUNDING PURPOSE -->
+<section class="section" id="funding-purpose">
+ <div class="container">
+  <div class="section-title">
+   <span class="eyebrow">Choose Your Business Goal</span>
+   <h2>What Do You Need Funding For?</h2>
+   <p>Select a purpose to see tailored planning considerations.</p>
+  </div>
+
+  <div class="purpose-grid">
+   <label class="purpose-card selected">
+    <input type="radio" name="purpose" value="Working Capital" checked>
+    <div class="purpose-icon"><i class="fa-solid fa-money-bill-transfer"></i></div>
+    <h3>Working Capital</h3>
+    <p>Manage operating costs, payment cycles and short-term cash needs.</p>
+   </label>
+   <label class="purpose-card">
+    <input type="radio" name="purpose" value="Business Expansion">
+    <div class="purpose-icon"><i class="fa-solid fa-chart-line"></i></div>
+    <h3>Business Expansion</h3>
+    <p>Plan a new branch, larger premises, additional capacity or new markets.</p>
+   </label>
+   <label class="purpose-card">
+    <input type="radio" name="purpose" value="Machinery & Equipment">
+    <div class="purpose-icon"><i class="fa-solid fa-gears"></i></div>
+    <h3>Machinery & Equipment</h3>
+    <p>Budget for machinery, equipment and essential upgrades.</p>
+   </label>
+   <label class="purpose-card">
+    <input type="radio" name="purpose" value="Inventory & Stock">
+    <div class="purpose-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+    <h3>Inventory & Stock</h3>
+    <p>Plan inventory purchases, raw materials and seasonal stock.</p>
+   </label>
+   <label class="purpose-card">
+    <input type="radio" name="purpose" value="Commercial Property">
+    <div class="purpose-icon"><i class="fa-solid fa-building"></i></div>
+    <h3>Commercial Property</h3>
+    <p>Review premises-related financing and property-specific costs.</p>
+   </label>
+   <label class="purpose-card">
+    <input type="radio" name="purpose" value="Debt Restructuring">
+    <div class="purpose-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+    <h3>Debt & Repayment Planning</h3>
+    <p>Review current borrowing, repayments and potential lender options.</p>
+   </label>
+  </div>
+
+  <div class="selected-purpose" id="purposeDetails" aria-live="polite">
+   <strong>Selected: Working Capital</strong><br>
+   Review cash collection dates, supplier deadlines, inventory requirements and monthly costs.
+  </div>
+ </div>
+</section>
+
+<!-- READINESS CHECKLIST -->
+<section class="section section-white" id="business-readiness">
+ <div class="container">
+  <div class="section-title">
+   <span class="eyebrow">Financial Document Preparation</span>
+   <h2>Business Loan Readiness Checklist</h2>
+   <p>Mark the items you have prepared. Progress is calculated in your browser.</p>
+  </div>
+
+  <div class="readiness-grid">
+   <div class="readiness-score">
+    <h3>Your Preparation Progress</h3>
+    <p>Track your document preparation before approaching a lender.</p>
+    <div class="score-circle" id="scoreCircle">
+     <div><strong id="readinessPercent">0%</strong><span>Checklist complete</span></div>
+    </div>
+    <div class="score-status" id="readinessStatus" aria-live="polite">Start by checking documents you already have.</div>
+   </div>
+
+   <div class="checklist-panel">
+    <h3>Documents & Financial Records</h3>
+    <p>Availability checklist — requirements vary by lender.</p>
+
+    <label class="check-item">
+     <input type="checkbox" class="readiness-check">
+     <span><strong>Business registration details</strong><small>Registration certificate, constitution or applicable business proof.</small></span>
+    </label>
+    <label class="check-item">
+     <input type="checkbox" class="readiness-check">
+     <span><strong>PAN and identity documents</strong><small>Applicant, proprietor, partners or authorised signatories as required.</small></span>
+    </label>
+    <label class="check-item">
+     <input type="checkbox" class="readiness-check">
+     <span><strong>Business bank statements</strong><small>Statements for the period requested by the lender.</small></span>
+    </label>
+    <label class="check-item">
+     <input type="checkbox" class="readiness-check">
+     <span><strong>Income tax returns and financial statements</strong><small>Applicable ITRs, balance sheets and profit-and-loss statements.</small></span>
+    </label>
+    <label class="check-item">
+     <input type="checkbox" class="readiness-check">
+     <span><strong>GST and turnover records</strong><small>GST returns and sales records, where applicable.</small></span>
+    </label>
+    <label class="check-item">
+     <input type="checkbox" class="readiness-check">
+     <span><strong>Existing loan and repayment details</strong><small>Current EMIs, outstanding balances and other commitments.</small></span>
+    </label>
+    <label class="check-item">
+     <input type="checkbox" class="readiness-check">
+     <span><strong>Funding purpose and cost estimates</strong><small>Use-of-funds plan, quotations or expansion estimates.</small></span>
+    </label>
+
+    <div class="check-progress"><div id="checkProgressBar"></div></div>
+    <div class="checklist-status" id="checklistStatus">0 of 7 items marked complete</div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- EMI COMPARISON -->
+<section class="section" id="repayment-planner">
+ <div class="container">
+  <div class="section-title">
+   <span class="eyebrow">Compare Repayment Options</span>
+   <h2>Compare Two Loan Scenarios</h2>
+   <p>Change the rates and repayment periods to compare illustrative repayments.</p>
+  </div>
+
+  <div class="comparison-grid">
+   <div class="comparison-form">
+    <h3 class="panel-heading">Comparison Inputs</h3>
+    <p class="panel-description">Use the same loan amount for both scenarios.</p>
+
+    <div class="field">
+     <label for="comparePrincipal">Loan Amount (₹)</label>
+     <input type="number" id="comparePrincipal" min="10000" max="1000000000" step="10000" value="1000000">
+    </div>
+
+    <div class="form-row">
+     <div class="field">
+      <label for="rateA">Scenario A Interest (%)</label>
+      <input type="number" id="rateA" min="0" max="100" step="0.25" value="12">
+     </div>
+     <div class="field">
+      <label for="rateB">Scenario B Interest (%)</label>
+      <input type="number" id="rateB" min="0" max="100" step="0.25" value="14">
+     </div>
+    </div>
+
+    <div class="form-row">
+     <div class="field">
+      <label for="tenureA">Scenario A Tenure</label>
+      <select id="tenureA">
+       <option value="12">1 year</option><option value="24">2 years</option>
+       <option value="36" selected>3 years</option><option value="48">4 years</option>
+       <option value="60">5 years</option><option value="84">7 years</option>
+       <option value="120">10 years</option>
+      </select>
+     </div>
+     <div class="field">
+      <label for="tenureB">Scenario B Tenure</label>
+      <select id="tenureB">
+       <option value="12">1 year</option><option value="24">2 years</option>
+       <option value="36" selected>3 years</option><option value="48">4 years</option>
+       <option value="60">5 years</option><option value="84">7 years</option>
+       <option value="120">10 years</option>
+      </select>
+     </div>
+    </div>
+
+    <button type="button" class="btn btn-dark" id="compareLoans">
+     Compare Loan Scenarios <i class="fa-solid fa-scale-balanced"></i>
+    </button>
+   </div>
+
+   <div class="comparison-result">
+    <h3>Repayment Comparison</h3>
+    <p>Figures are estimates, not lender quotes.</p>
+
+    <table class="compare-table">
+     <thead>
+      <tr><th>Repayment</th><th>Scenario A</th><th>Scenario B</th></tr>
+     </thead>
+     <tbody>
+      <tr><td>Monthly EMI</td><td id="emiA"><strong>₹33,214</strong></td><td id="emiB"><strong>₹34,178</strong></td></tr>
+      <tr><td>Total Interest</td><td id="interestA">₹1,95,704</td><td id="interestB">₹2,30,408</td></tr>
+      <tr><td>Total Repayment</td><td id="totalA">₹11,95,704</td><td id="totalB">₹12,30,408</td></tr>
+     </tbody>
+    </table>
+
+    <div class="compare-summary" id="compareSummary" aria-live="polite">
+     Select your assumptions and compare both scenarios.
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- DOCUMENTS -->
+<section class="section section-white" id="documents">
+ <div class="container">
+  <div class="section-title">
+   <span class="eyebrow">Get Organised</span>
+   <h2>Business Documents to Prepare</h2>
+   <p>Keep relevant records ready. Exact requirements depend on the lender and product.</p>
+  </div>
+
+  <div class="document-grid">
+   <article class="document-card"><i class="fa-solid fa-id-card"></i><div><h3>Identity & Registration</h3><p>PAN, identity proof, business registration and authorised signatory documents, as applicable.</p></div></article>
+   <article class="document-card"><i class="fa-solid fa-building-columns"></i><div><h3>Bank Statements</h3><p>Business bank statements for the period requested by the lender.</p></div></article>
+   <article class="document-card"><i class="fa-solid fa-file-invoice-dollar"></i><div><h3>Financial Statements</h3><p>Income tax returns, balance sheets and profit-and-loss statements where required.</p></div></article>
+   <article class="document-card"><i class="fa-solid fa-receipt"></i><div><h3>GST & Sales Records</h3><p>GST returns, invoices and turnover records, where applicable.</p></div></article>
+   <article class="document-card"><i class="fa-solid fa-money-bill-wave"></i><div><h3>Existing Borrowings</h3><p>Outstanding balances, repayment schedules and current EMI obligations.</p></div></article>
+   <article class="document-card"><i class="fa-solid fa-clipboard-list"></i><div><h3>Funding Plan</h3><p>Cost estimates, quotations, cash-flow projections and intended use of funds.</p></div></article>
+  </div>
+
+  <p class="disclaimer">This checklist is for preparation only. A lender may request additional documents or apply different eligibility criteria.</p>
+ </div>
+</section>
+
+<!-- BUSINESS ENQUIRY -->
+<section class="section" id="business-enquiry">
+ <div class="container">
+  <div class="enquiry-banner">
+   <div>
+    <span class="eyebrow">Business Finance Enquiry</span>
+    <h2>Prepare Your Business Funding Enquiry</h2>
+    <p>Organise your business details and funding purpose before discussing potential loan options.</p>
+   </div>
+   <a href="#enquiry-form" class="btn btn-dark">Prepare Enquiry <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+
+  <div class="enquiry-form" id="enquiry-form">
+   <h3>Business Funding Enquiry</h3>
+   <p>This demo form validates your entries and displays a local summary. It does not send data to a server.</p>
+
+   <form id="businessEnquiryForm">
+    <div class="form-row">
+     <div class="field"><label for="ownerName">Owner / Applicant Name *</label><input id="ownerName" name="ownerName" type="text" maxlength="100" autocomplete="name" placeholder="Enter full name" required></div>
+     <div class="field"><label for="businessName">Business Name *</label><input id="businessName" name="businessName" type="text" maxlength="150" placeholder="Enter business name" required></div>
+    </div>
+
+    <div class="form-row">
+     <div class="field"><label for="businessEmail">Email Address *</label><input id="businessEmail" name="email" type="email" maxlength="150" autocomplete="email" placeholder="name@example.com" required></div>
+     <div class="field"><label for="businessPhone">Mobile Number *</label><input id="businessPhone" name="phone" type="tel" inputmode="numeric" maxlength="10" pattern="[6-9][0-9]{9}" autocomplete="tel" placeholder="10-digit mobile number" required></div>
+    </div>
+
+    <div class="form-row">
+     <div class="field">
+      <label for="businessType">Business Structure *</label>
+      <select id="businessType" name="businessType" required>
+       <option value="">Select business structure</option><option>Proprietorship</option>
+       <option>Partnership</option><option>LLP</option>
+       <option>Private Limited Company</option><option>Other</option>
+      </select>
+     </div>
+     <div class="field">
+      <label for="businessVintage">Business Operating Period *</label>
+      <select id="businessVintage" name="businessVintage" required>
+       <option value="">Select business age</option><option>Under 1 year</option>
+       <option>1–3 years</option><option>3–5 years</option><option>Over 5 years</option>
+      </select>
+     </div>
+    </div>
+
+    <div class="form-row">
+     <div class="field">
+      <label for="annualTurnoverInput">Annual Turnover *</label>
+      <select id="annualTurnoverInput" name="annualTurnover" required>
+       <option value="">Select annual turnover</option><option>Below ₹10 lakh</option>
+       <option>₹10–25 lakh</option><option>₹25–50 lakh</option>
+       <option>₹50 lakh–₹1 crore</option><option>Above ₹1 crore</option>
+      </select>
+     </div>
+     <div class="field">
+      <label for="requestedLoan">Required Funding Amount *</label>
+      <select id="requestedLoan" name="requestedLoan" required>
+       <option value="">Select amount</option><option>Below ₹5 lakh</option>
+       <option>₹5–10 lakh</option><option>₹10–25 lakh</option>
+       <option>₹25–50 lakh</option><option>Above ₹50 lakh</option>
+      </select>
+     </div>
+    </div>
+
+    <div class="field">
+     <label for="enquiryPurpose">Funding Purpose *</label>
+     <select id="enquiryPurpose" name="purpose" required>
+      <option value="">Select funding purpose</option><option>Working Capital</option>
+      <option>Business Expansion</option><option>Machinery & Equipment</option>
+      <option>Inventory & Stock</option><option>Commercial Property</option>
+      <option>Debt & Repayment Planning</option><option>Other</option>
+     </select>
+    </div>
+
+    <div class="field">
+     <label for="businessMessage">Business Requirements (Optional)</label>
+     <textarea id="businessMessage" name="message" maxlength="1000" placeholder="Describe the funding requirement and how the funds will be used"></textarea>
+    </div>
+
+    <label class="consent-row">
+     <input type="checkbox" id="enquiryConsent" required>
+     <span>I consent to the use of these details for responding to this enquiry, subject to the applicable privacy policy.</span>
+    </label>
+
+    <button class="btn btn-dark" type="submit">Review Business Enquiry <i class="fa-solid fa-arrow-right"></i></button>
+    <div class="feedback" id="enquiryFeedback" role="status" aria-live="polite"></div>
+    <p class="field-help">Demo mode: no information is sent or stored. Connect a secure server-side endpoint before collecting real enquiries.</p>
+   </form>
+  </div>
+ </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section-white" id="faq">
+ <div class="container">
+  <div class="section-title center">
+   <span class="eyebrow">Business Finance Questions</span>
+   <h2>Frequently Asked Questions</h2>
+   <p>Understand important considerations before applying.</p>
+  </div>
+
+  <div class="faq-wrap">
+   <div class="faq-item">
+    <button class="faq-question" type="button" aria-expanded="false">What is working capital in a business?<i class="fa-solid fa-chevron-down"></i></button>
+    <div class="faq-answer">Working capital generally refers to current assets minus current liabilities. Day-to-day cash needs also depend on customer collections, supplier payments, inventory purchases and other obligations.</div>
+   </div>
+   <div class="faq-item">
+    <button class="faq-question" type="button" aria-expanded="false">Is annual turnover the same as profit?<i class="fa-solid fa-chevron-down"></i></button>
+    <div class="faq-answer">No. Turnover generally represents revenue from business operations. Profit is calculated after deducting applicable costs and expenses. Available cash can differ from both due to receivables, payables, taxes and timing effects.</div>
+   </div>
+   <div class="faq-item">
+    <button class="faq-question" type="button" aria-expanded="false">What affects business loan eligibility?<i class="fa-solid fa-chevron-down"></i></button>
+    <div class="faq-answer">Depending on the lender and product, factors can include business vintage, turnover, financial statements, credit history, existing liabilities, loan purpose and collateral where applicable.</div>
+   </div>
+   <div class="faq-item">
+    <button class="faq-question" type="button" aria-expanded="false">Are the calculators an official loan offer?<i class="fa-solid fa-chevron-down"></i></button>
+    <div class="faq-answer">No. Calculations are illustrative planning tools. Actual rates, fees, repayment schedules and approval decisions depend on the lender's assessment and final terms.</div>
+   </div>
+   <div class="faq-item">
+    <button class="faq-question" type="button" aria-expanded="false">Does the enquiry form submit a loan application?<i class="fa-solid fa-chevron-down"></i></button>
+    <div class="faq-answer">No. This is a front-end demonstration that displays a local summary. It does not transmit information or submit a loan application. A secure backend and appropriate privacy controls are needed for real submissions.</div>
+   </div>
+  </div>
+ </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+ <div class="container">
+  <div class="footer-grid">
+   <div class="footer-brand-column">
+    <a href="index.html" class="brand" aria-label="VittPoint Home">
+     <div class="brand-mark">
+      <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+       <path d="M3 12 L21 12 L34 39 L47 17 L56 17 L34 53 L26 53 Z" fill="#FFFFFF"/>
+       <path d="M29 17 C35 6 49 5 56 13 C63 21 56 34 45 39 L38 43 L34 37 L42 32 C48 28 50 21 46 17 C42 13 35 15 32 21 Z" fill="#FFFFFF"/>
+       <circle cx="39" cy="23" r="5" fill="#F5A900"/>
+       <path d="M39 30 L26 51 L34 51 L45 32 Z" fill="#F5A900"/>
+      </svg>
+     </div>
+     <div class="brand-text">
+      <div class="brand-name"><span class="vitt">Vitt</span><span class="point">Point</span><sup>™</sup></div>
+      <small>YOUR FINANCIAL STARTING POINT</small>
+     </div>
+    </a>
+    <p class="footer-about">Business-focused financial planning tools to help you review turnover, cash flow, funding needs and loan repayments.</p>
+   </div>
+
+   <div>
+    <h3 class="footer-heading">Explore VittPoint</h3>
+    <div class="footer-links">
+     <a href="index.html">Home</a>
+     <a href="home-loan.html">Home Loan</a>
+     <a href="personal-loan.html">Personal Loan</a>
+     <a href="business-loan.html">Business Loan</a>
+     <a href="vehicle-insurance.html">Vehicle Insurance</a>
+    </div>
+   </div>
+
+   <div>
+    <h3 class="footer-heading">Business Tools</h3>
+    <div class="footer-links">
+     <a href="#working-capital">Cash Flow Planner</a>
+     <a href="#turnover-profile">Turnover Profile</a>
+     <a href="#funding-purpose">Funding Purpose</a>
+     <a href="#business-readiness">Readiness Checklist</a>
+     <a href="#repayment-planner">EMI Comparison</a>
+     <a href="#business-enquiry">Business Enquiry</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="footer-bottom">
+   <span>© <span id="currentYear"></span> VittPoint. All rights reserved.</span>
+   <span>YOUR FINANCIAL STARTING POINT</span>
+  </div>
+
+  <p class="footer-disclaimer">
+   All calculators and information are for general informational and illustrative planning purposes only.
+   They do not provide accounting, tax, legal or lending advice and do not guarantee eligibility, approval or disbursal.
+   Final terms are determined by the relevant lender. Review official terms, fees and privacy policies before applying.
+  </p>
+ </div>
+</footer>
+
+<script>
+/* Mobile navigation */
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", () => {
+ const open = navLinks.classList.toggle("open");
+ menuToggle.setAttribute("aria-expanded", String(open));
+ menuToggle.innerHTML = open
+  ? '<i class="fa-solid fa-xmark"></i>'
+  : '<i class="fa-solid fa-bars"></i>';
+});
+
+navLinks.querySelectorAll("a").forEach(link => {
+ link.addEventListener("click", () => {
+  navLinks.classList.remove("open");
+  menuToggle.setAttribute("aria-expanded", "false");
+  menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+ });
+});
+
+/* Money formatting helpers */
+const moneyFormatter = new Intl.NumberFormat("en-IN", {
+ style: "currency",
+ currency: "INR",
+ maximumFractionDigits: 0
+});
+
+function money(value) {
+ return moneyFormatter.format(Math.round(value));
+}
+
+function compactMoney(value) {
+ const abs = Math.abs(value);
+
+ if (abs >= 1e7) {
+  return "₹" + (value / 1e7).toFixed(2).replace(/\.?0+$/, "") + " Cr";
+ }
+
+ if (abs >= 1e5) {
+  return "₹" + (value / 1e5).toFixed(2).replace(/\.?0+$/, "") + " L";
+ }
+
+ if (abs >= 1e3) {
+  return "₹" + (value / 1e3).toFixed(1).replace(/\.0$/, "") + " K";
+ }
+
+ return money(value);
+}
+
+function readAmount(id) {
+ const field = document.getElementById(id);
+ const value = Number(field.value);
+
+ if (!Number.isFinite(value) || value < 0 || value > 1e11) {
+  field.setCustomValidity("Enter a valid amount between 0 and 100,000,000,000.");
+  field.reportValidity();
+  field.setCustomValidity("");
+  return null;
+ }
+
+ return value;
+}
+
+function escapeHTML(value) {
+ return String(value).replace(/[&<>"']/g, char => ({
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  '"': "&quot;",
+  "'": "&#39;"
+ }[char]));
+}
+
+/* Business Loan EMI calculator */
+function calculateSnapshotEMI() {
+ const amountField = document.getElementById("snapshotLoan");
+ const rateField = document.getElementById("snapshotRate");
+ const tenureField = document.getElementById("snapshotTenure");
+
+ const emiOutput = document.getElementById("snapshotEMI");
+ const interestOutput = document.getElementById("snapshotInterest");
+ const totalOutput = document.getElementById("snapshotTotal");
+ const message = document.getElementById("snapshotMessage");
+
+ const amount = Number(amountField.value);
+ const annualRate = Number(rateField.value);
+ const months = Number(tenureField.value);
+
+ const formatMoney = value => new Intl.NumberFormat("en-IN", {
+  style: "currency",
+  currency: "INR",
+  maximumFractionDigits: 0
+ }).format(Math.round(value));
+
+ function showError(text, field) {
+  emiOutput.textContent = "—";
+  interestOutput.textContent = "—";
+  totalOutput.textContent = "—";
+  message.textContent = text;
+
+  if (field) field.focus();
+ }
+
+ if (
+  amountField.value.trim() === "" ||
+  !Number.isFinite(amount) ||
+  amount < 10000 ||
+  amount > 1000000000
+ ) {
+  showError("Enter a loan amount between ₹10,000 and ₹100 crore.", amountField);
+  return;
+ }
+
+ if (
+  rateField.value.trim() === "" ||
+  !Number.isFinite(annualRate) ||
+  annualRate < 0 ||
+  annualRate > 100
+ ) {
+  showError("Enter an annual interest rate between 0% and 100%.", rateField);
+  return;
+ }
+
+ if (!Number.isFinite(months) || months <= 0) {
+  showError("Please select a valid loan tenure.", tenureField);
+  return;
+ }
+
+ const monthlyRate = annualRate / 1200;
+ let emi;
+
+ if (monthlyRate === 0) {
+  emi = amount / months;
+ } else {
+  const factor = Math.pow(1 + monthlyRate, months);
+  emi = amount * monthlyRate * factor / (factor - 1);
+ }
+
+ const totalRepayment = emi * months;
+ const totalInterest = totalRepayment - amount;
+
+ if (
+  !Number.isFinite(emi) ||
+  !Number.isFinite(totalRepayment) ||
+  !Number.isFinite(totalInterest)
+ ) {
+  showError("Unable to calculate these values. Please check your inputs.");
+  return;
+ }
+
+ emiOutput.textContent = formatMoney(emi);
+ interestOutput.textContent = formatMoney(totalInterest);
+ totalOutput.textContent = formatMoney(totalRepayment);
+
+ message.textContent =
+  "Estimate for " + months + " months at " + annualRate +
+  "% annual interest. Actual lender rates, fees and repayment terms may differ.";
+}
+
+document.getElementById("snapshotCalculate")
+ .addEventListener("click", calculateSnapshotEMI);
+
+["snapshotLoan", "snapshotRate", "snapshotTenure"].forEach(id => {
+ const field = document.getElementById(id);
+ field.addEventListener("input", calculateSnapshotEMI);
+ field.addEventListener("change", calculateSnapshotEMI);
+});
+
+/* Cash flow calculator */
+function calculateCashFlow() {
+ const revenue = readAmount("monthlyRevenue");
+ const collections = readAmount("cashCollections");
+ const operating = readAmount("operatingExpenses");
+ const inventory = readAmount("inventoryCosts");
+ const existingEMI = readAmount("existingEMI");
+ const upcoming = readAmount("upcomingPayments");
+ const available = readAmount("availableCash");
+
+ if ([revenue, collections, operating, inventory, existingEMI, upcoming, available].includes(null)) {
+  return;
+ }
+
+ const totalPayments = operating + inventory + existingEMI + upcoming;
+ const operatingCash = collections - operating - inventory - existingEMI;
+ const position = available + collections - totalPayments;
+ const gap = Math.max(0, totalPayments - collections - available);
+
+ document.getElementById("fundingGap").textContent = money(gap);
+ document.getElementById("resultCollections").textContent = money(collections);
+ document.getElementById("resultPayments").textContent = money(totalPayments);
+ document.getElementById("resultOperating").textContent = money(operatingCash);
+ document.getElementById("resultPosition").textContent =
+  (position < 0 ? "-" : "") + money(Math.abs(position));
+
+ const caption = document.getElementById("gapCaption");
+ const message = document.getElementById("cashFlowMessage");
+
+ if (gap > 0) {
+  caption.textContent = "Estimated shortfall using entered figures";
+  message.className = "result-message negative";
+  message.textContent =
+   "Your figures indicate a possible cash shortfall of " + money(gap) +
+   ". Review payment dates, collections, reserves and expenses before deciding whether financing is needed.";
+ } else {
+  caption.textContent = "No shortfall shown by this simplified calculation";
+  message.className = "result-message positive";
+  message.textContent =
+   "Your figures do not show a cash shortfall under this simplified calculation. Keep a buffer for unexpected expenses and delayed collections.";
+ }
+
+ if (revenue < collections) {
+  message.textContent +=
+   " Note: cash collected exceeds monthly sales; check whether collections include earlier-period receivables.";
+ }
+}
+
+document.getElementById("calculateCashFlow")
+ .addEventListener("click", calculateCashFlow);
+
+/* Turnover calculator */
+function calculateTurnover() {
+ const revenue = readAmount("turnoverMonthly");
+ const costs = readAmount("turnoverExpenses");
+
+ if (revenue === null || costs === null) return;
+
+ const ratio = revenue > 0 ? Math.min(100, costs / revenue * 100) : 0;
+
+ document.getElementById("annualRevenue").textContent = compactMoney(revenue * 12);
+ document.getElementById("annualCosts").textContent = compactMoney(costs * 12);
+ document.getElementById("annualSurplus").textContent = compactMoney((revenue - costs) * 12);
+ document.getElementById("expenseRatio").textContent = ratio.toFixed(1) + "%";
+ document.getElementById("expenseBar").style.width = ratio + "%";
+
+ document.getElementById("turnoverMonths").setAttribute(
+  "aria-label",
+  "Monthly average represents the last " +
+  document.getElementById("turnoverMonths").value + " months"
+ );
+}
+
+["turnoverMonthly", "turnoverExpenses"].forEach(id => {
+ document.getElementById(id).addEventListener("input", calculateTurnover);
+});
+document.getElementById("turnoverMonths").addEventListener("change", calculateTurnover);
+
+/* Funding purpose descriptions */
+const purposeDescriptions = {
+ "Working Capital": "Review cash collection dates, supplier payment deadlines, inventory requirements and essential monthly costs.",
+ "Business Expansion": "Prepare a growth plan covering setup costs, staffing, projected revenue, expenses and the time needed to reach planned capacity.",
+ "Machinery & Equipment": "Collect supplier quotations, installation costs, maintenance estimates and expected productivity benefits before comparing options.",
+ "Inventory & Stock": "Review stock turnover, seasonal demand, supplier payment terms and how quickly inventory should convert back into cash.",
+ "Commercial Property": "Review property cost, upfront contribution, legal and registration costs, security requirements and lender criteria.",
+ "Debt Restructuring": "List current balances, interest rates, repayment dates, fees and early-settlement charges before discussing alternatives."
+};
+
+document.querySelectorAll('input[name="purpose"]').forEach(radio => {
+ radio.addEventListener("change", () => {
+  document.querySelectorAll(".purpose-card").forEach(card => card.classList.remove("selected"));
+  radio.closest(".purpose-card").classList.add("selected");
+
+  document.getElementById("purposeDetails").innerHTML =
+   "<strong>Selected: " + escapeHTML(radio.value) + "</strong><br>" +
+   escapeHTML(purposeDescriptions[radio.value]);
+ });
+});
+
+/* Readiness checklist */
+const readinessChecks = [...document.querySelectorAll(".readiness-check")];
+
+function updateReadiness() {
+ const checked = readinessChecks.filter(item => item.checked).length;
+ const total = readinessChecks.length;
+ const pct = Math.round(checked / total * 100);
+
+ document.getElementById("readinessPercent").textContent = pct + "%";
+ document.getElementById("checkProgressBar").style.width = pct + "%";
+ document.getElementById("checklistStatus").textContent =
+  checked + " of " + total + " items marked complete";
+
+ document.getElementById("readinessStatus").textContent =
+  checked === 0
+   ? "Start by checking the documents you already have."
+   : checked < total / 2
+    ? "Good start. Review the remaining records."
+    : checked < total
+     ? "You have made progress. Review the outstanding items."
+     : "Checklist complete. Confirm the exact documents required by your lender.";
+
+ const circle = document.getElementById("scoreCircle");
+ if (circle) {
+  circle.style.background =
+   "conic-gradient(var(--gold) " + (pct * 3.6) + "deg, #294361 0deg)";
+ }
+}
+
+readinessChecks.forEach(box => box.addEventListener("change", updateReadiness));
+
+/* Loan comparison */
+function calculateLoan(principal, annualRate, months) {
+ const r = annualRate / 1200;
+ let emi;
+
+ if (r === 0) {
+  emi = principal / months;
+ } else {
+  const factor = Math.pow(1 + r, months);
+  emi = principal * r * factor / (factor - 1);
+ }
+
+ const total = emi * months;
+ return { emi, total, interest: total - principal };
+}
+
+function calculateComparison() {
+ const principal = readAmount("comparePrincipal");
+ const rateA = Number(document.getElementById("rateA").value);
+ const rateB = Number(document.getElementById("rateB").value);
+ const tenureA = Number(document.getElementById("tenureA").value);
+ const tenureB = Number(document.getElementById("tenureB").value);
+ const summary = document.getElementById("compareSummary");
+
+ if (principal === null) return;
+
+ if (
+  principal < 10000 ||
+  !Number.isFinite(rateA) ||
+  !Number.isFinite(rateB) ||
+  rateA < 0 || rateA > 100 ||
+  rateB < 0 || rateB > 100
+ ) {
+  summary.textContent =
+   "Enter a loan amount of at least ₹10,000 and annual rates between 0% and 100%.";
+  return;
+ }
+
+ const a = calculateLoan(principal, rateA, tenureA);
+ const b = calculateLoan(principal, rateB, tenureB);
+
+ document.getElementById("emiA").innerHTML = "<strong>" + money(a.emi) + "</strong>";
+ document.getElementById("emiB").innerHTML = "<strong>" + money(b.emi) + "</strong>";
+ document.getElementById("interestA").textContent = money(a.interest);
+ document.getElementById("interestB").textContent = money(b.interest);
+ document.getElementById("totalA").textContent = money(a.total);
+ document.getElementById("totalB").textContent = money(b.total);
+
+ const diff = Math.abs(a.total - b.total);
+
+ summary.textContent =
+  Math.abs(a.total - b.total) < 1
+   ? "Both scenarios have approximately the same total repayment based on these inputs."
+   : (a.total < b.total ? "Scenario A" : "Scenario B") +
+     " has the lower estimated total repayment by " + money(diff) +
+     ". Compare fees, collateral, repayment flexibility and lender terms too.";
+}
+
+document.getElementById("compareLoans").addEventListener("click", calculateComparison);
+
+/* FAQ accordion */
+document.querySelectorAll(".faq-question").forEach(button => {
+ button.addEventListener("click", () => {
+  const expanded = button.getAttribute("aria-expanded") === "true";
+
+  document.querySelectorAll(".faq-question").forEach(item => {
+   item.setAttribute("aria-expanded", "false");
+  });
+
+  button.setAttribute("aria-expanded", String(!expanded));
+ });
+});
+
+/* Enquiry form: front-end demonstration only */
+document.getElementById("businessEnquiryForm").addEventListener("submit", event => {
+ event.preventDefault();
+
+ const phone = document.getElementById("businessPhone").value.trim();
+ const feedback = document.getElementById("enquiryFeedback");
+
+ if (!/^[6-9][0-9]{9}$/.test(phone)) {
+  feedback.textContent = "Please enter a valid 10-digit Indian mobile number.";
+  feedback.classList.add("show");
+  return;
+ }
+
+ if (!document.getElementById("enquiryConsent").checked) {
+  feedback.textContent = "Please confirm consent before continuing.";
+  feedback.classList.add("show");
+  return;
+ }
+
+ const fields = [
+  ["Applicant", "ownerName"],
+  ["Business", "businessName"],
+  ["Email", "businessEmail"],
+  ["Mobile", "businessPhone"],
+  ["Structure", "businessType"],
+  ["Business age", "businessVintage"],
+  ["Annual turnover", "annualTurnoverInput"],
+  ["Funding amount", "requestedLoan"],
+  ["Funding purpose", "enquiryPurpose"]
+ ];
+
+ const summary = fields.map(([label, id]) =>
+  "<br><strong>" + escapeHTML(label) + ":</strong> " +
+  escapeHTML(document.getElementById(id).value.trim())
+ ).join("");
+
+ const message = document.getElementById("businessMessage").value.trim();
+
+ feedback.innerHTML =
+  "<strong>Your business enquiry details have been reviewed.</strong>" +
+  summary +
+  (message ? "<br><strong>Additional details:</strong> " + escapeHTML(message) : "") +
+  "<br><br><strong>Demo mode:</strong> Nothing has been sent or saved. Connect a secure ASP.NET MVC backend to receive real enquiries.";
+
+ feedback.classList.add("show");
+ feedback.scrollIntoView({ behavior: "smooth", block: "nearest" });
+});
+
+/* Initialise page calculators */
+document.getElementById("currentYear").textContent = new Date().getFullYear();
+
+calculateSnapshotEMI();
+calculateCashFlow();
+calculateTurnover();
+updateReadiness();
+calculateComparison();
+</script>
+</body>
+</html>

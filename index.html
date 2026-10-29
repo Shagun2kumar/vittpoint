@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b2340">
+<meta name="description" content="VittPoint - Your Financial Starting Point.">
+<title>VittPoint | Your Financial Starting Point</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+:root {
+    --navy: #0b2340;
+    --navy-dark: #07192e;
+    --gold: #dba51e;
+    --gold-light: #f4c957;
+    --green: #177354;
+    --white: #fff;
+    --background: #f7f8fa;
+    --text: #172b43;
+    --muted: #697789;
+    --border: #e5e9ef;
+    --shadow: 0 12px 38px rgba(11,35,64,.08);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html {
+    scroll-behavior:smooth;
+    scroll-padding-top:100px;
+}
+
+body {
+    font-family:"DM Sans",sans-serif;
+    color:var(--text);
+    background:white;
+    line-height:1.65;
+    overflow-x:hidden;
+}
+
+a { color:inherit; text-decoration:none; }
+button { font:inherit; cursor:pointer; }
+
+.container {
+    width:min(1160px,calc(100% - 40px));
+    margin:auto;
+}
+
+.section { padding:80px 0; }
+.section-soft { background:var(--background); }
+.highlight { color:var(--gold); }
+
+.eyebrow {
+    display:inline-block;
+    color:#a87809;
+    background:#fff6df;
+    border:1px solid #f5e4b8;
+    border-radius:30px;
+    padding:6px 13px;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.section-heading {
+    max-width:680px;
+    margin:0 auto 40px;
+    text-align:center;
+}
+
+.section-heading h2,
+.journey-copy h2,
+.about-copy h2 {
+    font-family:"Manrope",sans-serif;
+    color:var(--navy);
+    font-size:clamp(28px,4vw,40px);
+    line-height:1.25;
+    margin:16px 0;
+}
+
+.section-heading p,
+.journey-copy>p,
+.about-copy>p {
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.9;
+}
+
+.btn {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    min-height:46px;
+    padding:12px 20px;
+    border:1px solid transparent;
+    border-radius:8px;
+    font-size:13px;
+    font-weight:700;
+    transition:.25s;
+}
+
+.btn-gold {
+    background:var(--gold);
+    color:var(--navy-dark);
+}
+
+.btn-gold:hover {
+    background:var(--gold-light);
+    transform:translateY(-2px);
+}
+
+.btn-outline {
+    background:white;
+    color:var(--navy);
+    border-color:var(--border);
+}
+
+.btn-outline:hover { border-color:var(--gold); }
+
+/* Top strip */
+
+.top-strip {
+    background:var(--navy-dark);
+    color:#dce6f1;
+    padding:9px 0;
+    font-size:11px;
+}
+
+.top-strip-inner {
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.top-strip i {
+    color:var(--gold);
+    margin-right:5px;
+}
+
+/* Header */
+
+.header {
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,.97);
+    border-bottom:1px solid var(--border);
+    backdrop-filter:blur(12px);
+}
+
+.navbar {
+    min-height:80px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    position:relative;
+}
+
+.brand {
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    flex-shrink:0;
+}
+
+.brand-mark { width:43px; height:43px; }
+.brand-mark svg { width:100%; height:100%; }
+
+.brand-name {
+    font-family:"Manrope",sans-serif;
+    font-size:27px;
+    line-height:1.1;
+    font-weight:800;
+    color:var(--navy);
+    letter-spacing:-1px;
+}
+
+.brand-name span { color:var(--gold); }
+
+.brand-tagline {
+    color:#667488;
+    font-size:8px;
+    letter-spacing:1px;
+    font-weight:800;
+    margin-top:5px;
+}
+
+.nav-links {
+    display:flex;
+    align-items:center;
+    gap:22px;
+    list-style:none;
+}
+
+.nav-links>li>a,
+.nav-dropdown-trigger {
+    color:#34465b;
+    font-size:13px;
+    font-weight:700;
+}
+
+.nav-links a:hover,
+.nav-dropdown-trigger:hover { color:#b38412; }
+
+.nav-dropdown { position:relative; }
+
+.nav-dropdown-trigger {
+    border:0;
+    background:none;
+    display:flex;
+    gap:7px;
+    align-items:center;
+    padding:12px 0;
+}
+
+.dropdown-menu {
+    position:absolute;
+    top:calc(100% + 8px);
+    left:-15px;
+    min-width:230px;
+    padding:8px;
+    background:white;
+    border:1px solid var(--border);
+    border-radius:12px;
+    box-shadow:var(--shadow);
+    display:none;
+}
+
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu { display:block; }
+
+.dropdown-menu a {
+    display:flex;
+    gap:10px;
+    padding:11px;
+    border-radius:7px;
+    font-size:13px;
+}
+
+.dropdown-menu a:hover { background:var(--background); }
+.dropdown-menu i { color:#b58412; width:18px; }
+
+.nav-actions {
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.nav-actions .btn {
+    font-size:12px;
+    min-height:42px;
+    padding:9px 14px;
+}
+
+.mobile-toggle {
+    display:none;
+    width:42px;
+    height:42px;
+    border:1px solid var(--border);
+    border-radius:8px;
+    background:white;
+    color:var(--navy);
+    font-size:19px;
+}
+
+/* Hero */
+
+.hero {
+    padding:65px 0;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(ellipse at 90% 15%,rgba(219,165,30,.13),transparent 32%),
+        linear-gradient(115deg,#f8fafc,#fff 55%,#f8f6ef);
+}
+
+.hero-grid {
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    align-items:center;
+    gap:45px;
+}
+
+.hero-copy .eyebrow { margin-bottom:20px; }
+
+.hero h1 {
+    font-family:"Manrope",sans-serif;
+    font-size:clamp(38px,4.7vw,58px);
+    line-height:1.13;
+    letter-spacing:-2px;
+    color:var(--navy);
+    margin-bottom:20px;
+}
+
+.gold-line { color:#c59112; }
+
+.hero-copy>p {
+    color:#627184;
+    font-size:15px;
+    line-height:1.9;
+    max-width:530px;
+    margin-bottom:25px;
+}
+
+.hero-actions {
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.hero-points {
+    display:flex;
+    flex-wrap:wrap;
+    gap:17px;
+    margin-top:25px;
+}
+
+.hero-point {
+    font-size:11px;
+    font-weight:700;
+    color:#3d4e62;
+}
+
+.hero-point i {
+    color:var(--green);
+    margin-right:5px;
+}
+
+/* Realistic hero image */
+
+.hero-visual {
+    position:relative;
+    display:grid;
+    place-items:center;
+    min-height:370px;
+    isolation:isolate;
+}
+
+.hero-visual::before {
+    content:"";
+    position:absolute;
+    inset:8px 0;
+    z-index:-1;
+    border-radius:24px;
+    background:
+        linear-gradient(90deg,rgba(11,35,64,.12),rgba(11,35,64,.02)),
+        url("https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1100&q=85")
+        center/cover;
+    box-shadow:0 22px 55px rgba(11,35,64,.13);
+}
+
+.hero-art {
+    width:100%;
+    max-width:475px;
+    opacity:.94;
+    filter:drop-shadow(0 12px 18px rgba(11,35,64,.10));
+}
+
+.hero-art svg {
+    display:block;
+    width:100%;
+}
+
+.floating-card {
+    position:absolute;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 15px;
+    border:1px solid rgba(229,233,239,.9);
+    border-radius:12px;
+    background:rgba(255,255,255,.96);
+    box-shadow:0 12px 30px rgba(11,35,64,.15);
+    animation:float 4s ease-in-out infinite;
+    backdrop-filter:blur(8px);
+}
+
+.float-one { top:25px; left:-10px; }
+.float-two { bottom:20px; right:-5px; animation-delay:-2s; }
+
+.float-icon {
+    width:39px;
+    height:39px;
+    display:grid;
+    place-items:center;
+    border-radius:10px;
+    background:#fff4d7;
+    color:#b58310;
+}
+
+.floating-card strong,
+.floating-card small { display:block; }
+
+.floating-card strong {
+    font-size:11px;
+    color:var(--navy);
+}
+
+.floating-card small {
+    color:var(--muted);
+    font-size:9px;
+}
+
+@keyframes float {
+    0%,100% { transform:translateY(0); }
+    50% { transform:translateY(-7px); }
+}
+
+/* Trust bar */
+
+.trust-bar {
+    background:var(--navy);
+    color:white;
+}
+
+.trust-grid {
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    padding:22px 0;
+}
+
+.trust-item {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    padding:8px;
+    border-right:1px solid rgba(255,255,255,.14);
+}
+
+.trust-item:last-child { border-right:0; }
+
+.trust-item>i {
+    color:var(--gold-light);
+    font-size:23px;
+}
+
+.trust-item strong,
+.trust-item span { display:block; }
+
+.trust-item strong { font-size:11px; }
+
+.trust-item span {
+    color:#bdcbd9;
+    font-size:9px;
+    margin-top:3px;
+}
+
+/* Service cards and images */
+
+.services-grid {
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:20px;
+}
+
+.service-card {
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    min-height:330px;
+    padding:18px 18px 22px;
+    border:1px solid var(--border);
+    border-radius:14px;
+    background:white;
+    overflow:hidden;
+    transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease;
+}
+
+.service-card::before {
+    content:"";
+    height:3px;
+    position:absolute;
+    inset:0 0 auto;
+    background:var(--gold);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:.25s;
+    z-index:2;
+}
+
+.service-card:hover {
+    transform:translateY(-7px);
+    border-color:#e4c46c;
+    box-shadow:0 18px 42px rgba(11,35,64,.13);
+}
+
+.service-card:hover::before { transform:scaleX(1); }
+
+.service-number {
+    position:absolute;
+    top:25px;
+    right:20px;
+    color:#cbd2dc;
+    font-weight:800;
+    font-size:12px;
+    z-index:3;
+}
+
+.service-photo-wrap {
+    width:100%;
+    height:145px;
+    overflow:hidden;
+    border-radius:10px;
+    margin-bottom:17px;
+    background:#edf1f5;
+}
+
+.service-photo {
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform .45s ease,filter .45s ease;
+}
+
+.service-card:hover .service-photo {
+    transform:scale(1.09);
+    filter:saturate(1.12) contrast(1.02);
+}
+
+.service-icon {
+    width:48px;
+    height:48px;
+    display:grid;
+    place-items:center;
+    background:#f1f5f9;
+    color:var(--navy);
+    border-radius:13px;
+    font-size:22px;
+}
+
+.service-card:hover .service-icon {
+    background:var(--navy);
+    color:var(--gold-light);
+}
+
+.service-card h3 {
+    font-family:"Manrope",sans-serif;
+    color:var(--navy);
+    font-size:17px;
+    margin:13px 0 8px;
+}
+
+.service-card p {
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.8;
+    margin-bottom:18px;
+    flex:1;
+}
+
+.service-link {
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:12px;
+    font-weight:800;
+    color:var(--navy);
+}
+
+.service-link i {
+    color:#b88917;
+    transition:.2s;
+}
+
+.service-link:hover { color:#b88917; }
+.service-link:hover i { transform:translateX(4px); }
+
+.services-note {
+    text-align:center;
+    color:var(--muted);
+    font-size:12px;
+    margin-top:25px;
+}
+
+.services-note i { color:var(--gold); }
+
+/* Journey */
+
+.journey-grid {
+    display:grid;
+    grid-template-columns:.9fr 1.1fr;
+    align-items:center;
+    gap:55px;
+}
+
+.journey-list {
+    display:grid;
+    gap:20px;
+    margin-top:25px;
+}
+
+.journey-step {
+    display:grid;
+    grid-template-columns:46px 1fr;
+    gap:14px;
+}
+
+.journey-icon {
+    width:44px;
+    height:44px;
+    display:grid;
+    place-items:center;
+    border:1px solid var(--border);
+    border-radius:11px;
+    background:white;
+    color:#b58715;
+}
+
+.journey-step h3 {
+    color:var(--navy);
+    font-size:13px;
+    margin-bottom:4px;
+}
+
+.journey-step p {
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.7;
+}
+
+.journey-visual {
+    padding:28px;
+    border:1px solid var(--border);
+    border-radius:18px;
+    background:white;
+    box-shadow:var(--shadow);
+}
+
+.journey-visual-head {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.journey-visual-head h3 {
+    color:var(--navy);
+    font-size:15px;
+}
+
+.status-label {
+    color:var(--green);
+    background:#eaf6f0;
+    padding:5px 9px;
+    border-radius:25px;
+    font-size:10px;
+    font-weight:800;
+}
+
+.journey-visual-list {
+    display:grid;
+    gap:11px;
+}
+
+.journey-visual-item {
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:13px;
+    border:1px solid #e9edf2;
+    border-radius:10px;
+}
+
+.mini-icon {
+    width:40px;
+    height:40px;
+    display:grid;
+    place-items:center;
+    border-radius:9px;
+    background:#f2f5f9;
+    color:var(--navy);
+}
+
+.journey-visual-item strong,
+.journey-visual-item small { display:block; }
+
+.journey-visual-item strong {
+    font-size:11px;
+    color:var(--navy);
+}
+
+.journey-visual-item small {
+    color:var(--muted);
+    font-size:10px;
+}
+
+.journey-visual-item .check {
+    margin-left:auto;
+    color:var(--green);
+}
+
+.journey-disclaimer {
+    color:#788493;
+    font-size:10px;
+    line-height:1.8;
+    margin-top:17px;
+}
+
+/* About section */
+
+.about-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:55px;
+}
+
+.about-visual {
+    min-height:350px;
+    position:relative;
+    display:grid;
+    place-items:center;
+    overflow:hidden;
+    border-radius:20px;
+    background:
+        linear-gradient(140deg,rgba(11,35,64,.55),rgba(7,25,46,.78)),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1100&q=85")
+        center/cover;
+    box-shadow:var(--shadow);
+}
+
+.about-visual::before,
+.about-visual::after {
+    content:"";
+    position:absolute;
+    border:1px solid rgba(244,201,87,.35);
+    border-radius:50%;
+}
+
+.about-visual::before {
+    width:320px;
+    height:320px;
+}
+
+.about-visual::after {
+    width:240px;
+    height:240px;
+}
+
+.about-emblem {
+    width:105px;
+    height:105px;
+    display:grid;
+    place-items:center;
+    position:relative;
+    z-index:1;
+    border:2px solid var(--gold);
+    border-radius:25px;
+    color:var(--gold-light);
+    font-size:45px;
+    transform:rotate(-7deg);
+    background:rgba(7,25,46,.35);
+    backdrop-filter:blur(5px);
+}
+
+.about-caption {
+    position:absolute;
+    bottom:24px;
+    color:white;
+    font-size:12px;
+    font-weight:700;
+    text-align:center;
+    padding:0 15px;
+}
+
+.about-points {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    margin:25px 0;
+}
+
+.about-point {
+    display:flex;
+    align-items:flex-start;
+    gap:9px;
+    color:#34465b;
+    font-size:12px;
+    font-weight:700;
+}
+
+.about-point i {
+    color:var(--green);
+    margin-top:3px;
+}
+
+.disclaimer-box {
+    padding:16px 18px;
+    border-left:3px solid var(--gold);
+    border-radius:0 9px 9px 0;
+    background:#fff9e9;
+    color:#5f543c;
+    font-size:12px;
+    line-height:1.8;
+}
+
+/* CTA */
+
+.cta-section { padding:0 0 80px; }
+
+.cta-box {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:25px;
+    padding:40px;
+    border-radius:18px;
+    color:white;
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(100deg,rgba(7,25,46,.97),rgba(11,35,64,.85)),
+        url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=85")
+        center/cover;
+}
+
+.cta-content { position:relative; z-index:1; }
+
+.cta-content h2 {
+    font-family:"Manrope",sans-serif;
+    font-size:clamp(24px,3vw,34px);
+    line-height:1.3;
+    margin-bottom:10px;
+}
+
+.cta-content p {
+    color:#c7d2df;
+    font-size:13px;
+}
+
+/* FAQ */
+
+.faq-list {
+    max-width:820px;
+    margin:auto;
+    display:grid;
+    gap:12px;
+}
+
+.faq-item {
+    background:white;
+    border:1px solid var(--border);
+    border-radius:11px;
+    overflow:hidden;
+}
+
+.faq-question {
+    width:100%;
+    padding:18px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    text-align:left;
+    border:0;
+    background:white;
+    color:var(--navy);
+    font-size:13px;
+    font-weight:700;
+}
+
+.faq-question i {
+    color:#b68b1c;
+    transition:.2s;
+}
+
+.faq-answer {
+    display:none;
+    padding:0 20px 19px;
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.9;
+}
+
+.faq-item.open .faq-answer { display:block; }
+.faq-item.open .faq-question i { transform:rotate(180deg); }
+
+/* Footer */
+
+.footer {
+    padding-top:55px;
+    background:#07192e;
+    color:#d8e1ec;
+}
+
+.footer-grid {
+    display:grid;
+    grid-template-columns:1.35fr .8fr 1fr 1fr;
+    gap:35px;
+    padding-bottom:40px;
+}
+
+.footer .brand-name { color:white; }
+.footer .brand-tagline { color:#a8b8ca; }
+
+.footer-about {
+    margin-top:17px;
+    color:#adbdcf;
+    font-size:12px;
+    line-height:1.9;
+}
+
+.footer h3 {
+    color:white;
+    font-size:13px;
+    margin-bottom:17px;
+}
+
+.footer-links {
+    list-style:none;
+    display:grid;
+    gap:11px;
+}
+
+.footer-links a,
+.footer-links button {
+    background:none;
+    border:0;
+    text-align:left;
+    color:#b4c1d0;
+    font-size:12px;
+}
+
+.footer-links a:hover,
+.footer-links button:hover { color:var(--gold-light); }
+
+.footer-links i { width:19px; color:var(--gold); }
+
+.footer-legal {
+    color:#9bacc0;
+    font-size:10px;
+    line-height:1.8;
+    padding-bottom:23px;
+}
+
+.footer-bottom {
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    flex-wrap:wrap;
+    padding:18px 0;
+    border-top:1px solid rgba(255,255,255,.12);
+    color:#9bacc0;
+    font-size:11px;
+}
+
+.footer-bottom a { color:#cbd6e2; }
+
+/* Cursor glow effect */
+
+.cursor-glow {
+    position:fixed;
+    width:240px;
+    height:240px;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:9999;
+    transform:translate(-50%,-50%);
+    background:radial-gradient(
+        circle,
+        rgba(219,165,30,.10) 0%,
+        rgba(219,165,30,.035) 35%,
+        transparent 70%
+    );
+    opacity:0;
+    transition:opacity .2s ease;
+}
+
+body.cursor-active .cursor-glow { opacity:1; }
+
+.service-card:focus-within {
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+}
+
+/* Responsive */
+
+@media(max-width:1080px) {
+    .nav-links { gap:14px; }
+    .navbar { gap:12px; }
+    .brand-name { font-size:24px; }
+    .nav-actions .btn-outline { display:none; }
+    .services-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .footer-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+
+@media(max-width:780px) {
+    .container { width:calc(100% - 32px); }
+    .section { padding:60px 0; }
+    .top-strip-right { display:none; }
+
+    .navbar { min-height:70px; }
+    .brand-mark { width:38px; height:38px; }
+    .brand-name { font-size:23px; }
+    .brand-tagline { font-size:7px; }
+
+    .mobile-toggle {
+        display:grid;
+        place-items:center;
+    }
+
+    .nav-actions>.btn { display:none; }
+
+    .nav-links {
+        display:none;
+        position:absolute;
+        top:100%;
+        left:0;
+        right:0;
+        padding:12px 20px 20px;
+        background:white;
+        border-bottom:1px solid var(--border);
+        box-shadow:var(--shadow);
+        align-items:stretch;
+        gap:0;
+    }
+
+    .nav-links.active {
+        display:flex;
+        flex-direction:column;
+    }
+
+    .nav-links>li { border-bottom:1px solid #eef0f4; }
+
+    .nav-links>li>a,
+    .nav-dropdown-trigger {
+        display:flex;
+        width:100%;
+        padding:13px 0;
+        justify-content:space-between;
+    }
+
+    .dropdown-menu {
+        position:static;
+        display:block;
+        border:0;
+        box-shadow:none;
+        padding:0 0 10px 10px;
+    }
+
+    .hero { padding:48px 0; }
+
+    .hero-grid,
+    .journey-grid,
+    .about-grid {
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+
+    .hero h1 { font-size:clamp(37px,9vw,50px); }
+    .hero-visual { min-height:330px; }
+    .hero-art { max-width:390px; }
+    .float-one { left:0; top:12px; }
+    .float-two { right:0; bottom:10px; }
+
+    .trust-grid {
+        grid-template-columns:repeat(2,1fr);
+        padding:10px 0;
+    }
+
+    .trust-item {
+        justify-content:flex-start;
+        padding:15px 8px;
+        border:0;
+    }
+
+    .trust-item:nth-child(odd) {
+        border-right:1px solid rgba(255,255,255,.13);
+    }
+
+    .trust-item:nth-child(-n+2) {
+        border-bottom:1px solid rgba(255,255,255,.13);
+    }
+
+    .section-heading { margin-bottom:30px; }
+
+    .journey-copy h2,
+    .about-copy h2,
+    .section-heading h2 { font-size:30px; }
+
+    .about-visual { min-height:290px; }
+
+    .cta-box {
+        align-items:flex-start;
+        flex-direction:column;
+        padding:28px 23px;
+    }
+
+    .footer-grid { gap:28px 20px; }
+    .cursor-glow { display:none; }
+}
+
+@media(max-width:420px) {
+    .container { width:calc(100% - 28px); }
+    .hero h1 { font-size:36px; }
+
+    .hero-actions {
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .hero-actions .btn { width:100%; }
+
+    .hero-points {
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .services-grid,
+    .footer-grid { grid-template-columns:1fr; }
+
+    .service-card { min-height:300px; }
+    .service-photo-wrap { height:180px; }
+    .about-points { grid-template-columns:1fr; }
+    .floating-card { padding:9px 10px; }
+    .floating-card small { font-size:8px; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    *,*::before,*::after {
+        scroll-behavior:auto !important;
+        animation-duration:.01ms !important;
+        transition-duration:.01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+<div class="top-strip">
+    <div class="container top-strip-inner">
+        <div>
+            <span><i class="fa-solid fa-shield-halved"></i> Your Financial Starting Point</span>
+            &nbsp;&nbsp;
+            <span><i class="fa-solid fa-handshake"></i> Guidance. Support. Clarity.</span>
+        </div>
+        <div class="top-strip-right">
+            <i class="fa-regular fa-clock"></i> Assistance at every step
+        </div>
+    </div>
+</div>
+
+<header class="header">
+    <div class="container navbar">
+
+        <a href="index.html" class="brand" aria-label="VittPoint Home">
+            <div class="brand-mark">
+                <svg viewBox="0 0 60 60" aria-hidden="true">
+                    <path d="M3 12 L21 12 L34 39 L47 17 L56 17 L34 53 L26 53 Z" fill="#0b2340"/>
+                    <path d="M29 17 C35 6 49 5 56 13 C63 21 56 34 45 39 L38 43 L34 37 L42 32 C48 28 50 21 46 17 C42 13 35 15 32 21 Z" fill="#0b2340"/>
+                    <circle cx="39" cy="23" r="5" fill="#dba51e"/>
+                    <path d="M39 30 L26 51 L34 51 L45 32 Z" fill="#dba51e"/>
+                </svg>
+            </div>
+            <div>
+                <div class="brand-name">Vitt<span>Point</span></div>
+                <div class="brand-tagline">YOUR FINANCIAL STARTING POINT</div>
+            </div>
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li class="nav-dropdown">
+                <button class="nav-dropdown-trigger" type="button" aria-expanded="false">
+                    Our Services <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="dropdown-menu">
+                    <a href="home-loan.html"><i class="fa-solid fa-house"></i> Home Loan</a>
+                    <a href="personal-loan.html"><i class="fa-solid fa-wallet"></i> Personal Loan</a>
+                    <a href="business-loan.html"><i class="fa-solid fa-briefcase"></i> Business Loan</a>
+                    <a href="vehicle-insurance.html"><i class="fa-solid fa-car"></i> Vehicle Insurance</a>
+                </div>
+            </li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#faq">FAQs</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <a href="#services" class="btn btn-outline">Explore Services</a>
+            <a href="#services" class="btn btn-gold">
+                Get Started <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <button class="mobile-toggle" id="mobileToggle"
+                    type="button" aria-label="Open navigation" aria-expanded="false">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+    </div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+    <div class="container hero-grid">
+
+        <div class="hero-copy">
+            <span class="eyebrow">
+                <i class="fa-solid fa-sparkles"></i>
+                A smarter way to move forward
+            </span>
+
+            <h1>
+                Your Dreams.<br>
+                Your Goals.<br>
+                <span class="gold-line">Our Guidance.</span>
+            </h1>
+
+            <p>
+                Whether you are planning your dream home, managing personal
+                expenses, growing your business or protecting your vehicle,
+                VittPoint helps you explore financial options with clarity
+                and confidence.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#services" class="btn btn-gold">
+                    Explore Our Services <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="#about" class="btn btn-outline">
+                    <i class="fa-regular fa-circle-question"></i> About VittPoint
+                </a>
+            </div>
+
+            <div class="hero-points">
+                <div class="hero-point"><i class="fa-solid fa-circle-check"></i> Personalised Guidance</div>
+                <div class="hero-point"><i class="fa-solid fa-circle-check"></i> Clear Process</div>
+                <div class="hero-point"><i class="fa-solid fa-circle-check"></i> Support at Every Step</div>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="hero-art">
+                <svg viewBox="0 0 520 440" role="img" aria-label="Home and financial protection illustration">
+                    <defs>
+                        <linearGradient id="building" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#193f64"/>
+                            <stop offset="100%" stop-color="#0b2340"/>
+                        </linearGradient>
+                        <linearGradient id="coin" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#f4d57d"/>
+                            <stop offset="100%" stop-color="#dba51e"/>
+                        </linearGradient>
+                    </defs>
+
+                    <circle cx="265" cy="210" r="175" fill="#f2f5f8" fill-opacity=".94"/>
+                    <circle cx="265" cy="210" r="140" fill="#e8eef5" fill-opacity=".95"/>
+
+                    <circle cx="112" cy="100" r="5" fill="#dba51e"/>
+                    <circle cx="404" cy="115" r="4" fill="#dba51e"/>
+                    <circle cx="410" cy="310" r="6" fill="#dba51e"/>
+                    <circle cx="125" cy="322" r="4" fill="#173c61"/>
+
+                    <path d="M120 211 L250 100 L380 211"
+                          fill="none" stroke="#0b2340" stroke-width="14"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+
+                    <path d="M150 200 L150 324 Q150 335 161 335 L339 335 Q350 335 350 324 L350 200"
+                          fill="url(#building)"/>
+
+                    <path d="M225 335 L225 265 Q225 250 240 250 L260 250 Q275 250 275 265 L275 335"
+                          fill="#f4c957"/>
+
+                    <rect x="175" y="230" width="30" height="32" rx="4" fill="#e3edf6"/>
+                    <rect x="295" y="230" width="30" height="32" rx="4" fill="#e3edf6"/>
+
+                    <g transform="translate(327 73) rotate(8)">
+                        <rect width="100" height="126" rx="11" fill="#fff" stroke="#d9e0e9" stroke-width="2"/>
+                        <rect x="16" y="19" width="39" height="7" rx="3" fill="#dba51e"/>
+                        <rect x="16" y="41" width="66" height="5" rx="2" fill="#dce4ed"/>
+                        <rect x="16" y="55" width="58" height="5" rx="2" fill="#dce4ed"/>
+                        <rect x="16" y="69" width="64" height="5" rx="2" fill="#dce4ed"/>
+                        <rect x="16" y="88" width="43" height="20" rx="5" fill="#e8f5ee"/>
+                        <path d="M26 98 L32 103 L43 92" fill="none" stroke="#177354" stroke-width="3" stroke-linecap="round"/>
+                    </g>
+
+                    <circle cx="104" cy="242" r="43" fill="url(#coin)" stroke="#fff" stroke-width="5"/>
+                    <circle cx="104" cy="242" r="32" fill="none" stroke="#b7860e" stroke-width="2"/>
+                    <text x="104" y="255" text-anchor="middle" font-size="38" font-family="Arial" font-weight="bold" fill="#0b2340">₹</text>
+
+                    <g transform="translate(361 256)">
+                        <path d="M0 -43 L39 -29 L36 7 Q29 31 0 45 Q-29 31 -36 7 L-39 -29 Z"
+                              fill="#fff" stroke="#dba51e" stroke-width="4"/>
+                        <path d="M-17 0 L-4 13 L19 -13" fill="none" stroke="#177354"
+                              stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+                    </g>
+
+                    <ellipse cx="260" cy="362" rx="168" ry="14" fill="#dce4ec"/>
+                    <path d="M120 364 L400 364" stroke="#bfcbd7" stroke-width="2"/>
+                </svg>
+            </div>
+
+            <div class="floating-card float-one">
+                <div class="float-icon"><i class="fa-solid fa-house"></i></div>
+                <div><strong>Your Dream Home</strong><small>Explore home loan options</small></div>
+            </div>
+
+            <div class="floating-card float-two">
+                <div class="float-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <div><strong>Financial Support</strong><small>Guidance through the process</small></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="trust-bar" aria-label="Our approach">
+    <div class="container trust-grid">
+        <div class="trust-item">
+            <i class="fa-solid fa-handshake"></i>
+            <div><strong>Trusted Partnerships</strong><span>Institutional connections</span></div>
+        </div>
+        <div class="trust-item">
+            <i class="fa-solid fa-user-tie"></i>
+            <div><strong>Expert Assistance</strong><span>Guidance when you need it</span></div>
+        </div>
+        <div class="trust-item">
+            <i class="fa-solid fa-list-check"></i>
+            <div><strong>Clear Process</strong><span>Understand each step</span></div>
+        </div>
+        <div class="trust-item">
+            <i class="fa-solid fa-lock"></i>
+            <div><strong>Responsible Support</strong><span>Privacy-conscious approach</span></div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="services">
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="eyebrow">What We Help With</span>
+            <h2>Financial Solutions for <span class="highlight">Your Needs</span></h2>
+            <p>Explore the right category for your next financial step. Select a service to open its separate page.</p>
+        </div>
+
+        <div class="services-grid">
+
+            <article class="service-card">
+                <span class="service-number">01</span>
+                <div class="service-photo-wrap">
+                    <img class="service-photo"
+                         src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=85"
+                         alt="Modern family home" loading="lazy">
+                </div>
+                <div class="service-icon"><i class="fa-solid fa-house-chimney"></i></div>
+                <h3>Home Loan</h3>
+                <p>Explore home financing options for buying, building or improving your home.</p>
+                <a class="service-link" href="home-loan.html">Explore Home Loans <i class="fa-solid fa-arrow-right"></i></a>
+            </article>
+
+            <article class="service-card">
+                <span class="service-number">02</span>
+                <div class="service-photo-wrap">
+                    <img class="service-photo"
+                         src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=85"
+                         alt="Financial planning documents and calculator" loading="lazy">
+                </div>
+                <div class="service-icon"><i class="fa-solid fa-wallet"></i></div>
+                <h3>Personal Loan</h3>
+                <p>Explore personal financing options and learn about the available process.</p>
+                <a class="service-link" href="personal-loan.html">Explore Personal Loans <i class="fa-solid fa-arrow-right"></i></a>
+            </article>
+
+            <article class="service-card">
+                <span class="service-number">03</span>
+                <div class="service-photo-wrap">
+                    <img class="service-photo"
+                         src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=85"
+                         alt="Modern commercial office buildings" loading="lazy">
+                </div>
+                <div class="service-icon"><i class="fa-solid fa-briefcase"></i></div>
+                <h3>Business Loan</h3>
+                <p>Explore financing options for your business needs and future plans.</p>
+                <a class="service-link" href="business-loan.html">Explore Business Loans <i class="fa-solid fa-arrow-right"></i></a>
+            </article>
+
+            <article class="service-card">
+                <span class="service-number">04</span>
+                <div class="service-photo-wrap">
+                    <img class="service-photo"
+                         src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=800&q=85"
+                         alt="Modern car for vehicle insurance" loading="lazy">
+                </div>
+                <div class="service-icon"><i class="fa-solid fa-car-side"></i></div>
+                <h3>Vehicle Insurance</h3>
+                <p>Explore vehicle insurance as a separate service from loan products.</p>
+                <a class="service-link" href="vehicle-insurance.html">Explore Insurance <i class="fa-solid fa-arrow-right"></i></a>
+            </article>
+
+        </div>
+
+        <p class="services-note">
+            <i class="fa-solid fa-circle-info"></i>
+            Eligibility, terms, coverage and approval depend on the relevant institution.
+        </p>
+    </div>
+</section>
+
+<section class="section section-soft" id="how-it-works">
+    <div class="container journey-grid">
+
+        <div class="journey-copy">
+            <span class="eyebrow">Simple. Clear. Supportive.</span>
+            <h2>We Simplify Your <span class="highlight">Financial Journey</span></h2>
+            <p>Financial decisions can feel complicated. VittPoint aims to make the process easier to understand by helping you explore options and understand the next steps.</p>
+
+            <div class="journey-list">
+                <div class="journey-step">
+                    <div class="journey-icon"><i class="fa-regular fa-comments"></i></div>
+                    <div><h3>01. Understand Your Needs</h3><p>Identify the financial service that matches your goal.</p></div>
+                </div>
+                <div class="journey-step">
+                    <div class="journey-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    <div><h3>02. Explore Available Options</h3><p>Learn about relevant options and key terms.</p></div>
+                </div>
+                <div class="journey-step">
+                    <div class="journey-icon"><i class="fa-solid fa-file-lines"></i></div>
+                    <div><h3>03. Prepare Documentation</h3><p>Understand what information may be required.</p></div>
+                </div>
+                <div class="journey-step">
+                    <div class="journey-icon"><i class="fa-solid fa-handshake"></i></div>
+                    <div><h3>04. Understand the Next Steps</h3><p>Review the process with the relevant institution.</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="journey-visual">
+            <div class="journey-visual-head">
+                <h3>Your Financial Journey</h3>
+                <span class="status-label">Step by Step</span>
+            </div>
+
+            <div class="journey-visual-list">
+                <div class="journey-visual-item">
+                    <div class="mini-icon"><i class="fa-regular fa-message"></i></div>
+                    <div><strong>Identify Your Requirement</strong><small>Define your financial goal</small></div>
+                    <i class="fa-solid fa-circle-check check"></i>
+                </div>
+                <div class="journey-visual-item">
+                    <div class="mini-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                    <div><strong>Understand the Options</strong><small>Review relevant information</small></div>
+                    <i class="fa-solid fa-circle-check check"></i>
+                </div>
+                <div class="journey-visual-item">
+                    <div class="mini-icon"><i class="fa-solid fa-folder-open"></i></div>
+                    <div><strong>Organise Your Documents</strong><small>Understand the requirements</small></div>
+                    <i class="fa-solid fa-circle-check check"></i>
+                </div>
+                <div class="journey-visual-item">
+                    <div class="mini-icon"><i class="fa-solid fa-building-columns"></i></div>
+                    <div><strong>Review the Process</strong><small>Connect with the relevant institution</small></div>
+                    <i class="fa-solid fa-circle-check check"></i>
+                </div>
+            </div>
+
+            <p class="journey-disclaimer">
+                This illustration describes a general process. It is not a live
+                application tracker or an approval guarantee.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section class="section" id="about">
+    <div class="container about-grid">
+
+        <div class="about-visual">
+            <div class="about-emblem"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="about-caption">VITTPOINT — YOUR FINANCIAL STARTING POINT</div>
+        </div>
+
+        <div class="about-copy">
+            <span class="eyebrow">Why VittPoint?</span>
+            <h2>A Financial Partner for Your <span class="highlight">Next Step</span></h2>
+            <p>We believe that choosing a financial product should begin with understanding your needs. Our approach focuses on helping you explore options and navigate the process.</p>
+
+            <div class="about-points">
+                <div class="about-point"><i class="fa-solid fa-circle-check"></i><span>Guidance based on your requirements</span></div>
+                <div class="about-point"><i class="fa-solid fa-circle-check"></i><span>Clear information about next steps</span></div>
+                <div class="about-point"><i class="fa-solid fa-circle-check"></i><span>Support with documentation</span></div>
+                <div class="about-point"><i class="fa-solid fa-circle-check"></i><span>Help exploring relevant institutions</span></div>
+            </div>
+
+            <div class="disclaimer-box">
+                <strong>Important:</strong> VittPoint is a financial assistance
+                and facilitation brand, not a lender or insurer. Loan sanction,
+                interest rates, eligibility and insurance coverage are determined
+                by the respective lender or insurer.
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-box">
+            <div class="cta-content">
+                <h2>Take Your Next Financial Step.</h2>
+                <p>Explore our services and choose the page relevant to your needs.</p>
+            </div>
+            <a class="btn btn-gold" href="#services">
+                Explore Services <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="section section-soft" id="faq">
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="eyebrow">Frequently Asked Questions</span>
+            <h2>Questions? We've Got <span class="highlight">You Covered</span></h2>
+            <p>Some important things to know before exploring a financial product.</p>
+        </div>
+
+        <div class="faq-list">
+
+            <div class="faq-item">
+                <button class="faq-question" type="button" aria-expanded="false">
+                    What services does VittPoint offer?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    VittPoint provides assistance in exploring home loans,
+                    personal loans, business loans and vehicle insurance.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" type="button" aria-expanded="false">
+                    Is VittPoint a bank or lender?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    No. VittPoint is presented as a financial assistance
+                    and facilitation brand, not a lender or insurer.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" type="button" aria-expanded="false">
+                    Does a loan enquiry guarantee approval?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    No. Eligibility and approval are determined by the
+                    relevant lender following its assessment.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" type="button" aria-expanded="false">
+                    What documents might I need?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    Requirements vary by product and institution.
+                    Confirm the exact requirements with the relevant institution.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" type="button" aria-expanded="false">
+                    How do I explore a service?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    Click the relevant service name in the navigation menu,
+                    service card or footer. Its separate page will open.
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer class="footer">
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div>
+                <a href="index.html" class="brand" aria-label="VittPoint Home">
+                    <div class="brand-mark">
+                        <svg viewBox="0 0 60 60" aria-hidden="true">
+                            <path d="M3 12 L21 12 L34 39 L47 17 L56 17 L34 53 L26 53 Z" fill="#fff"/>
+                            <path d="M29 17 C35 6 49 5 56 13 C63 21 56 34 45 39 L38 43 L34 37 L42 32 C48 28 50 21 46 17 C42 13 35 15 32 21 Z" fill="#fff"/>
+                            <circle cx="39" cy="23" r="5" fill="#dba51e"/>
+                            <path d="M39 30 L26 51 L34 51 L45 32 Z" fill="#dba51e"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="brand-name">Vitt<span>Point</span></div>
+                        <div class="brand-tagline">YOUR FINANCIAL STARTING POINT</div>
+                    </div>
+                </a>
+
+                <p class="footer-about">
+                    Helping you explore financial options, understand requirements
+                    and navigate the next steps in your financial journey.
+                </p>
+            </div>
+
+            <div>
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#services">Our Services</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#faq">FAQs</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Our Services</h3>
+                <ul class="footer-links">
+                    <li><a href="home-loan.html">Home Loan</a></li>
+                    <li><a href="personal-loan.html">Personal Loan</a></li>
+                    <li><a href="business-loan.html">Business Loan</a></li>
+                    <li><a href="vehicle-insurance.html">Vehicle Insurance</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Explore</h3>
+                <ul class="footer-links">
+                    <li><a href="#services"><i class="fa-solid fa-list"></i> All Services</a></li>
+                    <li><a href="#how-it-works"><i class="fa-solid fa-list-check"></i> Our Process</a></li>
+                    <li><a href="#faq"><i class="fa-regular fa-circle-question"></i> Help & FAQs</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-legal">
+            <strong>Disclaimer:</strong> VittPoint is not a bank, lender or insurer.
+            Financial products, offers, eligibility criteria, rates, fees, terms,
+            coverage and approvals are subject to the relevant institution's policies
+            and assessment. Update legal and regulatory disclosures to reflect the
+            actual operating entity before publishing this website.
+        </div>
+
+        <div class="footer-bottom">
+            <span>© <span id="currentYear"></span> VittPoint. All rights reserved.</span>
+            <a href="#home">Back to top ↑</a>
+        </div>
+
+    </div>
+</footer>
+
+<script>
+// Current year
+document.getElementById("currentYear").textContent =
+    new Date().getFullYear();
+
+// Mobile navigation
+const mobileToggle = document.getElementById("mobileToggle");
+const navLinks = document.getElementById("navLinks");
+
+mobileToggle.addEventListener("click", function () {
+    const isOpen = navLinks.classList.toggle("active");
+
+    mobileToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation" : "Open navigation"
+    );
+
+    mobileToggle.innerHTML = isOpen
+        ? '<i class="fa-solid fa-xmark"></i>'
+        : '<i class="fa-solid fa-bars"></i>';
+});
+
+// Close the mobile menu after clicking a navigation link
+navLinks.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+        navLinks.classList.remove("active");
+        mobileToggle.setAttribute("aria-expanded", "false");
+        mobileToggle.setAttribute("aria-label", "Open navigation");
+        mobileToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+    });
+});
+
+// FAQ accordion
+document.querySelectorAll(".faq-question").forEach(function (button) {
+    button.addEventListener("click", function () {
+        const item = button.closest(".faq-item");
+        const isOpen = item.classList.contains("open");
+
+        document.querySelectorAll(".faq-item").forEach(function (otherItem) {
+            otherItem.classList.remove("open");
+            otherItem.querySelector(".faq-question")
+                .setAttribute("aria-expanded", "false");
+        });
+
+        if (!isOpen) {
+            item.classList.add("open");
+            button.setAttribute("aria-expanded", "true");
+        }
+    });
+});
+
+// Gold cursor glow effect on desktop
+const cursorGlow = document.getElementById("cursorGlow");
+
+if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    document.addEventListener("pointermove", function (event) {
+        cursorGlow.style.left = event.clientX + "px";
+        cursorGlow.style.top = event.clientY + "px";
+        document.body.classList.add("cursor-active");
+    });
+
+    document.addEventListener("pointerleave", function () {
+        document.body.classList.remove("cursor-active");
+    });
+}
+</script>
+
+</body>
+</html>

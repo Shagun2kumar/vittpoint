@@ -1,0 +1,2715 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0B2340">
+    <title>Vehicle Insurance | VittPoint</title>
+    <meta name="description" content="Explore car, bike, commercial vehicle and three-wheeler insurance with VittPoint. Compare coverage options and submit a vehicle insurance enquiry.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root {
+            --navy: #0B2340;
+            --navy-light: #123B65;
+            --gold: #F5A900;
+            --gold-dark: #E69B00;
+            --text: #173454;
+            --muted: #6D8199;
+            --border: #DFE9F4;
+            --soft: #F4F8FC;
+            --white: #FFFFFF;
+            --shadow: 0 12px 35px rgba(11,35,64,.09);
+            --radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 95px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        button, input, select, textarea {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .container {
+            width: min(1240px, calc(100% - 48px));
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 72px 0;
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+
+        .section-heading h2 {
+            color: var(--navy);
+            font-size: clamp(25px, 3vw, 34px);
+            letter-spacing: -1px;
+            line-height: 1.25;
+            margin-bottom: 8px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 13px;
+            max-width: 620px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #9C6A00;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .eyebrow::after {
+            content: "";
+            width: 32px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 21px;
+            border: 1px solid transparent;
+            border-radius: 9px;
+            background: var(--gold);
+            color: var(--navy);
+            font-size: 13px;
+            font-weight: 800;
+            transition: .25s ease;
+        }
+
+        .btn:hover {
+            background: #FFC247;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: #fff;
+            border-color: var(--border);
+            color: var(--navy);
+        }
+
+        .btn-outline:hover {
+            background: var(--soft);
+        }
+
+        .btn-dark {
+            background: var(--navy);
+            color: white;
+        }
+
+        .btn-dark:hover {
+            background: var(--navy-light);
+        }
+
+        /* HEADER */
+
+        .site-header {
+            height: 82px;
+            background: #fff;
+            border-bottom: 1px solid #EDF1F5;
+            display: flex;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            flex-shrink: 0;
+        }
+
+        .brand-mark {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+        }
+
+        .brand-mark svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-name {
+            display: flex;
+            align-items: flex-start;
+            font-size: 27px;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -1px;
+            white-space: nowrap;
+        }
+
+        .brand-name .vitt {
+            color: var(--navy);
+        }
+
+        .brand-name .point {
+            color: var(--gold);
+        }
+
+        .brand-name sup {
+            font-size: 8px;
+            margin-left: 3px;
+        }
+
+        .brand-text small {
+            color: var(--navy);
+            font-size: 7px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-top: 5px;
+            white-space: nowrap;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 21px;
+            flex: 1;
+        }
+
+        .main-nav a {
+            color: var(--navy);
+            font-size: 10px;
+            font-weight: 700;
+            padding: 30px 0 27px;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .main-nav a::after {
+            content: "";
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            height: 3px;
+            width: 0;
+            background: var(--gold);
+            transition: .25s;
+        }
+
+        .main-nav a:hover::after,
+        .main-nav a.active::after {
+            width: 100%;
+        }
+
+        .header-contact {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--navy);
+            font-size: 11px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .header-contact i {
+            color: var(--gold-dark);
+        }
+
+        .menu-toggle {
+            display: none;
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            background: var(--soft);
+            color: var(--navy);
+            font-size: 19px;
+        }
+
+        /* HERO - SCREENSHOT-INSPIRED, NO RIGHT-SIDE BOX */
+
+        .hero {
+            min-height: 520px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(7,27,49,.97) 0%,
+                    rgba(8,31,56,.94) 43%,
+                    rgba(8,31,56,.72) 70%,
+                    rgba(8,31,56,.48) 100%
+                ),
+                url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2000&q=85")
+                center 55% / cover no-repeat;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg,rgba(5,22,41,.3),transparent 55%);
+            pointer-events: none;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            width: 100%;
+            max-width: 760px;
+            padding: 65px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero .eyebrow {
+            color: #FFC247;
+            font-size: 12px;
+            letter-spacing: 1.7px;
+            margin-bottom: 25px;
+        }
+
+        .hero .eyebrow::after {
+            display: none;
+        }
+
+        .hero .eyebrow::before {
+            content: "";
+            width: 31px;
+            height: 2px;
+            background: var(--gold);
+            display: inline-block;
+        }
+
+        .hero h1 {
+            color: #fff;
+            font-size: clamp(42px,5.2vw,64px);
+            line-height: 1.12;
+            letter-spacing: -2px;
+            font-weight: 800;
+            max-width: 750px;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 span {
+            display: block;
+            color: var(--gold);
+            margin-top: 5px;
+        }
+
+        .hero-description {
+            max-width: 620px;
+            color: #E5EDF6;
+            font-size: 16px;
+            line-height: 1.9;
+            margin-bottom: 27px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .hero-actions .btn {
+            min-height: 52px;
+            padding: 15px 25px;
+            font-size: 14px;
+        }
+
+        .hero-actions .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,.6);
+            color: #fff;
+        }
+
+        .hero-actions .btn-outline:hover {
+            background: rgba(255,255,255,.12);
+        }
+
+        .hero-points {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+        }
+
+        .hero-point {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .hero-point i {
+            width: auto;
+            height: auto;
+            background: transparent;
+            color: var(--gold);
+            font-size: 15px;
+        }
+
+        /* QUOTE FORM */
+
+        .quote-section {
+            padding: 60px 0;
+            background: #F7FAFD;
+        }
+
+        .quote-layout {
+            display: grid;
+            grid-template-columns: minmax(0,1.85fr) minmax(270px,1fr);
+            gap: 20px;
+            align-items: stretch;
+        }
+
+        .quote-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            min-width: 0;
+        }
+
+        .vehicle-tabs {
+            display: grid;
+            grid-template-columns: repeat(4,minmax(0,1fr));
+            gap: 7px;
+            background: var(--soft);
+            border-radius: 11px;
+            padding: 5px;
+            margin-bottom: 20px;
+        }
+
+        .vehicle-tab {
+            min-height: 48px;
+            padding: 9px 5px;
+            border: 0;
+            border-radius: 8px;
+            background: transparent;
+            color: var(--navy);
+            font-size: 11px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            transition: .2s;
+        }
+
+        .vehicle-tab i {
+            font-size: 16px;
+        }
+
+        .vehicle-tab.active {
+            background: var(--navy);
+            color: #fff;
+            box-shadow: 0 5px 12px rgba(11,35,64,.16);
+        }
+
+        .quote-body {
+            display: grid;
+            grid-template-columns: 180px minmax(0,1fr);
+            gap: 20px;
+        }
+
+        .quote-visual {
+            border-radius: 12px;
+            background: #F0F6FC;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quote-visual img {
+            width: 100%;
+            height: 165px;
+            object-fit: cover;
+        }
+
+        .quote-visual-content {
+            padding: 15px;
+        }
+
+        .quote-visual h3 {
+            color: var(--navy);
+            font-size: 15px;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .quote-visual p {
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        .mini-line {
+            width: 35px;
+            height: 2px;
+            background: var(--gold);
+            margin-top: 15px;
+        }
+
+        .quote-form-wrap h2 {
+            color: var(--navy);
+            font-size: 20px;
+            letter-spacing: -.5px;
+            margin-bottom: 4px;
+        }
+
+        .form-intro {
+            color: var(--muted);
+            font-size: 11px;
+            margin-bottom: 16px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2,minmax(0,1fr));
+            gap: 13px;
+        }
+
+        .field {
+            min-width: 0;
+        }
+
+        .field.full {
+            grid-column: 1 / -1;
+        }
+
+        .field label {
+            display: block;
+            color: var(--navy);
+            font-size: 11px;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .field input,
+        .field select,
+        .field textarea {
+            width: 100%;
+            min-height: 43px;
+            border: 1px solid #D7E4F2;
+            border-radius: 7px;
+            padding: 10px 11px;
+            background: #fff;
+            color: var(--text);
+            outline: none;
+            font-size: 11px;
+            transition: .2s;
+        }
+
+        .field input:focus,
+        .field select:focus,
+        .field textarea:focus {
+            border-color: #5488C0;
+            box-shadow: 0 0 0 3px rgba(84,136,192,.12);
+        }
+
+        .field input::placeholder {
+            color: #9AAEC2;
+        }
+
+        .form-submit {
+            width: 100%;
+            margin-top: 16px;
+        }
+
+        .secure-note {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 7px;
+            color: var(--muted);
+            font-size: 10px;
+            margin-top: 11px;
+            text-align: center;
+        }
+
+        .secure-note i {
+            color: var(--navy-light);
+        }
+
+        .quote-message {
+            display: none;
+            margin-top: 13px;
+            padding: 12px;
+            border-radius: 8px;
+            background: #EDF8EF;
+            border: 1px solid #C9E9CF;
+            color: #226332;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .quote-message.show {
+            display: block;
+        }
+
+        .coverage-panel {
+            border-radius: var(--radius);
+            padding: 32px 28px;
+            background:
+                linear-gradient(180deg,rgba(8,34,61,.45),rgba(8,34,61,.96)),
+                url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=85")
+                center / cover no-repeat;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .coverage-panel h2 {
+            font-size: 27px;
+            line-height: 1.3;
+            margin-bottom: 22px;
+        }
+
+        .coverage-panel ul {
+            list-style: none;
+            display: grid;
+            gap: 14px;
+            margin-bottom: 26px;
+        }
+
+        .coverage-panel li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .coverage-panel li i {
+            color: var(--gold);
+            margin-top: 4px;
+        }
+
+        .coverage-panel .btn {
+            align-self: flex-start;
+        }
+
+        /* INSURANCE PLAN CARDS */
+
+        .text-link {
+            color: #0759A4;
+            font-size: 12px;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(4,minmax(0,1fr));
+            gap: 18px;
+        }
+
+        .plan-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 13px;
+            overflow: hidden;
+            transition: .25s;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: #C9D9EA;
+        }
+
+        .plan-image {
+            height: 175px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plan-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .4s;
+        }
+
+        .plan-card:hover .plan-image img {
+            transform: scale(1.05);
+        }
+
+        .plan-tag {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: #fff;
+            color: var(--navy);
+            padding: 6px 10px;
+            border-radius: 30px;
+            font-size: 9px;
+            font-weight: 800;
+        }
+
+        .plan-content {
+            padding: 19px;
+        }
+
+        .plan-content h3 {
+            color: var(--navy);
+            font-size: 16px;
+            margin-bottom: 7px;
+        }
+
+        .plan-content p {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.8;
+            min-height: 65px;
+        }
+
+        .plan-content .btn {
+            margin-top: 15px;
+            padding: 10px 13px;
+            font-size: 11px;
+        }
+
+        /* COVER TYPES */
+
+        .cover-section {
+            background: var(--soft);
+        }
+
+        .cover-grid {
+            display: grid;
+            grid-template-columns: repeat(3,minmax(0,1fr));
+            gap: 18px;
+        }
+
+        .cover-card {
+            position: relative;
+            padding: 25px;
+            border-radius: 14px;
+            background: #fff;
+            border: 1px solid var(--border);
+        }
+
+        .cover-card.featured {
+            border: 2px solid var(--gold);
+            box-shadow: 0 10px 25px rgba(245,169,0,.10);
+        }
+
+        .recommended-label {
+            position: absolute;
+            top: -12px;
+            right: 18px;
+            padding: 5px 11px;
+            background: var(--gold);
+            color: var(--navy);
+            border-radius: 20px;
+            font-size: 9px;
+            font-weight: 800;
+        }
+
+        .cover-icon {
+            width: 52px;
+            height: 52px;
+            display: grid;
+            place-items: center;
+            border-radius: 14px;
+            background: #FFF3D2;
+            color: #996500;
+            font-size: 22px;
+            margin-bottom: 18px;
+        }
+
+        .cover-card h3 {
+            color: var(--navy);
+            font-size: 18px;
+            margin-bottom: 9px;
+        }
+
+        .cover-card > p {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.8;
+            min-height: 88px;
+        }
+
+        .cover-list {
+            list-style: none;
+            display: grid;
+            gap: 11px;
+            margin: 20px 0;
+        }
+
+        .cover-list li {
+            display: flex;
+            gap: 9px;
+            font-size: 11px;
+        }
+
+        .cover-list i {
+            color: #17814B;
+            margin-top: 4px;
+        }
+
+        .cover-card .btn {
+            width: 100%;
+        }
+
+        /* OPTIONAL ADD-ONS */
+
+        .addons-layout {
+            display: grid;
+            grid-template-columns: .85fr 1.15fr;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .addons-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            min-height: 450px;
+        }
+
+        .addons-image img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .addons-image::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg,rgba(11,35,64,.88),transparent 70%);
+        }
+
+        .addons-image-caption {
+            position: absolute;
+            z-index: 2;
+            bottom: 25px;
+            left: 25px;
+            right: 25px;
+            color: #fff;
+        }
+
+        .addons-image-caption h3 {
+            font-size: 25px;
+            line-height: 1.3;
+            margin-bottom: 8px;
+        }
+
+        .addons-image-caption p {
+            color: #E3EDF7;
+            font-size: 12px;
+        }
+
+        .addons-heading {
+            font-size: 32px;
+            line-height: 1.25;
+            color: var(--navy);
+            margin-bottom: 12px;
+        }
+
+        .addons-intro {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.9;
+            margin-bottom: 23px;
+        }
+
+        .addons-list {
+            display: grid;
+            grid-template-columns: repeat(2,minmax(0,1fr));
+            gap: 12px;
+        }
+
+        .addon-item {
+            display: flex;
+            gap: 12px;
+            padding: 16px 13px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: .2s;
+        }
+
+        .addon-item:hover {
+            border-color: #EBC66D;
+            background: #FFFCF4;
+        }
+
+        .addon-icon {
+            width: 39px;
+            height: 39px;
+            flex-shrink: 0;
+            display: grid;
+            place-items: center;
+            border-radius: 10px;
+            background: #EDF4FC;
+            color: var(--navy-light);
+        }
+
+        .addon-item h4 {
+            color: var(--navy);
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .addon-item p {
+            color: var(--muted);
+            font-size: 10px;
+            line-height: 1.7;
+        }
+
+        /* WHY VITTPOINT */
+
+        .why-section {
+            background:
+                radial-gradient(circle at 10% 10%,rgba(245,169,0,.09),transparent 28%),
+                #F5F9FD;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(6,minmax(0,1fr));
+            gap: 12px;
+        }
+
+        .why-item {
+            padding: 19px 12px;
+            border-right: 1px solid #DDE8F2;
+            text-align: center;
+        }
+
+        .why-item:last-child {
+            border-right: 0;
+        }
+
+        .why-icon {
+            width: 58px;
+            height: 58px;
+            display: grid;
+            place-items: center;
+            margin: 0 auto 14px;
+            border-radius: 50%;
+            background: #fff;
+            border: 1px solid #DDE8F2;
+            color: var(--navy-light);
+            box-shadow: 0 4px 14px rgba(11,35,64,.05);
+            font-size: 22px;
+        }
+
+        .why-item h3 {
+            font-size: 12px;
+            color: var(--navy);
+            margin-bottom: 7px;
+        }
+
+        .why-item p {
+            color: var(--muted);
+            font-size: 10px;
+            line-height: 1.7;
+        }
+
+        /* PROCESS STEPS */
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4,minmax(0,1fr));
+            gap: 18px;
+        }
+
+        .step-card {
+            padding: 23px 18px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: #fff;
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            top: 12px;
+            right: 14px;
+            font-size: 28px;
+            font-weight: 800;
+            color: #EAF0F7;
+        }
+
+        .step-icon {
+            width: 53px;
+            height: 53px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            background: var(--navy);
+            color: var(--gold);
+            font-size: 21px;
+            margin-bottom: 19px;
+        }
+
+        .step-card h3 {
+            font-size: 15px;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .step-card p {
+            font-size: 11px;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        /* CLAIMS BANNER */
+
+        .claims-section {
+            padding-top: 10px;
+        }
+
+        .claims-banner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: var(--navy);
+            border-radius: 18px;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        .claims-copy {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .claims-copy .eyebrow {
+            color: #FFD66F;
+        }
+
+        .claims-copy h2 {
+            font-size: clamp(26px,3vw,35px);
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .claims-copy p {
+            font-size: 12px;
+            color: #D6E3F0;
+            line-height: 1.9;
+            margin-bottom: 22px;
+        }
+
+        .claims-copy .btn {
+            align-self: flex-start;
+        }
+
+        .claims-image {
+            min-height: 320px;
+            position: relative;
+        }
+
+        .claims-image img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .claims-image::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg,var(--navy),transparent 48%);
+        }
+
+        /* FAQ */
+
+        .faq-layout {
+            display: grid;
+            grid-template-columns: .75fr 1.25fr;
+            gap: 45px;
+            align-items: start;
+        }
+
+        .faq-intro {
+            position: sticky;
+            top: 110px;
+        }
+
+        .faq-intro h2 {
+            font-size: 32px;
+            line-height: 1.25;
+            color: var(--navy);
+            margin-bottom: 14px;
+        }
+
+        .faq-intro p {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.9;
+            margin-bottom: 22px;
+        }
+
+        .faq-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .faq-item {
+            border: 1px solid var(--border);
+            border-radius: 11px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 17px 18px;
+            border: 0;
+            background: #fff;
+            color: var(--navy);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .faq-question i {
+            color: #1763A5;
+            transition: transform .2s;
+        }
+
+        .faq-item.open .faq-question i {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 0 18px 18px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.9;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        /* FINAL CTA */
+
+        .final-cta {
+            background:
+                radial-gradient(circle at 15% 50%,rgba(245,169,0,.14),transparent 25%),
+                linear-gradient(110deg,#071D36,#123C65);
+            color: #fff;
+            padding: 38px 0;
+        }
+
+        .cta-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .cta-inner h2 {
+            font-size: clamp(24px,3vw,32px);
+            line-height: 1.3;
+            margin-bottom: 6px;
+        }
+
+        .cta-inner p {
+            color: #D7E3EF;
+            font-size: 13px;
+        }
+
+        .cta-vehicle-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 17px;
+            margin-top: 18px;
+        }
+
+        .cta-vehicle-links a {
+            color: #E5EDF6;
+            font-size: 11px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cta-vehicle-links i {
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        /* FOOTER */
+
+        .site-footer {
+            background: #fff;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr 1fr 1fr;
+            gap: 35px;
+            padding: 45px 0 35px;
+        }
+
+        .footer-about p {
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.9;
+            max-width: 270px;
+            margin-top: 16px;
+        }
+
+        .footer-column h3 {
+            font-size: 13px;
+            color: var(--navy);
+            margin-bottom: 16px;
+        }
+
+        .footer-column a {
+            display: block;
+            color: var(--muted);
+            font-size: 11px;
+            margin-bottom: 12px;
+            transition: .2s;
+        }
+
+        .footer-column a:hover {
+            color: var(--gold-dark);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding: 18px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-links a {
+            width: 30px;
+            height: 30px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: var(--soft);
+            color: var(--navy);
+        }
+
+        .social-links a:hover {
+            background: var(--gold);
+        }
+
+        .footer-disclaimer {
+            color: #8495A8;
+            font-size: 10px;
+            line-height: 1.8;
+            padding-bottom: 22px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1100px) {
+            .main-nav {
+                gap: 12px;
+            }
+
+            .main-nav a {
+                font-size: 9px;
+            }
+
+            .header-contact {
+                display: none;
+            }
+
+            .quote-body {
+                grid-template-columns: 150px minmax(0,1fr);
+                gap: 14px;
+            }
+
+            .plans-grid {
+                grid-template-columns: repeat(2,minmax(0,1fr));
+            }
+
+            .why-grid {
+                grid-template-columns: repeat(3,minmax(0,1fr));
+            }
+
+            .why-item:nth-child(3) {
+                border-right: 0;
+            }
+
+            .why-item:nth-child(-n+3) {
+                border-bottom: 1px solid #DDE8F2;
+            }
+
+            .footer-main {
+                gap: 22px;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .container {
+                width: min(calc(100% - 32px),650px);
+            }
+
+            .site-header {
+                height: 72px;
+            }
+
+            .brand-mark {
+                width: 43px;
+                height: 43px;
+            }
+
+            .brand-name {
+                font-size: 24px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .main-nav {
+                position: absolute;
+                top: 71px;
+                left: 0;
+                right: 0;
+                background: #fff;
+                border-bottom: 1px solid var(--border);
+                padding: 12px 22px 20px;
+                display: none;
+                align-items: stretch;
+                flex-direction: column;
+                gap: 0;
+                box-shadow: 0 15px 20px rgba(11,35,64,.08);
+            }
+
+            .main-nav.open {
+                display: flex;
+            }
+
+            .main-nav a {
+                padding: 12px 0;
+                font-size: 13px;
+            }
+
+            .main-nav a::after {
+                bottom: 5px;
+            }
+
+            .hero {
+                min-height: 470px;
+                background-position: center;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                padding: 55px 0;
+            }
+
+            .hero h1 {
+                font-size: clamp(39px,7vw,54px);
+                letter-spacing: -1.5px;
+            }
+
+            .hero-description {
+                font-size: 14px;
+                max-width: 560px;
+            }
+
+            .quote-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .quote-body {
+                grid-template-columns: 1fr;
+            }
+
+            .quote-visual {
+                display: grid;
+                grid-template-columns: 140px 1fr;
+            }
+
+            .quote-visual img {
+                height: 100%;
+                min-height: 150px;
+            }
+
+            .coverage-panel {
+                min-height: 320px;
+            }
+
+            .cover-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .cover-card > p {
+                min-height: 0;
+            }
+
+            .addons-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .addons-image {
+                min-height: 320px;
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(2,minmax(0,1fr));
+            }
+
+            .claims-banner {
+                grid-template-columns: 1fr;
+            }
+
+            .claims-image {
+                min-height: 260px;
+            }
+
+            .claims-image::after {
+                background: linear-gradient(0deg,var(--navy),transparent 65%);
+            }
+
+            .faq-layout {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .faq-intro {
+                position: static;
+            }
+
+            .cta-inner {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .footer-main {
+                grid-template-columns: repeat(2,minmax(0,1fr));
+            }
+        }
+
+        @media (max-width: 520px) {
+            .container {
+                width: calc(100% - 28px);
+            }
+
+            .section {
+                padding: 52px 0;
+            }
+
+            .section-heading {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .hero {
+                min-height: 490px;
+            }
+
+            .hero-content {
+                padding: 45px 0;
+            }
+
+            .hero .eyebrow {
+                font-size: 10px;
+                letter-spacing: 1.2px;
+                margin-bottom: 20px;
+            }
+
+            .hero h1 {
+                font-size: 39px;
+                line-height: 1.15;
+                letter-spacing: -1.2px;
+            }
+
+            .hero-description {
+                font-size: 12px;
+                line-height: 1.85;
+            }
+
+            .hero-actions {
+                gap: 10px;
+                margin-top: 24px;
+                margin-bottom: 25px;
+            }
+
+            .hero-actions .btn {
+                flex: 1 1 auto;
+                padding: 13px 15px;
+                font-size: 12px;
+            }
+
+            .hero-points {
+                gap: 12px 16px;
+            }
+
+            .hero-point {
+                font-size: 10px;
+            }
+
+            .quote-card {
+                padding: 11px;
+            }
+
+            .vehicle-tabs {
+                grid-template-columns: repeat(2,minmax(0,1fr));
+            }
+
+            .vehicle-tab {
+                min-height: 45px;
+                font-size: 11px;
+            }
+
+            .quote-visual {
+                grid-template-columns: 110px 1fr;
+            }
+
+            .quote-visual img {
+                min-height: 150px;
+            }
+
+            .quote-visual-content {
+                padding: 12px;
+            }
+
+            .quote-visual h3 {
+                font-size: 13px;
+            }
+
+            .quote-visual p {
+                font-size: 10px;
+            }
+
+            .quote-form-wrap h2 {
+                font-size: 18px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .field.full {
+                grid-column: auto;
+            }
+
+            .coverage-panel {
+                padding: 25px 22px;
+            }
+
+            .coverage-panel h2 {
+                font-size: 25px;
+            }
+
+            .plans-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .plan-image {
+                height: 205px;
+            }
+
+            .addons-list {
+                grid-template-columns: 1fr;
+            }
+
+            .addons-heading {
+                font-size: 27px;
+            }
+
+            .why-grid {
+                grid-template-columns: repeat(2,minmax(0,1fr));
+            }
+
+            .why-item,
+            .why-item:nth-child(3) {
+                border-right: 1px solid #DDE8F2;
+            }
+
+            .why-item:nth-child(even) {
+                border-right: 0;
+            }
+
+            .why-item:nth-child(3),
+            .why-item:nth-child(4) {
+                border-bottom: 1px solid #DDE8F2;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .step-card {
+                padding: 20px;
+            }
+
+            .claims-copy {
+                padding: 27px 22px;
+            }
+
+            .faq-intro h2 {
+                font-size: 28px;
+            }
+
+            .footer-main {
+                grid-template-columns: 1fr 1fr;
+                gap: 25px 18px;
+            }
+
+            .footer-about {
+                grid-column: 1 / -1;
+            }
+
+            .footer-bottom {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *, *::before, *::after {
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="container header-inner">
+
+            <a href="index.html" class="brand" aria-label="VittPoint Home">
+                <div class="brand-mark">
+                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M3 12 L21 12 L34 39 L47 17 L56 17 L34 53 L26 53 Z" fill="#0B2340"/>
+                        <path d="M29 17 C35 6 49 5 56 13 C63 21 56 34 45 39 L38 43 L34 37 L42 32 C48 28 50 21 46 17 C42 13 35 15 32 21 Z" fill="#0B2340"/>
+                        <circle cx="39" cy="23" r="5" fill="#F5A900"/>
+                        <path d="M39 30 L26 51 L34 51 L45 32 Z" fill="#F5A900"/>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <div class="brand-name">
+                        <span class="vitt">Vitt</span><span class="point">Point</span><sup>™</sup>
+                    </div>
+                    <small>YOUR FINANCIAL STARTING POINT</small>
+                </div>
+            </a>
+
+            <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="home-loan.html">Home Loan</a>
+                <a href="personal-loan.html">Personal Loan</a>
+                <a href="business-loan.html">Business Loan</a>
+                <a href="vehicle-insurance.html" class="active">Vehicle Insurance</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+           
+
+            <button class="menu-toggle" id="menuToggle" type="button"
+                    aria-label="Open navigation menu" aria-expanded="false">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- HERO: NO ENQUIRY BOX ON THE RIGHT -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+
+                   
+
+                    <h1>
+                        Drive Safe,
+                        <span>Stay Protected.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Protect your car, bike or commercial vehicle with suitable
+                        insurance coverage. Explore policy options, understand
+                        benefits and exclusions, and make informed decisions
+                        before choosing your vehicle insurance.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#get-quote" class="btn">
+                            Get Vehicle Quote
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+
+                        <a href="#insurance-plans" class="btn btn-outline">
+                            Explore Plans
+                        </a>
+                    </div>
+
+                    <div class="hero-points">
+                        <div class="hero-point">
+                            <i class="fa-solid fa-check"></i>
+                            <span>Explore Coverage Options</span>
+                        </div>
+
+                        <div class="hero-point">
+                            <i class="fa-solid fa-check"></i>
+                            <span>Understand Policy Benefits</span>
+                        </div>
+
+                        <div class="hero-point">
+                            <i class="fa-solid fa-check"></i>
+                            <span>Learn About Claims</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- VEHICLE QUOTE FORM -->
+        <section class="quote-section" id="get-quote">
+            <div class="container">
+                <div class="quote-layout">
+
+                    <div class="quote-card">
+
+                        <div class="vehicle-tabs" role="group" aria-label="Choose vehicle category">
+                            <button class="vehicle-tab active" type="button" data-vehicle="car" aria-pressed="true">
+                                <i class="fa-solid fa-car"></i> Car
+                            </button>
+                            <button class="vehicle-tab" type="button" data-vehicle="bike" aria-pressed="false">
+                                <i class="fa-solid fa-motorcycle"></i> Bike
+                            </button>
+                            <button class="vehicle-tab" type="button" data-vehicle="commercial" aria-pressed="false">
+                                <i class="fa-solid fa-truck"></i> Commercial
+                            </button>
+                            <button class="vehicle-tab" type="button" data-vehicle="threewheeler" aria-pressed="false">
+                                <i class="fa-solid fa-truck-pickup"></i> Three Wheeler
+                            </button>
+                        </div>
+
+                        <div class="quote-body">
+
+                            <aside class="quote-visual">
+                                <img id="vehiclePreview"
+                                     src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=700&q=80"
+                                     alt="Car available for vehicle insurance">
+
+                                <div class="quote-visual-content">
+                                    <h3 id="vehiclePreviewTitle">Protect Your Car, Drive Worry Free</h3>
+                                    <p id="vehiclePreviewDescription">
+                                        Explore cover options for your car and find a policy that suits your needs.
+                                    </p>
+                                    <div class="mini-line"></div>
+                                </div>
+                            </aside>
+
+                            <div class="quote-form-wrap">
+                                <h2>Get Your Vehicle Insurance Quote</h2>
+                                <p class="form-intro">Share your vehicle details to start your insurance enquiry.</p>
+
+                                <form id="vehicleQuoteForm">
+                                    <input type="hidden" id="vehicleType" name="vehicleType" value="Car">
+
+                                    <div class="form-grid">
+
+                                        <div class="field">
+                                            <label for="registrationNumber">Registration Number</label>
+                                            <input type="text" id="registrationNumber" name="registrationNumber"
+                                                   placeholder="e.g. DL 01 AB 1234" maxlength="15"
+                                                   autocomplete="off" required>
+                                        </div>
+
+                                        <div class="field">
+                                            <label for="vehicleMake">Vehicle Make</label>
+                                            <select id="vehicleMake" name="vehicleMake" required>
+                                                <option value="">Select Make</option>
+                                                <option>Maruti Suzuki</option>
+                                                <option>Hyundai</option>
+                                                <option>Tata</option>
+                                                <option>Mahindra</option>
+                                                <option>Toyota</option>
+                                                <option>Kia</option>
+                                                <option>Honda</option>
+                                                <option>Renault</option>
+                                                <option>Volkswagen</option>
+                                                <option>Skoda</option>
+                                                <option>BMW</option>
+                                                <option>Mercedes-Benz</option>
+                                                <option>TVS</option>
+                                                <option>Bajaj</option>
+                                                <option>Hero</option>
+                                                <option>Royal Enfield</option>
+                                                <option>Ashok Leyland</option>
+                                                <option>Eicher</option>
+                                                <option>Other</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="field">
+                                            <label for="vehicleModel">Model</label>
+                                            <input type="text" id="vehicleModel" name="vehicleModel"
+                                                   placeholder="Enter vehicle model" required>
+                                        </div>
+
+                                        <div class="field">
+                                            <label for="fuelType">Fuel Type</label>
+                                            <select id="fuelType" name="fuelType" required>
+                                                <option value="">Select Fuel Type</option>
+                                                <option>Petrol</option>
+                                                <option>Diesel</option>
+                                                <option>CNG</option>
+                                                <option>Electric</option>
+                                                <option>Hybrid</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="field">
+                                            <label for="manufacturingYear">Manufacturing Year</label>
+                                            <select id="manufacturingYear" name="manufacturingYear" required>
+                                                <option value="">Select Year</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="field">
+                                            <label for="policyStatus">Current Policy Status</label>
+                                            <select id="policyStatus" name="policyStatus" required>
+                                                <option value="">Select Status</option>
+                                                <option>Policy is active</option>
+                                                <option>Policy has expired</option>
+                                                <option>New vehicle</option>
+                                                <option>Not sure</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="field">
+                                            <label for="city">Registration City</label>
+                                            <input type="text" id="city" name="city"
+                                                   placeholder="e.g. New Delhi" required>
+                                        </div>
+
+                                        <div class="field">
+                                            <label for="coverageType">Preferred Cover</label>
+                                            <select id="coverageType" name="coverageType" required>
+                                                <option value="">Choose Coverage</option>
+                                                <option value="Third-party">Third-party</option>
+                                                <option value="Comprehensive">Comprehensive</option>
+                                                <option value="Own-damage">Own-damage</option>
+                                                <option value="Need guidance">Need guidance</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="field full">
+                                            <label for="customerPhone">Mobile Number</label>
+                                            <input type="tel" id="customerPhone" name="customerPhone"
+                                                   placeholder="Enter 10-digit mobile number"
+                                                   inputmode="numeric" pattern="[6-9][0-9]{9}"
+                                                   maxlength="10" required>
+                                        </div>
+
+                                    </div>
+
+                                    <button type="submit" class="btn form-submit">
+                                        Submit Insurance Enquiry
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </button>
+
+                                    <p class="secure-note">
+                                        <i class="fa-solid fa-shield-halved"></i>
+                                        This demonstration form does not transmit your details.
+                                    </p>
+
+                                    <div class="quote-message" id="quoteMessage" role="status" aria-live="polite"></div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <aside class="coverage-panel">
+                        <h2>Comprehensive Coverage for Your Vehicle</h2>
+                        <ul>
+                            <li><i class="fa-solid fa-circle-check"></i> Third-party liability cover</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Own-damage protection options</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Protection against covered natural calamities</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Theft and accidental damage options</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Optional add-on covers</li>
+                        </ul>
+                        <a href="#cover-types" class="btn">
+                            Understand Coverage <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </aside>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- INSURANCE PLANS -->
+        <section class="section" id="insurance-plans">
+            <div class="container">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">Insurance Categories</span>
+                        <h2>Protection for Every Journey</h2>
+                        <p>Explore options for personal vehicles and business transportation.</p>
+                    </div>
+                    <a href="#get-quote" class="text-link">
+                        Get a Quote <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="plans-grid">
+
+                    <article class="plan-card">
+                        <div class="plan-image">
+                            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80"
+                                 alt="Modern car on the road" loading="lazy">
+                            <span class="plan-tag">Personal Vehicle</span>
+                        </div>
+                        <div class="plan-content">
+                            <h3>Car Insurance</h3>
+                            <p>Explore third-party and comprehensive protection options for your car.</p>
+                            <a href="#get-quote" class="btn btn-outline">Explore Options <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="plan-card">
+                        <div class="plan-image">
+                            <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=900&q=80"
+                                 alt="Motorcycle parked outdoors" loading="lazy">
+                            <span class="plan-tag">Two Wheeler</span>
+                        </div>
+                        <div class="plan-content">
+                            <h3>Bike Insurance</h3>
+                            <p>Explore cover options for your motorcycle or scooter and ride with confidence.</p>
+                            <a href="#get-quote" class="btn btn-outline">Explore Options <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="plan-card">
+                        <div class="plan-image">
+                            <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=900&q=80"
+                                 alt="Commercial goods truck" loading="lazy">
+                            <span class="plan-tag">Business Vehicle</span>
+                        </div>
+                        <div class="plan-content">
+                            <h3>Commercial Vehicle</h3>
+                            <p>Explore insurance options for eligible goods vehicles and business fleets.</p>
+                            <a href="#get-quote" class="btn btn-outline">Explore Options <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="plan-card">
+                        <div class="plan-image">
+                            <img src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?auto=format&fit=crop&w=900&q=80"
+                                 alt="Three wheeler vehicle" loading="lazy">
+                            <span class="plan-tag">Passenger Vehicle</span>
+                        </div>
+                        <div class="plan-content">
+                            <h3>Three Wheeler Insurance</h3>
+                            <p>Explore suitable cover for eligible auto-rickshaws and three-wheelers.</p>
+                            <a href="#get-quote" class="btn btn-outline">Explore Options <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- COVER TYPES -->
+        <section class="section cover-section" id="cover-types">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">Choose Your Protection</span>
+                        <h2>Understand Your Cover Options</h2>
+                        <p>Compare common motor insurance types before deciding which one suits your vehicle.</p>
+                    </div>
+                </div>
+
+                <div class="cover-grid">
+
+                    <article class="cover-card">
+                        <div class="cover-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                        <h3>Third-Party Insurance</h3>
+                        <p>Provides cover for eligible third-party legal liabilities arising from an insured vehicle accident, subject to policy terms.</p>
+                        <ul class="cover-list">
+                            <li><i class="fa-solid fa-check"></i> Third-party bodily injury liability</li>
+                            <li><i class="fa-solid fa-check"></i> Third-party property damage, subject to limits</li>
+                            <li><i class="fa-solid fa-check"></i> Required motor cover where mandated by law</li>
+                        </ul>
+                        <a href="#get-quote" class="btn btn-outline">Enquire About This Cover</a>
+                    </article>
+
+                    <article class="cover-card featured">
+                        <span class="recommended-label">Popular Option</span>
+                        <div class="cover-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h3>Comprehensive Insurance</h3>
+                        <p>Combines third-party liability cover with own-damage protection as defined by the policy.</p>
+                        <ul class="cover-list">
+                            <li><i class="fa-solid fa-check"></i> Third-party liability cover</li>
+                            <li><i class="fa-solid fa-check"></i> Covered accidental damage to your vehicle</li>
+                            <li><i class="fa-solid fa-check"></i> Theft and specified natural perils, subject to terms</li>
+                        </ul>
+                        <a href="#get-quote" class="btn">Explore Comprehensive Cover</a>
+                    </article>
+
+                    <article class="cover-card">
+                        <div class="cover-icon"><i class="fa-solid fa-car-burst"></i></div>
+                        <h3>Standalone Own-Damage</h3>
+                        <p>Designed to cover specified damage to your own vehicle when paired with eligible third-party cover.</p>
+                        <ul class="cover-list">
+                            <li><i class="fa-solid fa-check"></i> Covered accidental damage</li>
+                            <li><i class="fa-solid fa-check"></i> Covered theft and specified perils</li>
+                            <li><i class="fa-solid fa-check"></i> Availability subject to eligibility and policy rules</li>
+                        </ul>
+                        <a href="#get-quote" class="btn btn-outline">Explore Own-Damage Cover</a>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ADD-ONS -->
+        <section class="section" id="add-ons">
+            <div class="container">
+                <div class="addons-layout">
+
+                    <div class="addons-image">
+                        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1100&q=85"
+                             alt="Car driving on a scenic road" loading="lazy">
+                        <div class="addons-image-caption">
+                            <h3>Make Your Cover Work for You</h3>
+                            <p>Explore optional add-ons and check their eligibility, exclusions and additional premium.</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="eyebrow">Optional Add-ons</span>
+                        <h2 class="addons-heading">Extra Protection, When You Need It</h2>
+                        <p class="addons-intro">
+                            Add-ons may extend your cover beyond the standard policy.
+                            Availability varies by insurer, vehicle and policy terms.
+                        </p>
+
+                        <div class="addons-list">
+
+                            <article class="addon-item">
+                                <div class="addon-icon"><i class="fa-solid fa-car-side"></i></div>
+                                <div>
+                                    <h4>Zero Depreciation</h4>
+                                    <p>Reduces depreciation deductions on eligible replaced parts as per terms.</p>
+                                </div>
+                            </article>
+
+                            <article class="addon-item">
+                                <div class="addon-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                                <div>
+                                    <h4>Roadside Assistance</h4>
+                                    <p>Help for specified breakdown or roadside emergencies.</p>
+                                </div>
+                            </article>
+
+                            <article class="addon-item">
+                                <div class="addon-icon"><i class="fa-solid fa-gears"></i></div>
+                                <div>
+                                    <h4>Engine Protection</h4>
+                                    <p>Cover for specified engine-related damage, subject to exclusions.</p>
+                                </div>
+                            </article>
+
+                            <article class="addon-item">
+                                <div class="addon-icon"><i class="fa-solid fa-receipt"></i></div>
+                                <div>
+                                    <h4>Return to Invoice</h4>
+                                    <p>May bridge the difference in eligible total-loss or theft claims.</p>
+                                </div>
+                            </article>
+
+                            <article class="addon-item">
+                                <div class="addon-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                                <div>
+                                    <h4>Consumables Cover</h4>
+                                    <p>May cover eligible consumable items during an admissible claim.</p>
+                                </div>
+                            </article>
+
+                            <article class="addon-item">
+                                <div class="addon-icon"><i class="fa-solid fa-user-shield"></i></div>
+                                <div>
+                                    <h4>Personal Accident</h4>
+                                    <p>Explore applicable personal accident protection requirements and options.</p>
+                                </div>
+                            </article>
+
+                        </div>
+
+                        <a href="#get-quote" class="btn" style="margin-top:22px;">
+                            Ask About Add-ons <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- WHY VITTPOINT -->
+        <section class="section why-section">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">The VittPoint Approach</span>
+                        <h2>Why Explore Insurance With VittPoint?</h2>
+                        <p>Clear information and guided support to help you understand your options.</p>
+                    </div>
+                </div>
+
+                <div class="why-grid">
+                    <article class="why-item">
+                        <div class="why-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                        <h3>Compare Options</h3>
+                        <p>Review available coverage and policy features.</p>
+                    </article>
+
+                    <article class="why-item">
+                        <div class="why-icon"><i class="fa-solid fa-clock"></i></div>
+                        <h3>Quick Enquiry</h3>
+                        <p>Share your vehicle details through one form.</p>
+                    </article>
+
+                    <article class="why-item">
+                        <div class="why-icon"><i class="fa-solid fa-file-shield"></i></div>
+                        <h3>Understand Cover</h3>
+                        <p>Learn about common inclusions and exclusions.</p>
+                    </article>
+
+                    <article class="why-item">
+                        <div class="why-icon"><i class="fa-solid fa-headset"></i></div>
+                        <h3>Guided Support</h3>
+                        <p>Get help understanding your insurance enquiry.</p>
+                    </article>
+
+                    <article class="why-item">
+                        <div class="why-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                        <h3>Renewal Awareness</h3>
+                        <p>Review your policy expiry and renewal needs.</p>
+                    </article>
+
+                    <article class="why-item">
+                        <div class="why-icon"><i class="fa-solid fa-file-circle-check"></i></div>
+                        <h3>Claim Guidance</h3>
+                        <p>Understand common claim steps and documents.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section class="section" id="how-it-works">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">Simple Process</span>
+                        <h2>How Vehicle Insurance Works</h2>
+                        <p>Follow these steps to explore a suitable policy through the relevant insurer or authorised provider.</p>
+                    </div>
+                </div>
+
+                <div class="steps-grid">
+                    <article class="step-card">
+                        <span class="step-number">01</span>
+                        <div class="step-icon"><i class="fa-solid fa-clipboard-list"></i></div>
+                        <h3>Share Vehicle Details</h3>
+                        <p>Provide vehicle information, registration details and current policy status.</p>
+                    </article>
+
+                    <article class="step-card">
+                        <span class="step-number">02</span>
+                        <div class="step-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                        <h3>Review Cover Options</h3>
+                        <p>Understand available policy types, add-ons, exclusions and premium factors.</p>
+                    </article>
+
+                    <article class="step-card">
+                        <span class="step-number">03</span>
+                        <div class="step-icon"><i class="fa-solid fa-file-signature"></i></div>
+                        <h3>Complete Insurer Process</h3>
+                        <p>Confirm your details and follow the insurer's proposal and payment process.</p>
+                    </article>
+
+                    <article class="step-card">
+                        <span class="step-number">04</span>
+                        <div class="step-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h3>Check Your Policy</h3>
+                        <p>Review the issued policy, coverage limits, insured details and validity dates.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CLAIMS BANNER -->
+        <section class="section claims-section" id="claims">
+            <div class="container">
+                <div class="claims-banner">
+
+                    <div class="claims-copy">
+                        <span class="eyebrow">Claims Information</span>
+                        <h2>Know What to Do After an Accident</h2>
+                        <p>
+                            Prioritise safety, contact appropriate emergency services when necessary,
+                            notify your insurer promptly and follow its claim instructions. Coverage
+                            and claim settlement depend on the policy terms and assessment.
+                        </p>
+                        <a href="#claim-steps" class="btn">
+                            View Claim Steps <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="claims-image">
+                        <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1100&q=85"
+                             alt="Vehicle on a road" loading="lazy">
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CLAIM CHECKLIST -->
+        <section class="section" id="claim-steps" style="padding-top:0;">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">Claim Checklist</span>
+                        <h2>Common Steps After a Claim Event</h2>
+                        <p>Always follow the specific instructions issued by your insurance company.</p>
+                    </div>
+                </div>
+
+                <div class="steps-grid">
+                    <article class="step-card">
+                        <div class="step-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        <h3>Ensure Safety</h3>
+                        <p>Move to a safe place if possible and contact emergency services if required.</p>
+                    </article>
+
+                    <article class="step-card">
+                        <div class="step-icon"><i class="fa-solid fa-phone-volume"></i></div>
+                        <h3>Notify the Insurer</h3>
+                        <p>Report the incident promptly using the insurer's official claim channel.</p>
+                    </article>
+
+                    <article class="step-card">
+                        <div class="step-icon"><i class="fa-solid fa-camera"></i></div>
+                        <h3>Keep Evidence</h3>
+                        <p>Where safe and appropriate, record the incident details and retain relevant documents.</p>
+                    </article>
+
+                    <article class="step-card">
+                        <div class="step-icon"><i class="fa-solid fa-file-lines"></i></div>
+                        <h3>Submit Documents</h3>
+                        <p>Provide the requested documents and wait for the insurer's assessment and instructions.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section" id="faqs" style="background:#F7FAFD;">
+            <div class="container">
+                <div class="faq-layout">
+
+                    <div class="faq-intro">
+                        <span class="eyebrow">FAQs</span>
+                        <h2>Questions About Vehicle Insurance?</h2>
+                        <p>
+                            Find answers to common questions about vehicle cover, policy renewal,
+                            add-ons and claims.
+                        </p>
+                        <a href="#get-quote" class="btn">
+                            Ask About Your Vehicle <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="faq-list">
+
+                        <article class="faq-item open">
+                            <button class="faq-question" type="button" aria-expanded="true">
+                                What is vehicle insurance?
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                            <div class="faq-answer">
+                                Vehicle insurance is a policy that provides specified financial protection
+                                against covered risks and liabilities, subject to the terms, limits,
+                                deductibles and exclusions in the policy.
+                            </div>
+                        </article>
+
+                        <article class="faq-item">
+                            <button class="faq-question" type="button" aria-expanded="false">
+                                What is the difference between third-party and comprehensive insurance?
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                            <div class="faq-answer">
+                                Third-party insurance covers specified legal liabilities to others.
+                                Comprehensive insurance generally combines third-party liability cover
+                                with own-damage protection for covered events. Check the policy wording
+                                for exact coverage and exclusions.
+                            </div>
+                        </article>
+
+                        <article class="faq-item">
+                            <button class="faq-question" type="button" aria-expanded="false">
+                                How is a vehicle insurance premium calculated?
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                            <div class="faq-answer">
+                                Premiums can depend on vehicle type, make, model, age, location,
+                                insured declared value where applicable, selected cover, add-ons,
+                                claim history and insurer pricing. The insurer provides the actual quote.
+                            </div>
+                        </article>
+
+                        <article class="faq-item">
+                            <button class="faq-question" type="button" aria-expanded="false">
+                                Can I renew an expired vehicle insurance policy?
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                            <div class="faq-answer">
+                                Renewal may be possible, but the insurer's process and inspection
+                                requirements can vary. Contact the insurer promptly and do not assume
+                                that cover is active until the policy has been issued and its validity confirmed.
+                            </div>
+                        </article>
+
+                        <article class="faq-item">
+                            <button class="faq-question" type="button" aria-expanded="false">
+                                What documents may be required for a claim?
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                            <div class="faq-answer">
+                                Depending on the incident, an insurer may request policy details,
+                                registration certificate, driving licence, claim form, photographs,
+                                repair estimates, FIR or other supporting documents where applicable.
+                            </div>
+                        </article>
+
+                        <article class="faq-item">
+                            <button class="faq-question" type="button" aria-expanded="false">
+                                Are add-ons included in every insurance policy?
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                            <div class="faq-answer">
+                                No. Add-ons are optional in many policies, may carry an additional premium
+                                and are subject to eligibility and availability. Review the policy wording
+                                before selecting them.
+                            </div>
+                        </article>
+
+                        <article class="faq-item">
+                            <button class="faq-question" type="button" aria-expanded="false">
+                                Does submitting this form purchase insurance?
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                            <div class="faq-answer">
+                                No. This page's sample form is for demonstration only. It does not issue
+                                a policy, calculate a live insurer premium or submit your details to an
+                                insurance company. A real purchase requires an integrated insurer process.
+                            </div>
+                        </article>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FINAL CTA -->
+        <section class="final-cta">
+            <div class="container cta-inner">
+
+                <div>
+                    <h2>Ready to Explore Vehicle Insurance?</h2>
+                    <p>Start with your vehicle details and understand your available cover options.</p>
+
+                    <div class="cta-vehicle-links">
+                        <a href="#get-quote" data-cta-vehicle="car">
+                            <i class="fa-solid fa-car"></i> Cars
+                        </a>
+                        <a href="#get-quote" data-cta-vehicle="bike">
+                            <i class="fa-solid fa-motorcycle"></i> Bikes
+                        </a>
+                        <a href="#get-quote" data-cta-vehicle="commercial">
+                            <i class="fa-solid fa-truck"></i> Commercial
+                        </a>
+                        <a href="#get-quote" data-cta-vehicle="threewheeler">
+                            <i class="fa-solid fa-truck-pickup"></i> Three Wheeler
+                        </a>
+                    </div>
+                </div>
+
+                <a href="#get-quote" class="btn">
+                    Start Your Enquiry <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+
+            <div class="footer-main">
+
+                <div class="footer-about">
+                    <a href="index.html" class="brand footer-brand" aria-label="VittPoint Home">
+                        <div class="brand-mark">
+                            <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M3 12 L21 12 L34 39 L47 17 L56 17 L34 53 L26 53 Z" fill="#0B2340"/>
+                                <path d="M29 17 C35 6 49 5 56 13 C63 21 56 34 45 39 L38 43 L34 37 L42 32 C48 28 50 21 46 17 C42 13 35 15 32 21 Z" fill="#0B2340"/>
+                                <circle cx="39" cy="23" r="5" fill="#F5A900"/>
+                                <path d="M39 30 L26 51 L34 51 L45 32 Z" fill="#F5A900"/>
+                            </svg>
+                        </div>
+                        <div class="brand-text">
+                            <div class="brand-name">
+                                <span class="vitt">Vitt</span><span class="point">Point</span><sup>™</sup>
+                            </div>
+                            <small>YOUR FINANCIAL STARTING POINT</small>
+                        </div>
+                    </a>
+
+                    <p>
+                        VittPoint helps visitors explore financial and insurance
+                        information to better understand their options.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="#faqs">FAQs</a>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <a href="home-loan.html">Home Loan</a>
+                    <a href="personal-loan.html">Personal Loan</a>
+                    <a href="business-loan.html">Business Loan</a>
+                    <a href="vehicle-insurance.html">Vehicle Insurance</a>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Vehicle Insurance</h3>
+                    <a href="#insurance-plans">Car Insurance</a>
+                    <a href="#insurance-plans">Bike Insurance</a>
+                    <a href="#insurance-plans">Commercial Vehicle</a>
+                    <a href="#cover-types">Types of Coverage</a>
+                    <a href="#claims">Claims Information</a>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>© <span id="currentYear"></span> VittPoint. All rights reserved.</p>
+
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+
+                <p>Drive safely. Stay informed.</p>
+            </div>
+
+            <p class="footer-disclaimer">
+                <strong>Disclaimer:</strong> This page is an informational website template.
+                Coverage descriptions are general and do not replace policy wording. Actual
+                premiums, eligibility, coverage, exclusions, add-ons and claim decisions are
+                determined by the relevant insurer. This demonstration page is not an insurance
+                quotation or policy issuance service.
+            </p>
+
+        </div>
+    </footer>
+
+    <script>
+        // Mobile navigation
+        const menuToggle = document.getElementById("menuToggle");
+        const mainNav = document.getElementById("mainNav");
+
+        menuToggle.addEventListener("click", function () {
+            const isOpen = mainNav.classList.toggle("open");
+
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen ? "Close navigation menu" : "Open navigation menu"
+            );
+
+            menuToggle.innerHTML = isOpen
+                ? '<i class="fa-solid fa-xmark"></i>'
+                : '<i class="fa-solid fa-bars"></i>';
+        });
+
+        mainNav.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                mainNav.classList.remove("open");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute("aria-label", "Open navigation menu");
+                menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+            });
+        });
+
+        // Manufacturing years
+        const yearSelect = document.getElementById("manufacturingYear");
+        const currentYear = new Date().getFullYear();
+
+        for (let year = currentYear; year >= currentYear - 25; year--) {
+            const option = document.createElement("option");
+            option.value = year;
+            option.textContent = year;
+            yearSelect.appendChild(option);
+        }
+
+        // Vehicle categories and preview images
+        const vehicleSettings = {
+            car: {
+                label: "Car",
+                title: "Protect Your Car, Drive Worry Free",
+                description: "Explore cover options for your car and find a policy that suits your needs.",
+                image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=700&q=80",
+                alt: "Car for insurance"
+            },
+            bike: {
+                label: "Bike",
+                title: "Ride With More Confidence",
+                description: "Explore insurance cover for your motorcycle or scooter.",
+                image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=700&q=80",
+                alt: "Motorcycle for insurance"
+            },
+            commercial: {
+                label: "Commercial Vehicle",
+                title: "Keep Your Business Moving",
+                description: "Explore insurance options for eligible commercial vehicles.",
+                image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=700&q=80",
+                alt: "Commercial truck for insurance"
+            },
+            threewheeler: {
+                label: "Three Wheeler",
+                title: "Cover for Every Mile",
+                description: "Explore suitable options for eligible three-wheelers.",
+                image: "https://images.unsplash.com/photo-1625047509168-a7026f36de04?auto=format&fit=crop&w=700&q=80",
+                alt: "Three wheeler vehicle"
+            }
+        };
+
+        const vehicleTabs = document.querySelectorAll(".vehicle-tab");
+        const vehicleTypeInput = document.getElementById("vehicleType");
+        const vehiclePreview = document.getElementById("vehiclePreview");
+        const vehiclePreviewTitle = document.getElementById("vehiclePreviewTitle");
+        const vehiclePreviewDescription = document.getElementById("vehiclePreviewDescription");
+
+        function setVehicleType(type) {
+            const selected = vehicleSettings[type];
+            if (!selected) return;
+
+            vehicleTabs.forEach(function (tab) {
+                const isActive = tab.dataset.vehicle === type;
+                tab.classList.toggle("active", isActive);
+                tab.setAttribute("aria-pressed", String(isActive));
+            });
+
+            vehicleTypeInput.value = selected.label;
+            vehiclePreview.src = selected.image;
+            vehiclePreview.alt = selected.alt;
+            vehiclePreviewTitle.textContent = selected.title;
+            vehiclePreviewDescription.textContent = selected.description;
+        }
+
+        vehicleTabs.forEach(function (tab) {
+            tab.addEventListener("click", function () {
+                setVehicleType(tab.dataset.vehicle);
+            });
+        });
+
+        // Final CTA vehicle shortcuts
+        document.querySelectorAll("[data-cta-vehicle]").forEach(function (link) {
+            link.addEventListener("click", function () {
+                setVehicleType(link.dataset.ctaVehicle);
+            });
+        });
+
+        // Registration input formatting
+        const registrationInput = document.getElementById("registrationNumber");
+
+        registrationInput.addEventListener("input", function () {
+            this.value = this.value.toUpperCase().replace(/[^A-Z0-9 ]/g, "");
+        });
+
+        // FAQ accordion
+        document.querySelectorAll(".faq-question").forEach(function (button) {
+            button.addEventListener("click", function () {
+                const item = button.closest(".faq-item");
+                const willOpen = !item.classList.contains("open");
+
+                document.querySelectorAll(".faq-item").forEach(function (otherItem) {
+                    otherItem.classList.remove("open");
+                    otherItem.querySelector(".faq-question")
+                        .setAttribute("aria-expanded", "false");
+                });
+
+                if (willOpen) {
+                    item.classList.add("open");
+                    button.setAttribute("aria-expanded", "true");
+                }
+            });
+        });
+
+        // Demo enquiry form
+        // This validates the form locally; it does not send data to a server.
+        const quoteForm = document.getElementById("vehicleQuoteForm");
+        const quoteMessage = document.getElementById("quoteMessage");
+
+        quoteForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            if (!quoteForm.checkValidity()) {
+                quoteForm.reportValidity();
+                return;
+            }
+
+            const formData = new FormData(quoteForm);
+            const vehicle = formData.get("vehicleType");
+            const registration = formData.get("registrationNumber");
+
+            quoteMessage.textContent =
+                "Demo enquiry validated for your " + vehicle +
+                " (" + registration + "). No information has been sent or saved. " +
+                "Connect this form to your ASP.NET MVC backend and authorised enquiry process to receive real enquiries.";
+
+            quoteMessage.classList.add("show");
+            quoteMessage.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest"
+            });
+        });
+
+        // Dynamic copyright year
+        document.getElementById("currentYear").textContent = currentYear;
+    </script>
+
+</body>
+</html>

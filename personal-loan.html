@@ -1,0 +1,1253 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0B2340">
+    <meta name="description" content="Explore personal loan options with VittPoint, estimate EMIs, review eligibility and submit an enquiry.">
+    <title>Personal Loan | VittPoint - Your Financial Starting Point</title>
+
+    <style>
+        :root {
+            --navy: #0B2340;
+            --navy-light: #15385f;
+            --gold: #F5A900;
+            --gold-dark: #d99500;
+            --white: #fff;
+            --background: #f6f8fc;
+            --text: #26354a;
+            --muted: #68778b;
+            --border: #e1e7ef;
+            --success: #16865c;
+            --shadow: 0 12px 35px rgba(11,35,64,.09);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 95px; }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text);
+            background: white;
+            line-height: 1.65;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        button, input, select, textarea { font: inherit; }
+        button, a { -webkit-tap-highlight-color: transparent; }
+
+        .container { width: min(1160px, 92%); margin: auto; }
+
+        /* HEADER */
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,.97);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+        }
+
+        .header-inner {
+            min-height: 82px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .brand-mark { width: 50px; height: 50px; flex-shrink: 0; }
+        .brand-mark svg { width: 100%; height: 100%; display: block; }
+
+        .brand-text { display: flex; flex-direction: column; }
+        .brand-name { display: flex; align-items: flex-start; font-size: 29px; font-weight: 800; line-height: 1; letter-spacing: -1px; white-space: nowrap; }
+        .brand-name .vitt { color: var(--navy); }
+        .brand-name .point { color: var(--gold); }
+        .brand-name sup { color: var(--navy); font-size: 9px; margin-left: 3px; }
+        .brand-text small { color: var(--navy); font-size: 8px; font-weight: 700; letter-spacing: 1px; margin-top: 5px; white-space: nowrap; }
+
+        .main-nav { display: flex; align-items: center; gap: 23px; }
+        .main-nav > a:not(.nav-cta) { font-size: 13px; font-weight: 700; color: #34445a; }
+        .main-nav > a:hover, .main-nav > a.active { color: var(--gold-dark); }
+
+        .nav-cta, .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .nav-cta, .btn-primary { background: var(--gold); color: var(--navy); }
+        .nav-cta:hover, .btn-primary:hover { background: #ffc13d; transform: translateY(-2px); }
+        .btn-outline { background: transparent; color: white; border-color: rgba(255,255,255,.6); }
+        .btn-outline:hover { background: rgba(255,255,255,.12); }
+
+        .menu-toggle {
+            display: none;
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--border);
+            background: white;
+            color: var(--navy);
+            border-radius: 8px;
+            font-size: 23px;
+            cursor: pointer;
+        }
+
+        /* HERO WITH REALISTIC IMAGE */
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            color: white;
+            padding: 75px 0;
+            background:
+                linear-gradient(90deg, rgba(6,25,47,.99) 0%,
+                    rgba(11,35,64,.96) 34%,
+                    rgba(11,35,64,.64) 56%,
+                    rgba(11,35,64,.12) 100%),
+                url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=85")
+                center/cover no-repeat;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            align-items: center;
+            gap: 45px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            font-size: 11px;
+            letter-spacing: 1.3px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before { content: ""; width: 25px; height: 2px; background: var(--gold); }
+        .hero .eyebrow { color: #ffd36c; margin-bottom: 18px; }
+
+        h1, h2, h3 { line-height: 1.2; }
+
+        .hero h1 {
+            max-width: 660px;
+            font-size: clamp(36px, 5vw, 56px);
+            letter-spacing: -1.5px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span { color: var(--gold); }
+        .hero-copy { max-width: 570px; color: #e0e8f2; font-size: 15px; margin-bottom: 25px; }
+
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 25px; }
+        .hero-points { display: flex; flex-wrap: wrap; gap: 10px 18px; color: #e6edf6; font-size: 12px; }
+        .hero-points span::before { content: "✓"; color: var(--gold); font-weight: 900; margin-right: 7px; }
+
+        .hero-card {
+            color: var(--text);
+            background: rgba(255,255,255,.98);
+            padding: 27px;
+            border-radius: 16px;
+            box-shadow: 0 25px 70px rgba(0,0,0,.25);
+            max-width: 470px;
+            justify-self: end;
+            width: 100%;
+        }
+
+        .hero-card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 20px; }
+        .hero-card h2 { color: var(--navy); font-size: 20px; }
+        .card-tag { background: #fff4d7; color: #765100; border-radius: 30px; padding: 5px 9px; font-size: 9px; font-weight: 800; white-space: nowrap; }
+
+        .quick-field, .field { margin-bottom: 15px; }
+        .quick-field label, .field label { display: block; color: #39485b; font-size: 12px; font-weight: 700; margin-bottom: 6px; }
+
+        .quick-field input, .quick-field select,
+        .field input, .field select, .field textarea {
+            width: 100%;
+            min-height: 45px;
+            border: 1px solid #dce3ed;
+            background: #fbfcfe;
+            color: var(--navy);
+            padding: 10px 12px;
+            border-radius: 7px;
+            outline: none;
+        }
+
+        .quick-field input:focus, .quick-field select:focus,
+        .field input:focus, .field select:focus, .field textarea:focus {
+            border-color: var(--gold-dark);
+            box-shadow: 0 0 0 3px rgba(245,169,0,.12);
+        }
+
+        .hero-card .btn { width: 100%; margin-top: 5px; }
+
+        .fine-print { font-size: 10px; color: var(--muted); line-height: 1.6; margin-top: 12px; }
+
+        /* TRUST STRIP */
+
+        .trust-strip { border-bottom: 1px solid var(--border); background: #fff; }
+        .trust-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; padding: 22px 0; }
+        .trust-item { display: flex; align-items: center; gap: 12px; justify-content: center; color: var(--navy); font-size: 12px; font-weight: 700; }
+        .trust-icon { display: grid; place-items: center; width: 39px; height: 39px; flex-shrink: 0; background: #fff0c6; border-radius: 50%; color: var(--navy); font-size: 19px; font-weight: 800; }
+
+        /* COMMON SECTIONS */
+
+        section.content-section { padding: 72px 0; }
+        .section-heading { text-align: center; max-width: 730px; margin: 0 auto 40px; }
+        .section-heading .eyebrow { color: var(--gold-dark); margin-bottom: 12px; }
+        .section-heading h2 { color: var(--navy); font-size: clamp(27px,3.5vw,38px); letter-spacing: -.7px; margin-bottom: 13px; }
+        .section-heading p { color: var(--muted); font-size: 14px; }
+
+        .purpose-section, .calculator-section, .documents-section, .faq-section { background: var(--background); }
+
+        /* PURPOSE CARDS WITH IMAGES */
+
+        .purpose-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+
+        .purpose-card {
+            display: block;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform .25s, box-shadow .25s;
+        }
+
+        .purpose-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+
+        .purpose-image { height: 145px; overflow: hidden; background: #e8edf4; }
+        .purpose-image img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .35s; }
+        .purpose-card:hover .purpose-image img { transform: scale(1.05); }
+        .purpose-content { padding: 18px; }
+        .purpose-card h3 { color: var(--navy); font-size: 17px; margin-bottom: 8px; }
+        .purpose-card p { color: var(--muted); font-size: 12px; margin-bottom: 12px; }
+        .text-link { color: #986600; font-size: 12px; font-weight: 800; }
+
+        /* BENEFITS */
+
+        .benefit-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+        .benefit-card { padding: 25px; border: 1px solid var(--border); border-radius: 12px; background: white; transition: .2s; }
+        .benefit-card:hover { border-color: #f1cf7d; box-shadow: var(--shadow); }
+        .purpose-icon { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 12px; background: #fff2d0; color: var(--navy); font-size: 22px; font-weight: 800; margin-bottom: 16px; }
+        .benefit-card h3 { color: var(--navy); font-size: 17px; margin-bottom: 9px; }
+        .benefit-card p { color: var(--muted); font-size: 13px; }
+
+        /* EMI CALCULATOR */
+
+        .calculator-layout { display: grid; grid-template-columns: 1fr .95fr; gap: 25px; align-items: stretch; }
+        .calculator-panel, .result-panel { padding: 30px; background: white; border: 1px solid var(--border); border-radius: 14px; }
+        .calculator-panel h3, .result-panel h3 { color: var(--navy); font-size: 21px; margin-bottom: 25px; }
+        .range-block { margin-bottom: 24px; }
+        .range-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+        .range-top label { font-size: 13px; font-weight: 700; color: #35445a; }
+        .range-value { color: var(--navy); font-size: 14px; font-weight: 800; white-space: nowrap; }
+        input[type="range"] { width: 100%; accent-color: var(--gold-dark); cursor: pointer; }
+        .range-limits { display: flex; justify-content: space-between; color: #7b8796; font-size: 10px; margin-top: 5px; }
+
+        .result-panel { background: linear-gradient(145deg,#15385f,#071a30); color: white; display: flex; flex-direction: column; justify-content: center; }
+        .result-panel h3 { color: white; }
+        .result-label { color: #d5dfec; font-size: 13px; margin-bottom: 5px; }
+        .emi-amount { font-size: clamp(32px,4vw,43px); font-weight: 800; color: var(--gold); line-height: 1.2; margin-bottom: 24px; overflow-wrap: anywhere; }
+        .result-row { display: flex; justify-content: space-between; gap: 15px; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,.15); font-size: 12px; }
+        .result-row span:first-child { color: #d5dfec; }
+        .result-row strong { text-align: right; }
+        .result-panel .btn { margin-top: 23px; }
+
+        /* ELIGIBILITY */
+
+        .eligibility-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: stretch; }
+        .eligibility-info { padding: 30px; background: var(--background); border-radius: 14px; }
+        .eligibility-info h3 { color: var(--navy); font-size: 22px; margin-bottom: 20px; }
+        .check-list { list-style: none; }
+        .check-list li { display: flex; gap: 11px; margin: 13px 0; color: #4c5b6f; font-size: 13px; }
+        .check-list li::before { content: "✓"; color: var(--success); font-weight: 900; }
+
+        .eligibility-form { padding: 28px; border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow); background: white; }
+        .eligibility-form h3 { color: var(--navy); font-size: 21px; margin-bottom: 8px; }
+        .eligibility-form > p { color: var(--muted); font-size: 12px; margin-bottom: 20px; }
+        .field textarea { min-height: 90px; resize: vertical; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+
+        .guidance-result { display: none; margin-top: 17px; padding: 14px; border-radius: 8px; background: #fff4d7; color: #614500; font-size: 12px; }
+        .guidance-result.show { display: block; }
+
+        /* ELIGIBILITY IMAGE */
+
+        .eligibility-photo { margin-top: 22px; height: 210px; border-radius: 13px; overflow: hidden; }
+        .eligibility-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        /* DOCUMENTS */
+
+        .documents-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+        .document-card { padding: 23px 18px; border-radius: 12px; background: white; border: 1px solid var(--border); }
+        .document-card span { font-size: 26px; display: block; margin-bottom: 12px; }
+        .document-card h3 { color: var(--navy); font-size: 15px; margin-bottom: 8px; }
+        .document-card p { color: var(--muted); font-size: 12px; }
+
+        /* PROCESS */
+
+        .process-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+        .process-card { padding: 23px 19px; border: 1px solid var(--border); border-radius: 12px; background: white; }
+        .process-number { display: grid; place-items: center; width: 39px; height: 39px; border-radius: 50%; background: var(--gold); color: var(--navy); font-weight: 900; margin-bottom: 16px; }
+        .process-card h3 { color: var(--navy); font-size: 16px; margin-bottom: 8px; }
+        .process-card p { color: var(--muted); font-size: 12px; }
+
+        /* FAQ */
+
+        .faq-list { max-width: 850px; margin: auto; }
+        .faq-item { background: white; border: 1px solid var(--border); border-radius: 9px; margin-bottom: 11px; overflow: hidden; }
+        .faq-question { width: 100%; border: 0; background: white; padding: 18px 20px; text-align: left; color: var(--navy); font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: space-between; gap: 18px; cursor: pointer; }
+        .faq-question span:last-child { color: var(--gold-dark); font-size: 22px; transition: transform .2s; }
+        .faq-answer { display: none; padding: 0 20px 18px; color: var(--muted); font-size: 13px; }
+        .faq-item.open .faq-answer { display: block; }
+        .faq-item.open .faq-question span:last-child { transform: rotate(45deg); }
+
+        /* ENQUIRY SECTION WITH IMAGE */
+
+        .enquiry-section {
+            padding: 70px 0;
+            background:
+                linear-gradient(90deg,rgba(7,24,43,.96),rgba(11,35,64,.92)),
+                url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80")
+                center/cover no-repeat;
+            color: white;
+        }
+
+        .enquiry-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 42px; align-items: center; }
+        .enquiry-copy .eyebrow { color: #ffd36c; margin-bottom: 16px; }
+        .enquiry-copy h2 { font-size: clamp(28px,4vw,39px); margin-bottom: 16px; }
+        .enquiry-copy p { color: #d5dfec; font-size: 14px; margin-bottom: 18px; }
+        .enquiry-copy .check-list li { color: #e2eaf5; }
+        .enquiry-copy .check-list li::before { color: var(--gold); }
+
+        .enquiry-form { padding: 28px; background: white; color: var(--text); border-radius: 14px; }
+        .enquiry-form h3 { color: var(--navy); font-size: 22px; margin-bottom: 7px; }
+        .enquiry-form > p { color: var(--muted); font-size: 12px; margin-bottom: 20px; }
+
+        .consent { display: flex; gap: 9px; align-items: flex-start; color: var(--muted); font-size: 10px; margin: 12px 0 18px; }
+        .consent input { margin-top: 4px; accent-color: var(--gold-dark); }
+        .enquiry-form .btn { width: 100%; }
+
+        .form-message { display: none; margin-top: 14px; padding: 13px; border-radius: 7px; font-size: 12px; overflow-wrap: anywhere; }
+        .form-message.show { display: block; }
+        .form-message.success { background: #e8f7ef; color: #146a43; }
+        .form-message.error { background: #fff0ef; color: #a12c27; }
+
+        /* DISCLAIMER */
+
+        .disclaimer { padding: 24px 0; background: #f0f3f8; border-top: 1px solid var(--border); }
+        .disclaimer h3 { color: var(--navy); font-size: 13px; margin-bottom: 7px; }
+        .disclaimer p { color: #68778b; font-size: 10px; line-height: 1.7; }
+
+        /* FOOTER */
+
+        .site-footer { background: #07182b; color: #c9d4e2; padding: 45px 0 0; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; padding-bottom: 35px; }
+        .footer-brand { margin-bottom: 17px; }
+        .footer-brand .brand-name .vitt, .footer-brand .brand-name sup { color: white; }
+        .footer-brand .brand-text small { color: #b7c5d8; }
+        .footer-about { max-width: 370px; font-size: 12px; color: #aebed0; }
+        .footer-column h3 { color: white; font-size: 15px; margin-bottom: 15px; }
+        .footer-links { display: grid; gap: 9px; }
+        .footer-links a { color: #b9c6d7; font-size: 12px; transition: color .2s; }
+        .footer-links a:hover { color: var(--gold); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,.12); padding: 18px 0; display: flex; justify-content: space-between; gap: 20px; font-size: 11px; color: #aebed0; }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1000px) {
+            .main-nav { gap: 12px; }
+            .main-nav > a:not(.nav-cta) { font-size: 12px; }
+            .documents-grid, .process-grid { grid-template-columns: repeat(2,1fr); }
+            .trust-item { justify-content: flex-start; }
+            .hero-grid { gap: 25px; }
+        }
+
+        @media (max-width: 800px) {
+            .header-inner { min-height: 72px; }
+            .menu-toggle { display: block; }
+
+            .main-nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                padding: 16px 4% 22px;
+                background: white;
+                border-bottom: 1px solid var(--border);
+                box-shadow: 0 15px 25px rgba(11,35,64,.08);
+                align-items: stretch;
+                gap: 0;
+            }
+
+            .main-nav.open { display: flex; flex-direction: column; }
+            .main-nav > a:not(.nav-cta) { padding: 12px 0; border-bottom: 1px solid #edf0f5; font-size: 14px; }
+            .main-nav .nav-cta { margin-top: 14px; }
+
+            .hero { padding: 50px 0; background-position: center; }
+            .hero-grid, .calculator-layout, .eligibility-grid, .enquiry-grid { grid-template-columns: 1fr; }
+            .hero-card { max-width: 560px; justify-self: start; }
+            .trust-grid { grid-template-columns: repeat(2,1fr); }
+            .purpose-grid, .benefit-grid { grid-template-columns: repeat(2,1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .footer-about-column { grid-column: 1/-1; }
+        }
+
+        @media (max-width: 520px) {
+            .container { width: 91%; }
+            .brand { gap: 6px; }
+            .brand-mark { width: 39px; height: 39px; }
+            .brand-name { font-size: 22px; }
+            .brand-text small { font-size: 6px; letter-spacing: .6px; }
+
+            .hero { padding: 42px 0; }
+            .hero h1 { font-size: 35px; }
+            .hero-copy { font-size: 14px; }
+            .hero-card, .calculator-panel, .result-panel, .eligibility-form, .eligibility-info, .enquiry-form { padding: 21px; }
+            section.content-section { padding: 52px 0; }
+
+            .trust-grid { gap: 16px 9px; }
+            .trust-item { font-size: 10px; gap: 7px; }
+            .trust-icon { width: 33px; height: 33px; font-size: 15px; }
+
+            .purpose-grid, .benefit-grid, .documents-grid, .process-grid { grid-template-columns: 1fr; }
+            .purpose-image { height: 190px; }
+            .form-row { grid-template-columns: 1fr; gap: 0; }
+            .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+            .footer-about-column { grid-column: auto; }
+            .footer-bottom { flex-direction: column; gap: 7px; }
+            .hero-actions .btn { width: 100%; }
+            .range-top { align-items: flex-start; flex-direction: column; gap: 4px; }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <a href="index.html" class="brand" aria-label="VittPoint Home">
+            <div class="brand-mark">
+                <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M3 12 L21 12 L34 39 L47 17 L56 17 L34 53 L26 53 Z" fill="#0B2340"/>
+                    <path d="M29 17 C35 6 49 5 56 13 C63 21 56 34 45 39 L38 43 L34 37 L42 32 C48 28 50 21 46 17 C42 13 35 15 32 21 Z" fill="#0B2340"/>
+                    <circle cx="39" cy="23" r="5" fill="#F5A900"/>
+                    <path d="M39 30 L26 51 L34 51 L45 32 Z" fill="#F5A900"/>
+                </svg>
+            </div>
+            <div class="brand-text">
+                <div class="brand-name"><span class="vitt">Vitt</span><span class="point">Point</span><sup>™</sup></div>
+                <small>YOUR FINANCIAL STARTING POINT</small>
+            </div>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+
+        <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="home-loan.html">Home Loan</a>
+            <a href="personal-loan.html" class="active">Personal Loan</a>
+            <a href="business-loan.html">Business Loan</a>
+            <a href="vehicle-insurance.html">Vehicle Insurance</a>
+            <a href="#apply" class="nav-cta">Get Assistance ↗</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div>
+                
+                <h1>Move Forward With a <span>Personal Loan</span></h1>
+                <p class="hero-copy">
+                    Planning a wedding, managing an unexpected expense or renovating
+                    your home? Explore personal loan options and understand estimated
+                    EMIs, eligibility factors and documentation before you apply.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#apply" class="btn btn-primary">Enquire Now ↗</a>
+                    <a href="#emi-calculator" class="btn btn-outline">Calculate EMI</a>
+                </div>
+
+                <div class="hero-points">
+                    <span>Understand your estimated EMI</span>
+                    <span>Review eligibility factors</span>
+                    <span>Know required documents</span>
+                </div>
+            </div>
+
+            <div class="hero-card">
+                <div class="hero-card-top">
+                    <h2>Explore Your Loan Needs</h2>
+                    <span class="card-tag">QUICK ENQUIRY</span>
+                </div>
+
+                <form id="quickEnquiryForm">
+                    <div class="quick-field">
+                        <label for="quickPurpose">What do you need a loan for?</label>
+                        <select id="quickPurpose" required>
+                            <option value="">Select loan purpose</option>
+                            <option>Medical Expenses</option>
+                            <option>Wedding Expenses</option>
+                            <option>Home Renovation</option>
+                            <option>Travel Plans</option>
+                            <option>Education Expenses</option>
+                            <option>Debt Consolidation</option>
+                            <option>Other Personal Needs</option>
+                        </select>
+                    </div>
+
+                    <div class="quick-field">
+                        <label for="quickAmount">Estimated loan amount</label>
+                        <select id="quickAmount" required>
+                            <option value="">Select amount</option>
+                            <option value="100000">Up to ₹1 lakh</option>
+                            <option value="300000">₹1 lakh – ₹3 lakh</option>
+                            <option value="500000">₹3 lakh – ₹5 lakh</option>
+                            <option value="1000000">₹5 lakh – ₹10 lakh</option>
+                            <option value="1500000">Above ₹10 lakh</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Explore Options ↗</button>
+                    <p class="fine-print">This is an initial enquiry, not a loan approval or an offer of credit. Availability depends on lender assessment.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST STRIP -->
+    <section class="trust-strip" aria-label="Personal loan information">
+        <div class="container trust-grid">
+            <div class="trust-item"><span class="trust-icon">₹</span><span>EMI Planning Tools</span></div>
+            <div class="trust-item"><span class="trust-icon">✓</span><span>Eligibility Guidance</span></div>
+            <div class="trust-item"><span class="trust-icon">▤</span><span>Document Checklist</span></div>
+            <div class="trust-item"><span class="trust-icon">↗</span><span>Enquiry Assistance</span></div>
+        </div>
+    </section>
+
+    <!-- LOAN PURPOSES WITH REALISTIC PHOTOS -->
+    <section class="content-section purpose-section" id="loan-purposes">
+        <div class="container">
+            <div class="section-heading">
+                <div class="eyebrow">FLEXIBLE FINANCIAL PLANNING</div>
+                <h2>What Can a Personal Loan Help With?</h2>
+                <p>Explore common reasons people consider a personal loan. Borrow only what you need and choose repayments that fit your budget.</p>
+            </div>
+
+            <div class="purpose-grid">
+                <a href="#apply" class="purpose-card" data-purpose="Medical Expenses">
+                    <div class="purpose-image">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=700&q=80" alt="Medical professional and healthcare equipment" loading="lazy">
+                    </div>
+                    <div class="purpose-content">
+                        <h3>Medical Expenses</h3>
+                        <p>Plan for unexpected medical bills and other urgent healthcare costs.</p>
+                        <span class="text-link">Explore assistance ↗</span>
+                    </div>
+                </a>
+
+                <a href="#apply" class="purpose-card" data-purpose="Wedding Expenses">
+                    <div class="purpose-image">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=700&q=80" alt="Wedding celebration setup" loading="lazy">
+                    </div>
+                    <div class="purpose-content">
+                        <h3>Wedding Expenses</h3>
+                        <p>Review financing options for eligible wedding and celebration expenses.</p>
+                        <span class="text-link">Explore assistance ↗</span>
+                    </div>
+                </a>
+
+                <a href="#apply" class="purpose-card" data-purpose="Home Renovation">
+                    <div class="purpose-image">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=700&q=80" alt="Modern renovated home interior" loading="lazy">
+                    </div>
+                    <div class="purpose-content">
+                        <h3>Home Renovation</h3>
+                        <p>Consider funding for repairs, improvements and home upgrades.</p>
+                        <span class="text-link">Explore assistance ↗</span>
+                    </div>
+                </a>
+
+                <a href="#apply" class="purpose-card" data-purpose="Travel Plans">
+                    <div class="purpose-image">
+                        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=700&q=80" alt="Passenger airplane flying above clouds" loading="lazy">
+                    </div>
+                    <div class="purpose-content">
+                        <h3>Travel Plans</h3>
+                        <p>Budget for planned travel while understanding the cost of borrowing.</p>
+                        <span class="text-link">Explore assistance ↗</span>
+                    </div>
+                </a>
+
+                <a href="#apply" class="purpose-card" data-purpose="Education Expenses">
+                    <div class="purpose-image">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=700&q=80" alt="University graduates celebrating their achievement" loading="lazy">
+                    </div>
+                    <div class="purpose-content">
+                        <h3>Education Expenses</h3>
+                        <p>Explore options for eligible courses, training or other learning expenses.</p>
+                        <span class="text-link">Explore assistance ↗</span>
+                    </div>
+                </a>
+
+                <a href="#apply" class="purpose-card" data-purpose="Debt Consolidation">
+                    <div class="purpose-image">
+                        <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=700&q=80" alt="Savings and personal finance planning" loading="lazy">
+                    </div>
+                    <div class="purpose-content">
+                        <h3>Debt Consolidation</h3>
+                        <p>Compare the total cost before considering combining existing debts.</p>
+                        <span class="text-link">Explore assistance ↗</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS -->
+    <section class="content-section" id="benefits">
+        <div class="container">
+            <div class="section-heading">
+                <div class="eyebrow">UNDERSTAND YOUR OPTIONS</div>
+                <h2>Personal Loan Features to Compare</h2>
+                <p>Review the important terms before deciding whether a personal loan suits your financial situation.</p>
+            </div>
+
+            <div class="benefit-grid">
+                <article class="benefit-card"><div class="purpose-icon">₹</div><h3>Flexible Loan Amounts</h3><p>The amount available depends on the lender's product, your income, credit profile and repayment capacity.</p></article>
+                <article class="benefit-card"><div class="purpose-icon">◷</div><h3>Repayment Tenure</h3><p>Compare repayment periods and select a term that balances monthly instalments and total interest.</p></article>
+                <article class="benefit-card"><div class="purpose-icon">▦</div><h3>EMI Planning</h3><p>Estimate your monthly instalment and check how interest rates affect the total repayment.</p></article>
+                <article class="benefit-card"><div class="purpose-icon">▤</div><h3>Common Documentation</h3><p>Prepare identity, address, income and bank-related documents requested by the lender.</p></article>
+                <article class="benefit-card"><div class="purpose-icon">✓</div><h3>Eligibility Review</h3><p>Income, employment stability, existing obligations and credit history may affect your application.</p></article>
+                <article class="benefit-card"><div class="purpose-icon">⌕</div><h3>Compare Total Cost</h3><p>Review interest, processing fees, taxes and any applicable prepayment or late-payment charges.</p></article>
+            </div>
+        </div>
+    </section>
+
+    <!-- EMI CALCULATOR -->
+    <section class="content-section calculator-section" id="emi-calculator">
+        <div class="container">
+            <div class="section-heading">
+                <div class="eyebrow">PLAN YOUR REPAYMENTS</div>
+                <h2>Personal Loan EMI Calculator</h2>
+                <p>Adjust the loan amount, interest rate and repayment period to estimate your monthly EMI and total interest.</p>
+            </div>
+
+            <div class="calculator-layout">
+                <div class="calculator-panel">
+                    <h3>Adjust Your Loan Details</h3>
+
+                    <div class="range-block">
+                        <div class="range-top"><label for="loanAmount">Loan Amount</label><span class="range-value" id="loanAmountLabel">₹5,00,000</span></div>
+                        <input type="range" id="loanAmount" min="50000" max="2500000" step="10000" value="500000">
+                        <div class="range-limits"><span>₹50,000</span><span>₹25,00,000</span></div>
+                    </div>
+
+                    <div class="range-block">
+                        <div class="range-top"><label for="interestRate">Annual Interest Rate</label><span class="range-value" id="interestRateLabel">12%</span></div>
+                        <input type="range" id="interestRate" min="6" max="36" step="0.25" value="12">
+                        <div class="range-limits"><span>6%</span><span>36%</span></div>
+                    </div>
+
+                    <div class="range-block">
+                        <div class="range-top"><label for="loanTenure">Loan Tenure</label><span class="range-value" id="loanTenureLabel">36 months</span></div>
+                        <input type="range" id="loanTenure" min="6" max="84" step="6" value="36">
+                        <div class="range-limits"><span>6 months</span><span>84 months</span></div>
+                    </div>
+
+                    <p class="fine-print">The calculator uses a standard reducing-balance EMI formula. Actual terms may differ by lender.</p>
+                </div>
+
+                <div class="result-panel" aria-live="polite">
+                    <h3>Your Estimated Repayment</h3>
+                    <p class="result-label">Estimated monthly EMI</p>
+                    <div class="emi-amount" id="emiAmount">₹16,607</div>
+
+                    <div class="result-row"><span>Principal amount</span><strong id="principalResult">₹5,00,000</strong></div>
+                    <div class="result-row"><span>Total estimated interest</span><strong id="interestResult">₹97,852</strong></div>
+                    <div class="result-row"><span>Total estimated repayment</span><strong id="totalResult">₹5,97,852</strong></div>
+
+                    <a href="#apply" class="btn btn-primary" id="calculatorApply">Enquire About This Amount ↗</a>
+                    <p class="fine-print" style="color:#c4d1e0">Estimate only. This is not a lender quote or approval.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ELIGIBILITY -->
+    <section class="content-section" id="eligibility">
+        <div class="container">
+            <div class="section-heading">
+                <div class="eyebrow">BE PREPARED BEFORE APPLYING</div>
+                <h2>Personal Loan Eligibility</h2>
+                <p>Lenders assess several factors before making a lending decision. This section provides general guidance, not a guarantee of approval.</p>
+            </div>
+
+            <div class="eligibility-grid">
+                <div>
+                    <div class="eligibility-info">
+                        <h3>Common Eligibility Factors</h3>
+                        <ul class="check-list">
+                            <li>Age within the lender's accepted range.</li>
+                            <li>Regular and verifiable income.</li>
+                            <li>Employment or business stability, where applicable.</li>
+                            <li>Credit history and repayment track record.</li>
+                            <li>Existing EMIs and other financial commitments.</li>
+                            <li>Required identity, address and income documentation.</li>
+                        </ul>
+                        <p class="fine-print">Exact criteria vary by lender, product and applicant. Meeting general criteria does not guarantee approval.</p>
+                    </div>
+
+                    <div class="eligibility-photo">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=85" alt="Person using a laptop to review financial information" loading="lazy">
+                    </div>
+                </div>
+
+                <div class="eligibility-form">
+                    <h3>Check General Affordability</h3>
+                    <p>Enter approximate details to receive basic budgeting guidance. This is not an eligibility decision.</p>
+
+                    <form id="eligibilityForm">
+                        <div class="field">
+                            <label for="monthlyIncome">Monthly Take-Home Income (₹)</label>
+                            <input type="number" id="monthlyIncome" min="1" step="1000" placeholder="e.g. 50000" required>
+                        </div>
+                        <div class="field">
+                            <label for="existingEmi">Existing Monthly EMIs (₹)</label>
+                            <input type="number" id="existingEmi" min="0" step="500" placeholder="e.g. 8000" required>
+                        </div>
+                        <div class="field">
+                            <label for="employmentType">Employment Type</label>
+                            <select id="employmentType" required>
+                                <option value="">Select employment type</option>
+                                <option value="salaried">Salaried</option>
+                                <option value="self-employed">Self-employed</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width:100%">View Budget Guidance</button>
+                    </form>
+
+                    <div class="guidance-result" id="guidanceResult" aria-live="polite"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DOCUMENT CHECKLIST -->
+    <section class="content-section documents-section" id="documents">
+        <div class="container">
+            <div class="section-heading">
+                <div class="eyebrow">GET YOUR DOCUMENTS READY</div>
+                <h2>Common Documents Required</h2>
+                <p>The final checklist depends on the lender and your employment or income profile.</p>
+            </div>
+
+            <div class="documents-grid">
+                <article class="document-card"><span>🪪</span><h3>Identity Proof</h3><p>For example, PAN and another accepted identity document.</p></article>
+                <article class="document-card"><span>⌂</span><h3>Address Proof</h3><p>An accepted document confirming your current address.</p></article>
+                <article class="document-card"><span>▤</span><h3>Income Proof</h3><p>Salary slips, income records or business income documents, as applicable.</p></article>
+                <article class="document-card"><span>▦</span><h3>Bank Statements</h3><p>Recent statements or other records requested by the lender.</p></article>
+            </div>
+
+            <p class="fine-print" style="text-align:center;margin-top:22px">Never share your OTP, PIN, password or banking credentials with anyone.</p>
+        </div>
+    </section>
+
+    <!-- APPLICATION PROCESS -->
+    <section class="content-section" id="process">
+        <div class="container">
+            <div class="section-heading">
+                <div class="eyebrow">HOW IT GENERALLY WORKS</div>
+                <h2>Steps to Explore a Personal Loan</h2>
+                <p>A typical loan journey may include the following steps. Exact processes and timelines depend on the lender.</p>
+            </div>
+
+            <div class="process-grid">
+                <article class="process-card"><div class="process-number">01</div><h3>Share Your Enquiry</h3><p>Tell us your broad loan requirement and preferred amount.</p></article>
+                <article class="process-card"><div class="process-number">02</div><h3>Review Options</h3><p>Understand applicable criteria, fees, rates and repayment terms.</p></article>
+                <article class="process-card"><div class="process-number">03</div><h3>Submit Documents</h3><p>Provide documents only through the lender's approved secure process.</p></article>
+                <article class="process-card"><div class="process-number">04</div><h3>Lender Assessment</h3><p>The lender assesses your application before deciding on approval.</p></article>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="content-section faq-section" id="faqs">
+        <div class="container">
+            <div class="section-heading">
+                <div class="eyebrow">COMMON QUESTIONS</div>
+                <h2>Personal Loan FAQs</h2>
+                <p>Quick answers to common personal loan questions.</p>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false"><span>What is a personal loan?</span><span>+</span></button>
+                    <div class="faq-answer">A personal loan is generally an unsecured loan that may be used for eligible personal expenses. Approval and terms depend on the lender and loan agreement.</div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false"><span>How is my personal loan EMI calculated?</span><span>+</span></button>
+                    <div class="faq-answer">EMI is calculated using the principal, periodic interest rate and number of monthly instalments. The calculator provides an estimate and excludes separately charged fees.</div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false"><span>Does a high credit score guarantee approval?</span><span>+</span></button>
+                    <div class="faq-answer">No. Lenders may also consider income, employment, existing debts, documentation and their own underwriting criteria.</div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false"><span>How much personal loan can I get?</span><span>+</span></button>
+                    <div class="faq-answer">The amount varies by lender and applicant. Income, financial obligations, credit profile and product limits may affect the amount offered.</div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false"><span>Can I repay my loan early?</span><span>+</span></button>
+                    <div class="faq-answer">Some agreements allow part-prepayment or foreclosure, subject to applicable terms and charges. Check the lender's agreement before making an early repayment.</div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false"><span>Does submitting an enquiry mean my loan is approved?</span><span>+</span></button>
+                    <div class="faq-answer">No. An enquiry is a request for information or assistance. Approval happens only after the lender completes its checks and communicates a decision.</div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false"><span>Are the interest rates shown on this page guaranteed?</span><span>+</span></button>
+                    <div class="faq-answer">No. The rate in the EMI calculator is an editable assumption for estimation, not a VittPoint or lender offer. Actual rates and fees depend on the lender and applicant.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENQUIRY -->
+    <section class="enquiry-section" id="apply">
+        <div class="container enquiry-grid">
+            <div class="enquiry-copy">
+                <div class="eyebrow">LET'S DISCUSS YOUR REQUIREMENT</div>
+                <h2>Looking for Personal Loan Assistance?</h2>
+                <p>Share your basic requirement to start a conversation about personal loan options and repayment planning.</p>
+                <ul class="check-list">
+                    <li>Discuss your intended loan amount.</li>
+                    <li>Review estimated EMI and repayment considerations.</li>
+                    <li>Understand common eligibility and documentation requirements.</li>
+                    <li>Compare the total cost before making a decision.</li>
+                </ul>
+            </div>
+
+            <div class="enquiry-form">
+                <h3>Personal Loan Enquiry</h3>
+                <p>Fill in your details to prepare an enquiry message.</p>
+
+                <form id="personalLoanForm">
+                    <div class="form-row">
+                        <div class="field">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" autocomplete="name" maxlength="100" placeholder="Enter your name" required>
+                        </div>
+                        <div class="field">
+                            <label for="phone">Mobile Number *</label>
+                            <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="numeric" maxlength="10" pattern="[6-9][0-9]{9}" placeholder="10-digit mobile number" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" autocomplete="email" maxlength="150" placeholder="you@example.com">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="field">
+                            <label for="loanPurpose">Loan Purpose *</label>
+                            <select id="loanPurpose" name="loanPurpose" required>
+                                <option value="">Select purpose</option>
+                                <option>Medical Expenses</option>
+                                <option>Wedding Expenses</option>
+                                <option>Home Renovation</option>
+                                <option>Travel Plans</option>
+                                <option>Education Expenses</option>
+                                <option>Debt Consolidation</option>
+                                <option>Other Personal Needs</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label for="requestedAmount">Loan Amount (₹) *</label>
+                            <input type="number" id="requestedAmount" name="requestedAmount" min="50000" max="2500000" step="10000" placeholder="e.g. 500000" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="message">Additional Information (Optional)</label>
+                        <textarea id="message" name="message" maxlength="1000" placeholder="Briefly describe your requirement"></textarea>
+                    </div>
+
+                    <label class="consent">
+                        <input type="checkbox" id="consent" required>
+                        <span>I agree that my details may be used to respond to this enquiry. I understand that submitting this form does not guarantee loan approval.</span>
+                    </label>
+
+                    <button type="submit" class="btn btn-primary">Prepare Enquiry Message ↗</button>
+                    <div class="form-message" id="formMessage" aria-live="polite"></div>
+
+                    <p class="fine-print">Demo form: details are not transmitted or saved by this page. A backend or approved form service is required to receive enquiries.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- DISCLAIMER -->
+    <section class="disclaimer">
+        <div class="container">
+            <h3>Important Information</h3>
+            <p>
+                VittPoint provides information and enquiry assistance through this website.
+                Unless explicitly stated otherwise, content on this page is for general
+                informational purposes and is not a loan offer, financial advice, sanction
+                letter or guarantee of approval. Loan products, interest rates, eligibility
+                criteria, fees and repayment terms are determined by the relevant lender.
+                Review the lender's Key Facts Statement and loan agreement, including APR,
+                processing fees, late-payment charges and prepayment terms, before accepting
+                any loan. Do not submit OTPs, passwords, PINs or banking credentials through
+                an enquiry form.
+            </p>
+        </div>
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-about-column">
+                <a href="index.html" class="brand footer-brand" aria-label="VittPoint Home">
+                    <div class="brand-mark">
+                        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M3 12 L21 12 L34 39 L47 17 L56 17 L34 53 L26 53 Z" fill="#ffffff"/>
+                            <path d="M29 17 C35 6 49 5 56 13 C63 21 56 34 45 39 L38 43 L34 37 L42 32 C48 28 50 21 46 17 C42 13 35 15 32 21 Z" fill="#ffffff"/>
+                            <circle cx="39" cy="23" r="5" fill="#F5A900"/>
+                            <path d="M39 30 L26 51 L34 51 L45 32 Z" fill="#F5A900"/>
+                        </svg>
+                    </div>
+                    <div class="brand-text">
+                        <div class="brand-name"><span class="vitt">Vitt</span><span class="point">Point</span><sup>™</sup></div>
+                        <small>YOUR FINANCIAL STARTING POINT</small>
+                    </div>
+                </a>
+                <p class="footer-about">VittPoint helps visitors explore financial products, understand common requirements and prepare informed enquiries. Always compare loan costs and review the lender's terms before borrowing.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Our Services</h3>
+                <div class="footer-links">
+                    <a href="home-loan.html">Home Loan</a>
+                    <a href="personal-loan.html">Personal Loan</a>
+                    <a href="business-loan.html">Business Loan</a>
+                    <a href="vehicle-insurance.html">Vehicle Insurance</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="#eligibility">Eligibility Guidance</a>
+                    <a href="#documents">Required Documents</a>
+                    <a href="#emi-calculator">EMI Calculator</a>
+                    <a href="#faqs">FAQs</a>
+                    <a href="#apply">Contact / Enquiry</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>© <span id="currentYear"></span> VittPoint. All rights reserved.</span>
+            <span>Your Financial Starting Point.</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    /* MOBILE NAVIGATION */
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
+
+    menuToggle.addEventListener("click", function () {
+        const isOpen = mainNav.classList.toggle("open");
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+        menuToggle.textContent = isOpen ? "✕" : "☰";
+    });
+
+    mainNav.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+            mainNav.classList.remove("open");
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.textContent = "☰";
+        });
+    });
+
+    /* FOOTER YEAR */
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+
+    /* CURRENCY FORMATTER */
+    const inr = new Intl.NumberFormat("en-IN", {
+        style: "currency",
+        currency: "INR",
+        maximumFractionDigits: 0
+    });
+
+    function formatINR(amount) {
+        return inr.format(Math.round(amount));
+    }
+
+    /* EMI CALCULATOR */
+    const loanAmount = document.getElementById("loanAmount");
+    const interestRate = document.getElementById("interestRate");
+    const loanTenure = document.getElementById("loanTenure");
+
+    const loanAmountLabel = document.getElementById("loanAmountLabel");
+    const interestRateLabel = document.getElementById("interestRateLabel");
+    const loanTenureLabel = document.getElementById("loanTenureLabel");
+
+    const emiAmount = document.getElementById("emiAmount");
+    const principalResult = document.getElementById("principalResult");
+    const interestResult = document.getElementById("interestResult");
+    const totalResult = document.getElementById("totalResult");
+
+    function calculateEMI() {
+        const principal = Number(loanAmount.value);
+        const annualRate = Number(interestRate.value);
+        const months = Number(loanTenure.value);
+        const monthlyRate = annualRate / 12 / 100;
+
+        let emi;
+
+        if (monthlyRate === 0) {
+            emi = principal / months;
+        } else {
+            const factor = Math.pow(1 + monthlyRate, months);
+            emi = principal * monthlyRate * factor / (factor - 1);
+        }
+
+        const totalPayment = emi * months;
+        const totalInterest = totalPayment - principal;
+
+        loanAmountLabel.textContent = formatINR(principal);
+        interestRateLabel.textContent = annualRate.toFixed(2).replace(/\.00$/, "") + "%";
+        loanTenureLabel.textContent = months + " months";
+
+        emiAmount.textContent = formatINR(emi);
+        principalResult.textContent = formatINR(principal);
+        interestResult.textContent = formatINR(totalInterest);
+        totalResult.textContent = formatINR(totalPayment);
+    }
+
+    [loanAmount, interestRate, loanTenure].forEach(function (input) {
+        input.addEventListener("input", calculateEMI);
+    });
+
+    calculateEMI();
+
+    /* PREFILL ENQUIRY FROM CALCULATOR */
+    document.getElementById("calculatorApply").addEventListener("click", function () {
+        document.getElementById("requestedAmount").value = loanAmount.value;
+    });
+
+    /* PURPOSE CARD PREFILL */
+    document.querySelectorAll("[data-purpose]").forEach(function (card) {
+        card.addEventListener("click", function () {
+            document.getElementById("loanPurpose").value =
+                card.getAttribute("data-purpose");
+        });
+    });
+
+    /* QUICK ENQUIRY */
+    document.getElementById("quickEnquiryForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        document.getElementById("loanPurpose").value =
+            document.getElementById("quickPurpose").value;
+
+        document.getElementById("requestedAmount").value =
+            document.getElementById("quickAmount").value;
+
+        document.getElementById("apply").scrollIntoView({ behavior: "smooth" });
+    });
+
+    /* BASIC AFFORDABILITY GUIDANCE */
+    document.getElementById("eligibilityForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const income = Number(document.getElementById("monthlyIncome").value);
+        const existingEMI = Number(document.getElementById("existingEmi").value);
+        const employment = document.getElementById("employmentType").value;
+        const result = document.getElementById("guidanceResult");
+
+        if (!Number.isFinite(income) || !Number.isFinite(existingEMI) ||
+            income <= 0 || existingEMI < 0 || existingEMI > income) {
+            result.textContent =
+                "Please enter a valid monthly income and existing EMI amount. Existing EMIs should not exceed the income entered.";
+            result.classList.add("show");
+            return;
+        }
+
+        const existingRatio = existingEMI / income * 100;
+        const remaining = income - existingEMI;
+
+        let guidance;
+
+        if (existingRatio >= 50) {
+            guidance = "Your existing EMIs account for approximately " +
+                existingRatio.toFixed(1) +
+                "% of your take-home income. Consider reviewing current commitments before taking on additional debt.";
+        } else if (existingRatio >= 30) {
+            guidance = "Your existing EMIs account for approximately " +
+                existingRatio.toFixed(1) +
+                "% of your take-home income. Carefully compare any additional EMI with your living expenses and savings.";
+        } else {
+            guidance = "Your existing EMIs account for approximately " +
+                existingRatio.toFixed(1) +
+                "% of your take-home income. Check essential expenses and emergency savings before deciding on another EMI.";
+        }
+
+        guidance += " Income remaining after current EMIs: " +
+            formatINR(remaining) + " per month.";
+
+        guidance += " Employment type entered: " +
+            (employment === "salaried" ? "Salaried" :
+             employment === "self-employed" ? "Self-employed" : "Other") + ".";
+
+        guidance += " This is general budgeting guidance only, not an eligibility result or approval prediction.";
+
+        result.textContent = guidance;
+        result.classList.add("show");
+    });
+
+    /* FAQ ACCORDION */
+    document.querySelectorAll(".faq-question").forEach(function (button) {
+        button.addEventListener("click", function () {
+            const item = button.closest(".faq-item");
+            const isOpen = item.classList.toggle("open");
+            button.setAttribute("aria-expanded", String(isOpen));
+        });
+    });
+
+    /* DEMO ENQUIRY FORM */
+    document.getElementById("personalLoanForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const name = document.getElementById("fullName").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const purpose = document.getElementById("loanPurpose").value;
+        const amount = Number(document.getElementById("requestedAmount").value);
+        const message = document.getElementById("message").value.trim();
+        const consent = document.getElementById("consent").checked;
+        const status = document.getElementById("formMessage");
+
+        status.className = "form-message";
+
+        if (!name || !purpose || !amount || !consent) {
+            status.textContent = "Please complete all required fields and provide consent.";
+            status.classList.add("show", "error");
+            return;
+        }
+
+        if (!/^[6-9][0-9]{9}$/.test(phone)) {
+            status.textContent = "Please enter a valid 10-digit Indian mobile number.";
+            status.classList.add("show", "error");
+            return;
+        }
+
+        if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            status.textContent = "Please enter a valid email address.";
+            status.classList.add("show", "error");
+            return;
+        }
+
+        if (amount < 50000 || amount > 2500000) {
+            status.textContent = "Please enter a loan amount between ₹50,000 and ₹25,00,000.";
+            status.classList.add("show", "error");
+            return;
+        }
+
+        const enquiryText =
+            "Personal Loan Enquiry\n\n" +
+            "Name: " + name + "\n" +
+            "Mobile: " + phone + "\n" +
+            "Email: " + (email || "Not provided") + "\n" +
+            "Purpose: " + purpose + "\n" +
+            "Requested Amount: " + formatINR(amount) + "\n" +
+            "Additional Information: " + (message || "None");
+
+        status.textContent =
+            "Your enquiry message has been prepared. This demo does not send or save your details. Use the button below to copy your message.";
+
+        status.classList.add("show", "success");
+
+        let copyButton = document.getElementById("copyEnquiryButton");
+
+        if (!copyButton) {
+            copyButton = document.createElement("button");
+            copyButton.type = "button";
+            copyButton.id = "copyEnquiryButton";
+            copyButton.className = "btn btn-primary";
+            copyButton.style.width = "100%";
+            copyButton.style.marginTop = "12px";
+            copyButton.textContent = "Copy Enquiry Message";
+            status.insertAdjacentElement("afterend", copyButton);
+        }
+
+        copyButton.onclick = async function () {
+            try {
+                await navigator.clipboard.writeText(enquiryText);
+                copyButton.textContent = "Message Copied ✓";
+            } catch (error) {
+                const temporaryArea = document.createElement("textarea");
+                temporaryArea.value = enquiryText;
+                temporaryArea.setAttribute("readonly", "");
+                temporaryArea.style.position = "fixed";
+                temporaryArea.style.opacity = "0";
+                document.body.appendChild(temporaryArea);
+                temporaryArea.select();
+
+                const copied = document.execCommand("copy");
+                temporaryArea.remove();
+
+                copyButton.textContent = copied
+                    ? "Message Copied ✓"
+                    : "Copy failed — please copy manually";
+            }
+        };
+    });
+</script>
+
+</body>
+</html>
